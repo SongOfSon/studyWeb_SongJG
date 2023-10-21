@@ -1,0 +1,78 @@
+.StudyGroupTableCon{
+    width: 74%;
+    height:auto;
+    margin: 2% 0 0 13.5%;
+}
+
+    .StudyGroupTableCon > h2{
+        font-size: 30px;
+        margin-bottom: 20px; 
+    }
+
+    .StudyGroupTable{
+        width: 100%;
+        border-bottom: 1px solid grey;
+    }
+
+        .HeadTableInSG{
+            background-color: rgb(59, 59, 59);
+
+            font-size: 25px;
+            color: white;
+            text-indent: 0.5em;
+
+            width: auto;
+        }
+            .StudyGroupTable > thead > tr > th[name="checkJoin"]{
+                width : 15%;
+                text-align : center;
+            }
+
+        .StudyGroupTable > tbody > tr{
+            text-indent: 0.5em;
+            font-size: 20px;
+            font-weight: 700;
+
+            height: 50px;
+        }
+
+        #InsertLine{
+            background-color: rgb(184, 184, 184);
+        }
+        
+        .imposJoinBtn{
+            background-color: rgb(255, 128, 128);
+        }
+        .posJoinBtn{
+            background-color: rgb(98, 252, 51);
+        }
+
+    .StudyGroupTableConBottom{
+        display: flex; 
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: row;
+
+        width: 100%;
+
+        margin: 10px auto;
+    }
+
+        .StudyGroupTableConBottomPagination{
+            font-size: 20px;
+            
+            width: auto;
+
+            margin: 0 auto;
+        }
+        .StudyGroupTableConBottom > Button {
+            border: 0;
+            border-radius: 10px;
+            background-color:rgb(61, 255, 35);
+            
+            font-size: 18px;
+            font-weight: 700;
+
+            width: 120px;
+            height: 30px;
+        }
