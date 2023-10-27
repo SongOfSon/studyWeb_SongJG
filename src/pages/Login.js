@@ -10,25 +10,35 @@ function Login(props) {
 // LoginUser Data 
     const [userId, setUserId] = useState('');
     const [userPassword, setUserPassword] = useState('');
+    let savedUserId = props.generalUserData;
+    let savedUserPassword = props.generalUserData;
     let userDataSize = props.generalUserData.length;
 // handle
     const onChangeId = (e) => setUserId(e.target.value);
     const onChangePassword = (e) => setUserPassword(e.target.value);
 
-    const handleLogin = () => {
-        for( ; userDataSize < -1; userDataSize--){
-            if(userId === props.generalUserData[userDataSize].userId && 
-               userPassword === props.generalUserData[userDataSize].userPassword){
-                console.log(props.generalUserData[userDataSize].userId);
-                console.log(props.generalUserData[userDataSize].userPassword);
-                props.setCurrentUserId(userId);
+    const handleLogin = (e) => {
+      console.log("로그인 버튼 클릭");
+      e.preventDefault();
+      let i = 0
+      for(i ; i < 2 ; i ++){
+        console.log(userDataSize + ' / ' + savedUserId[i].userId + ' / ' + savedUserPassword[i].userPassword)
+        console.log(`반복문 작동중 ${i + 1} 회`);
+          if(userId === savedUserId[i].userId){
+            if(userPassword !== savedUserPassword[i].userPassword){
+              return alert("비밀번호를 확인해 주세요");
+            }else if(userPassword === savedUserPassword[i].userPassword){
+                props.setCurrentLoginUser(userId);
                 alert(`${userId}`+'님 접속을 환영합니다');
                 nav('/');
-                props.setIsLogin(true);
-                return;
-            }else return;
-        }alert("계정과 비밀번호를 확인해 주세요")
-        console.log(`Username: ${userId}, Password: ${userPassword}`);
+                return props.setIsLogin(true);
+            }
+          }else if(userId === userPassword === null){
+           return alert("계정과 비밀번호를 입력해 주세요");
+          };
+        };
+        // console.log(`Username: ${userId}, Password: ${userPassword}`);
+        // console.log(typeof userId); console.log(typeof userPassword);
     };
 
 // UI   

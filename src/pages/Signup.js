@@ -19,7 +19,7 @@ function Signup( props ) {
   const [authCode, setAuthCode] = useState('');
 
   let newUserData = {
-    userIdNum : newUserIdNum,
+    userIdNum : Number(props.generalUserData.length),
     userName : userName,
     userId : userId,
     userPassword : userPassword,
@@ -31,7 +31,6 @@ function Signup( props ) {
   };
 
 // handle
-  const handleNewUserIdNum = () => setNewUserIdNum(Number(props.generalUserData.length));
   const handleUserName = e => setUserName(e.target.value);
   const handleUserId = e => setUserId(e.target.value); 
   const handleUserPassword = e => setUserPassword(e.target.value);
@@ -46,7 +45,8 @@ function Signup( props ) {
     }
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = (e) => {
+    e.preventDefault();
     let generalUserDatas = props.generalUserData;
     let pushNewData = [...generalUserDatas, newUserData];
     props.setGeneralUserData(pushNewData);

@@ -97,9 +97,7 @@ function App() {
 
   // generalFunc
     // control User Data Func
-    const postNewUserData = newUserData => 
-      setGeneralUserData([...generalUserData, newUserData]);
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(false);
     
     //control Group Data Func
 
