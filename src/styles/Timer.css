@@ -1,96 +1,52 @@
-*{
-    box-sizing: content-box;
-}
-
-.timerComponents{
+.timer-container {
     display: flex;
-    position: absolute;
-    
-    margin-top: 5%;
-    margin-left: 14%;
-}
-
-.clockInTimer {
-    font-size: 48px;
-    text-align: center;
-
-    background-color: rgb(190, 190, 190);
-    border-radius: 50%;
-
-    width: 400px;
-    height: 400px;
-    display: flex;
-
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background-color: #F5F5F5;
 }
 
-.headtitleInTimer{
-    text-align: left;
-    
-    width: 400px;
-
-    display : block;
-
-    margin-left: 3%;
-    margin-top: -60px;
+.timer-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-    .headtitleInTimer > h2{
-        font-size : 25px;
+.timer-display {
+    font-size: 5rem;
+    margin-bottom: 30px;
+    background-color: #FFF;
+    padding: 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
 
-        font-weight: 400;
-    }
-
-    .headtitleInTimer > input{
-        border-radius: 10px;
-        border: 1px solid green;
-
-        text-align: center;
-        font-size: 20px;
-        
-        height: 30px;
-        width: 350px;
-
-        margin-bottom:10px;
-    }
-
-    .btnInTimer{
-    list-style-type: none;
-    
+.timer-controls {
     display: flex;
-
-    column-gap: 50px;
-    }
-
-    .btnInTimer > button{
-        border-radius: 10px;
-        border: 1px;
-        
-        width: 70px;
-        height: 30px;
-
-        font-size: 21px;
-        font-weight: bold;
-        color: rgb(59, 59, 59);
-    }
-        .stopTimerBtn{
-            background-color: rgb(255, 128, 128);
-        }
-        .startTimerBtn{
-            background-color: rgb(98, 252, 51);
-        }
-.recordingListInTimer{
-    list-style-type: none;
-
-    width: 350px;
-
-    margin-top: -60px;
+    gap: 20px;
 }
 
-    .recordingListInTimer > li {
-        border-bottom: 1px solid grey;
-        text-align: left;
+.timer-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #FFF;
+}
 
-        font-size: 18px;
-    }
+.timer-button:hover {
+    background-color: #555;
+}
+
+.timer-button:nth-child(1) {
+    background-color: #FF6347;
+}
+
+.timer-button:nth-child(2) {
+    background-color: #4CAF50;
+}

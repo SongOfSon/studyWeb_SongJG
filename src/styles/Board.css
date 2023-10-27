@@ -11,12 +11,10 @@
 
 .BoardTable{
     width: 100%;
-    border-bottom: 1px solid grey;
-
+    border-collapse : collapse;
     margin: 30px 0px;
 }
-
-    .HeadTableInB{
+ .HeadTableInB{
         background-color: rgb(59, 59, 59);
 
         font-size: 25px;
@@ -25,12 +23,30 @@
 
         width: auto;
     }
-    .BoardTable > tbody > tr{
+    .BoardTableIdTh, .BoardTableTitleTh{
+        text-align: left;
+    }
+
+.BoardTable > tbody > tr{
         text-indent: 0.5em;
         font-size: 20px;
         font-weight: 700;
 
         height: 50px;
+    }
+    .BoardTableIdTd{
+        width: 8%;
+    }
+    .BoardTableTitleTd{
+        width: 65%;
+    } 
+    .BoardTableAuthorTd{
+        width: 10%;
+        text-align: center;
+    }
+    .BoardTableDateTd{
+        width: 17%;
+        text-align: center;
     }
     #InsertLine{
         background-color: rgb(184, 184, 184);

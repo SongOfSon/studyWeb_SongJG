@@ -1,60 +1,27 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import CustomPagination from "../components/CustomPagination";
 
-const Board = () => {
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "샘플 글 1",
-      author: "작성자 1",
-      date: "2023-05-11",
-    },
-    {
-      id: 2,
-      title: "샘플 글 2",
-      author: "작성자 2",
-      date: "2023-05-10",
-    },
-    {
-      id: 3,
-      title: "샘플 글 3",
-      author: "작성자 3",
-      date: "2023-05-09",
-    },
-    {
-      id: 4,
-      title: "샘플 글 4",
-      author: "작성자 4",
-      date: "2023-05-09",
-    },
-    {
-      id: 5,
-      title: "샘플 글 5",
-      author: "작성자 5",
-      date: "2023-05-09",
-    },
-    {
-      id: 6,
-      title: "샘플 글 6",
-      author: "작성자 6",
-      date: "2023-05-09",
-    },
-    {
-      id: 7,
-      title: "샘플 글 7",
-      author: "작성자 7",
-      date: "2023-05-09",
-    },
-    {
-      id: 8,
-      title: "샘플 글 8",
-      author: "작성자 8",
-      date: "2023-05-09",
-    },
-  ]);
-
+const Board = ( props ) => {
+// React hooks
   const navigate = useNavigate('');
 
+// BoardData
+  const posts = props.generalBoardData;
+
+// Pagination을 위한 변수
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
+// handle
+  const handleNav = e => navigate('/WritePost');
+
+//Func
+const deletePost = () => {
+
+}
+
+//UI
   return (
     <div className="BoardTableCon"> 
       <h2>게시판</h2>
@@ -62,22 +29,22 @@ const Board = () => {
 
           <thead className="HeadTableInB">
             <tr>
-              <th>글번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
+              <th className="BoardTableIdTh">글번호</th>
+              <th className="BoardTableTitleTh">제목</th>
+              <th className="BoardTableAuthorTh">작성자</th>
+              <th className="BoardTableDateTh">작성일</th>
             </tr>
           </thead>
 
+          
           <tbody>
-            {posts.map((post) => (
-              <tr key={post.id}  
+            {posts.slice(offset, offset + limit).map((post) => (
+              <tr key={post.id} Link={`/board/${props.generalBoardData.groupId}`}
                 id={`${!(post.id % 2) && post.id !== 0?'InsertLine':'NoLine'}`}>
-                
-                <td>{post.id}</td>
-                <td>{post.title}</td>
-                <td>{post.author}</td>
-                <td>{post.date}</td>
+                <td className="BoardTableIdTd">{post.id}</td>
+                <td className="BoardTableTitleTd">{post.title}</td>
+                <td className="BoardTableAuthorTd">{post.author}</td>
+                <td className="BoardTableDateTd">{post.writeDate}</td>
               </tr>
             ))}
           </tbody>
@@ -86,11 +53,10 @@ const Board = () => {
         
         <div className="BoardTableConBottom">
           <div className="BoardTableConBottomPagination">
-          {'<'} 1 | 2 | 3 | 4 | 5 {'>'}
+            <CustomPagination total={posts.length} limit={limit} page={page} setPage={setPage}/>
           </div>
-
-          <button name="wirteBtn" onClick={e => navigate('/WritePost')}>글 작성</button>
-          <button name="removeBtn">글 삭제</button>
+          <button name="wirteBtn" onClick={handleNav}>글 작성</button>
+          <button name="removeBtn" onClick={deletePost}>글 삭제</button>
         </div>
     </div>
   );

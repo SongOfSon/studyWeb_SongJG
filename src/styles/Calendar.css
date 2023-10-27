@@ -1,0 +1,11 @@
+.customCalendar {
+    border: 1px solid darkblue;
+    width: 48rem;
+    font-size: 1em;
+}
+
+select {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    border: 1px solid darkblue;
+}

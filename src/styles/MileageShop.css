@@ -13,7 +13,6 @@
 .MileageShopBody{
     display:flex;
 
-
     width: 100%;
     height: auto;
 
@@ -22,7 +21,7 @@
 
     .MileageShopBody > table {
         width: 90%;
-        height: 600px;
+        height: 650px;
 
         display: inline-block;
         
@@ -30,26 +29,32 @@
         border-spacing: 80px 50px;
     }
 
-        .MileageShopBody > table > tr > td{
+    .MileageShopBody > table > tr{
+        display: flex;
+    }
+
+        .MileageShopBody > table > td{
             text-align: center;
+
+            margin:5px;
 
             width: 200px;
             height: auto;
         }
 
-            .MileageShopBody > table > tr > td > img{
+            .MileageShopBody > table > td > img{
                 border: 1px solid rgb(184, 235, 184);
                 border-radius: 30px;
                 width: 170px;
             }
 
-            .MileageShopBody > table > tr > td > button{
+            .MileageShopBody > table > td > button{
                 border: 1px solid rgb(184, 235, 184);
                 border-radius: 20px;
                 background-color: rgb(184, 235, 184);
                 
 
-                width: 170px;
+                width: 85px;
             }
 
 

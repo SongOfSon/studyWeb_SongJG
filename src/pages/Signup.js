@@ -1,67 +1,111 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '../styles/SignUp.css'
+import { useNavigate } from 'react-router-dom';
 
-function Signup() {
-  const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+function Signup( props ) {
+// React hooks
+  const nav = useNavigate('');
+
+// userData
+  const [newUserIdNum, setNewUserIdNum] = useState(0)
+  const [userName, setUserName] = useState('');
+  const [userId, setUserId] = useState('');
+  const [userPassword, setUserPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [authType, setAuthType] = useState('email'); // 인증 유형 기본값을 '이메일'로 설정
-  const [authInfo, setAuthInfo] = useState(''); // 휴대폰 번호 또는 이메일 입력
+  const [userEmail, setUserEmail] = useState(''); // 휴대폰 번호 또는 이메일 입력
+  const [userPhoneNum, setUserPhoneNum] = useState(''); // 휴대폰 번호 또는 이메일 입력
   const [authCode, setAuthCode] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: 회원가입 처리를 해주는 API와 연결
-    console.log(`Name: ${name}, Username: ${username}, Password: ${password}, Password Confirm: ${passwordConfirm}, Auth Info: ${authInfo}, Auth Code: ${authCode}`);
+  let newUserData = {
+    userIdNum : newUserIdNum,
+    userName : userName,
+    userId : userId,
+    userPassword : userPassword,
+    userEmail : userEmail,
+    userPhoneNum : userPhoneNum,
+    userMileage : '',
+    userInterest : '',
+    userJoinGroup : [],
   };
 
+// handle
+  const handleNewUserIdNum = () => setNewUserIdNum(Number(props.generalUserData.length));
+  const handleUserName = e => setUserName(e.target.value);
+  const handleUserId = e => setUserId(e.target.value); 
+  const handleUserPassword = e => setUserPassword(e.target.value);
+  const handleUserPasswordConfirm = e => setPasswordConfirm(e.target.value);
+  const handleUserEmail = e => setUserEmail(e.target.value);
+  const handleUserPhoneNum = e => setUserPhoneNum(e.target.value);
+  const handleAuthCode = () =>{
+    if(authCode === null){
+      alert('인증번호를 입력해주세요')
+    }else if(authCode === ' '){
+      //인증번호 확인 함수
+    }
+  };
+
+  const handleSignUp = () => {
+    let generalUserDatas = props.generalUserData;
+    let pushNewData = [...generalUserDatas, newUserData];
+    props.setGeneralUserData(pushNewData);
+    console.log(props.generalUserData);
+    alert(
+      `회원가입을 축하합니다
+      현재 입력된 회원정보
+      Name: ${userName}
+      ID: ${userId}`);
+      nav('/');
+  };
+
+// 유효성 검사
+  //회원가입 input 공란 검사
+  const [allow, setAllow] = useState(true);
+
+  useEffect(() => { 
+  if(userName && userId && userPassword){
+    if(userPassword === passwordConfirm){
+    setAllow(false)
+    }return;
+  }setAllow(true);
+  }, [userName, userId, userPassword, passwordConfirm]);
+
+// UI
   return (
     <div className='signUpContainer'>
       <img src={process.env.PUBLIC_URL + "./logo.png"} alt="Logo" />
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          value={name} 
-          onChange={e => setName(e.target.value)} 
-          placeholder="이름"
-        />
-        <input 
-          type="text" 
-          value={username} 
-          onChange={e => setUsername(e.target.value)} 
-          placeholder="아이디"
-        />
-        <input 
-          type="password" 
-          value={password} 
-          onChange={e => setPassword(e.target.value)} 
-          placeholder="비밀번호"
-        />
-        <input 
-          type="password" 
-          value={passwordConfirm} 
-          onChange={e => setPasswordConfirm(e.target.value)} 
-          placeholder="비밀번호 확인"
-        />
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+
+      <form name="signUpForm" onSubmit={handleSignUp}>
+        <input name="NameInputBox"            type="text"      value={userName}              onChange={handleUserName}             placeholder="이름" />
+        <input name="IdInputBox"              type="text"      value={userId}                onChange={handleUserId}               placeholder="아이디" />
+        <input name="PasswordInputBox"        type="password"  value={userPassword}          onChange={handleUserPassword}         placeholder="비밀번호" />
+        <input name="PasswordConfirmInputBox" type="password"  value={passwordConfirm || ''} onChange={handleUserPasswordConfirm}  placeholder="비밀번호 재입력" />
+        
+        {/* <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
           <button type="button" onClick={() => setAuthType('phone')}>휴대폰 인증</button>
           <button type="button" onClick={() => setAuthType('email')}>이메일 인증</button>
         </div>
+        
         <input 
-          type={authType === 'email' ? 'email' : 'tel'} 
-          value={authInfo} 
-          onChange={e => setAuthInfo(e.target.value)} 
-          placeholder={authType === 'email' ? '이메일' : '휴대폰 번호'}
+          type = 'text'
+          value = {authType === 'email'? userEmail : userPhoneNum} 
+          onChange = {authType === 'email'?handleUserEmail:handleUserPhoneNum} 
+          placeholder = {authType === 'email' ? '이메일' : '휴대폰 번호'}
         />
         <input 
           type="text" 
-          value={authCode} 
+          value={authCode || ''} 
           onChange={e => setAuthCode(e.target.value)} 
           placeholder="인증번호"
         />
-        <input id='signUpConfirmBtn' type="submit" value="회원가입" />
+        <div>
+          <button type='button' onClick={handleAuthCode}>인증 확인</button>
+          <br/> */}
+        <div>
+          {allow && <button disabled={allow} style={{backgroundColor:"gray",border:"0px"}} type="submit">회원가입</button>}
+          {!allow && <button disabled={allow} type="submit">회원가입</button>}          
+        </div>
       </form>
     </div>
   );

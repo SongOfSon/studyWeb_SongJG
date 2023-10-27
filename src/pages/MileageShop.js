@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import CustomPagination from "../components/CustomPagination";
 
-function MileageShop() {
+function MileageShop( props ) {
   const [username, setUsername] = useState("Kim");
   const [mileage, setMileage] = useState(1000); // 예시 마일리지
 
@@ -70,14 +71,13 @@ function MileageShop() {
     },
   ]);
 
+  const [limit, setLimit] = useState(8);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
+
   const handleCharge = (event) => {
     event.preventDefault();
     alert("마일리지를 충전합니다."); // 마일리지 충전 기능 구현 필요
-  };
-
-  const handleRefund = (event) => {
-    event.preventDefault();
-    alert("마일리지를 환급합니다."); // 마일리지 환급 기능 구현 필요
   };
 
   return (
@@ -85,57 +85,15 @@ function MileageShop() {
         <h2>마일리지 샵</h2>
         <div className="MileageShopBody">
           <table>
-            {productList.map((product) => (
+            {productList.slice(offset, offset + limit).map((product) => (
               <>
-                {product.id === 1 ? 
-                <tr>
+                {(product.id % 4) >= 1 ? 
                   <td>
-                    <img src={product.img}/>
+                    <img src = {product.img}/>
                     <h2>{product.productName}</h2>
                     <button>구입하기</button> 
                   </td>
-                  <td>
-                    <img src={product.img}/>
-                    <h2>{product.productName}</h2>
-                    <button>구입하기</button> 
-                  </td>
-                  <td>
-                    <img src={product.img}/>
-                    <h2>{product.productName}</h2>
-                    <button>구입하기</button> 
-                  </td>
-                  <td>
-                    <img src={product.img}/>
-                    <h2>{product.productName}</h2>
-                    <button>구입하기</button> 
-                  </td>
-                </tr>
-                :
-                product.id === 5 ? 
-                  <tr>
-                    <td>
-                      <img src={product.img}/>
-                      <h2>{product.productName}</h2>
-                      <button>구입하기</button> 
-                    </td>
-                    <td>
-                      <img src={product.img}/>
-                      <h2>{product.productName}</h2>
-                      <button>구입하기</button> 
-                    </td>
-                    <td>
-                      <img src={product.img}/>
-                      <h2>{product.productName}</h2>
-                      <button>구입하기</button> 
-                    </td>
-                    <td>
-                      <img src={product.img}/>
-                      <h2>{product.productName}</h2>
-                      <button>구입하기</button> 
-                    </td>
-                  </tr>
-                  :
-                  ""
+                : <tr/>
                 }
               </>
             ))}
@@ -148,7 +106,7 @@ function MileageShop() {
         </div>
 
         <div className="MileageShopPagination">
-          {'<'} 1 | 2 | 3 | 4 | 5 {'>'}
+        <CustomPagination total={productList.length} limit={limit} page={page} setPage={setPage}/>
         </div>
     </div>
   );

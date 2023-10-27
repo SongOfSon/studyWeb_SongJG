@@ -27,21 +27,21 @@
             margin-left: 20px;
         }
 
-            .WritePostCon > form > table > tr{
+            .WritePostCon > form > table > tbody > tr{
                 vertical-align: top;
                 text-align: left;
 
                 width: auto;
             }
 
-            .WritePostCon > form > table > tr > td {
+            .WritePostCon > form > table > tbody > tr > td {
                 text-align: left;
                 vertical-align: top;
 
                 width:fit-content;
             }
 
-            .WritePostCon > form > table > tr > td > label{
+            .WritePostCon > form > table > tbody > tr > td > label{
                 font-size: 20px;
                 font-weight: 540;
 
@@ -49,12 +49,12 @@
                 margin-right: 30px;
             }
 
-            .WritePostCon > form > table > tr > td > input{
+            .WritePostCon > form > table > tbody > tr > td > input{
                 width: 60vw;
                 height: 40px;
             }
 
-                .WritePostCon > form > table > tr > td > 
+                .WritePostCon > form > table > tbody > tr > td > 
                     input[placeholder="내용을 입력하세요"]{
                         height: 150px;
                     }

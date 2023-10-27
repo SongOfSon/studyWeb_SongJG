@@ -31,12 +31,14 @@
 
         height: 30px;
         width: 400px;
+        outline:none;
 
         margin-left: auto;
         margin-right: auto;
     }
 
     .signUpContainer > form > div> button {
+        margin-bottom: 7px;
         border-radius: 7px;
         border: 1px solid green;
         background-color: green;
@@ -47,17 +49,4 @@
         font-size: 18px;
         color: white;
         font-weight: bold;
-    }
-
-    #signUpConfirmBtn{
-        background-color: green;
-        border-radius: 7px;
-        border: 1px solid green;
-
-        width : 110px; 
-
-        font-size: 18px;  
-        color: white;
-        font-weight: bold;
-        text-indent: 0;
     }

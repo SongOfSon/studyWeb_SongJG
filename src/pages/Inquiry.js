@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-const Chatbot= () => {
+const Chatbot= () => {  
     return(
         <div className="ChatbotCon">
             <h2>문의 사항</h2>

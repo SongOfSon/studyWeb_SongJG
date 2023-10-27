@@ -59,6 +59,7 @@
             float: right;
 
             margin-right: 10px;
+            padding: 5px;
         }
 
     .dataViewLine{
@@ -74,4 +75,23 @@
         
         height: 30px;
         width: 500px;
+    }
+
+    .selectInterstBox{
+        width: 200px;
+        margin-right: 20px;
+    }
+
+    .selectBoxBtn{
+        margin-bottom: 7px;
+        border-radius: 7px;
+        border: 1px solid green;
+        background-color: green;
+
+        width: 80px;
+        height: 40px;
+
+        font-size: 18px;
+        color: white;
+        font-weight: bold;
     }

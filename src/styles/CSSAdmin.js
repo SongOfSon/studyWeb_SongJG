@@ -2,6 +2,7 @@
 import './Chatbot.css'
 import './MileageShop.css'
 import './WritePost.css'
+import './DetailBoard.css'
 import './Board.css'
 import './Calendar.css'
 import './CreateStudyGroup.css'
