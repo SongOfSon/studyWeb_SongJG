@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import '../styles/SignUp.css'
 import { useNavigate } from 'react-router-dom';
 
 function Signup( props ) {
@@ -45,11 +44,35 @@ function Signup( props ) {
     }
   };
 
+// 회원가입 기능
   const handleSignUp = (e) => {
     e.preventDefault();
     let generalUserDatas = props.generalUserData;
     let pushNewData = [...generalUserDatas, newUserData];
     props.setGeneralUserData(pushNewData);
+    /*
+    fetch('서버주소', {
+      method: "POST",
+      headers: {
+        "Contnet-Type : "application/json,
+      },
+      body: JSON.stringify({
+        userIdNum : Number(props.generalUserData.length),
+        userName : userName,
+        userId : userId,
+        userPassword : userPassword,
+        userEmail : userEmail,
+        userPhoneNum : userPhoneNum,
+        userMileage : '',
+        userInterest : '',
+        userJoinGroup : [],
+      }),
+    })
+     .then((response) => response.json())
+     .then((data) => console.log(data))
+
+
+    */
     console.log(props.generalUserData);
     alert(
       `회원가입을 축하합니다
@@ -74,7 +97,7 @@ function Signup( props ) {
 // UI
   return (
     <div className='signUpContainer'>
-      <img src={process.env.PUBLIC_URL + "./logo.png"} alt="Logo" />
+      <img src={process.env.PUBLIC_URL + "./NavIcons/logo.png"} alt="Logo" />
 
       <form name="signUpForm" onSubmit={handleSignUp}>
         <input name="NameInputBox"            type="text"      value={userName}              onChange={handleUserName}             placeholder="이름" />

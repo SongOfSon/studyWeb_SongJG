@@ -1,0 +1,78 @@
+.MileageShopCon{
+}
+
+    .MileageShopCon > h2{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+
+.MileageShopBody{
+    display:flex;
+
+    width: 100%;
+    height: auto;
+
+    column-gap: 10px;
+}
+
+    .MileageShopBody > table {
+        width: 90%;
+        height: 650px;
+
+        display: inline-block;
+        
+        border-collapse: separate;
+        border-spacing: 80px 50px;
+    }
+
+    .MileageShopBody > table > tr{
+        display: flex;
+    }
+
+        .MileageShopBody > table > td{
+            text-align: center;
+
+            margin:5px;
+
+            width: 200px;
+            height: auto;
+        }
+
+            .MileageShopBody > table > td > img{
+                border: 1px solid rgb(184, 235, 184);
+                border-radius: 30px;
+                width: 170px;
+            }
+
+            .MileageShopBody > table > td > button{
+                border: 1px solid rgb(184, 235, 184);
+                border-radius: 20px;
+                background-color: rgb(184, 235, 184);
+                
+
+                width: 85px;
+            }
+
+
+
+
+
+
+    .ClientMileageInfo > p {
+        font-size: 20px;
+    }
+
+    
+.MileageShopPagination{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    font-size: 20px;
+    
+    width: auto;
+
+    margin-right: 16%;
+}

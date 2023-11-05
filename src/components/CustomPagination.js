@@ -1,7 +1,5 @@
 import React from 'react';
 
-import '../styles/CustomPagination.css'
-
 function CustomPagination({ total, limit, page, setPage }) {
     const numPages = Math.ceil(total / limit);
   

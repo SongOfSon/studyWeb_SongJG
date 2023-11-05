@@ -1,9 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Timer = () => {
+// timer Data
     const [time, setTime] = useState(0);
     const [isActive, setIsActive] = useState(false);
+    const [record, setRecord] = useState([{
+        user:'1',
+        subject:'과목이름',
+        recordTime:'HH-MM-SS',
+    }])
+    const [user, setUser] = useState('');
+    const [subject, setSubject] = useState('');
+    const [recordTime, setRecordTime] = useState('');
+    const [totalTime, setTotalTime] = useState(0);
 
+// handle
+    const handleRecordSubject = e => setSubject(e.target.value);
     useEffect(() => {
         let interval;
         if (isActive) {
@@ -16,11 +28,13 @@ const Timer = () => {
         return () => clearInterval(interval);
     }, [isActive, time]);
 
-    const toggleTimer = () => {
-        setIsActive(!isActive);
-    };
-
+    const toggleTimer = () => setIsActive(!isActive);
     const resetTimer = () => {
+        setRecord([...record, {
+            user:'',
+            subject:subject,
+            recordTime:time,
+        }]);
         setIsActive(false);
         setTime(0);
     };
@@ -32,13 +46,47 @@ const Timer = () => {
         return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     };
 
+// UI
     return (
         <div className="timer-container">
+            <div className='timer-container-left'>
             <h1 className="timer-title">Study Timer</h1>
             <div className="timer-display">{displayTime()}</div>
-            <div className="timer-controls">
-                <button className="timer-button" onClick={toggleTimer}>{isActive ? 'Pause' : 'Start'}</button>
-                <button className="timer-button" onClick={resetTimer}>Reset</button>
+            {!isActive ? 
+                <div className="timer-controls">
+                <button className="timer-button" onClick={toggleTimer}>
+                    <img src={process.env.PUBLIC_URL + './TimerIcons/playBtn.png'}alt='playBtn'/>
+                </button>
+                <input className="timer-subject-input" type='text' value={subject} onChange={e => handleRecordSubject(e)}/>
+                </div>
+                :
+                <div className="timer-controls">
+                    <button className="timer-button" onClick={toggleTimer}>
+                        <img src={process.env.PUBLIC_URL + './TimerIcons/pauseBtn.png'}alt='pauseBtn'/>
+                    </button>
+                    <button className="timer-button" onClick={resetTimer}>
+                        <img src={process.env.PUBLIC_URL + './TimerIcons/resetBtn.png'}alt='resetBtn'/>
+                    </button>
+                </div>
+            }
+            </div>
+            <div className='timer-container-right'>
+                <table className='timer-record-table'>
+                    <thead className='timer-record-table-header'>
+                        <tr>
+                            <th>과목</th>
+                            <th>시간</th>
+                        </tr>
+                    </thead>
+                    <tbody className='timer-record-table-body'>
+                        {record.map((record, index) =>(
+                        <tr key={index}>
+                            <td>{record.subject}</td>
+                            <td>{record.recordTime}</td>
+                        </tr>))
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     );

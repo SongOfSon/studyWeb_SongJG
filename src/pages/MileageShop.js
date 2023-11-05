@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CustomPagination from "../components/CustomPagination";
+import CustomPagination from "../Components/CustomPagination";
 
 function MileageShop( props ) {
   const [username, setUsername] = useState("Kim");
@@ -82,7 +82,6 @@ function MileageShop( props ) {
 
   return (
     <div className="MileageShopCon">
-        <h2>마일리지 샵</h2>
         <div className="MileageShopBody">
           <table>
             {productList.slice(offset, offset + limit).map((product) => (

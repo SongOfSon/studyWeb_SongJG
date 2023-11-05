@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import CustomPagination from "../components/CustomPagination";
+import CustomPagination from "../Components/CustomPagination";
 
 
-const FindStudyGroup = ( props 
+const StudyGroup = ( props 
   /*{generalGroupData, setGeneralGroupData}*/ ) => {
 
 // React hooks
@@ -27,7 +27,6 @@ const FindStudyGroup = ( props
 
   return (
     <div className="StudyGroupTableCon">
-      <h2>스터디 그룹 찾기</h2>
       <table className="StudyGroupTable">
 
         <thead>
@@ -77,4 +76,4 @@ const FindStudyGroup = ( props
   );
 };
 
-export default FindStudyGroup;
+export default StudyGroup;

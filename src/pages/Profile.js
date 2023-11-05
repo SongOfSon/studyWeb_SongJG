@@ -1,14 +1,12 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
-import '../styles/Profile.css'
-
 const Profile = ( props ) => {
     const navigate = useNavigate('');
 
     //userData
-    const [userName, setUserName] = useState('송정근');
-    const [userId, setUserId] = useState('admin');
+    const [userName, setUserName] = useState('');
+    const [userId, setUserId] = useState('');
     const [userStudyTime, setUserStudyTime] = useState({
         hour : 0,
         min: 0,
@@ -43,9 +41,14 @@ const Profile = ( props ) => {
     const handleInterest = e => setUserInterest(e.target.value);
 
     return (
-        <div className="ProfileContainer">
-            <h2> <div className="nameContainer"> {userName} </div> 님의 정보 입니다. </h2>
-            
+        <div className="Profile-wrapper">
+            <div className="Profile-header">
+                <h2> 
+                    <div className="Profile-userName-box"> {userName} </div> 
+                    님의 정보 입니다. 
+                </h2>
+                <button className="Profile-membership-button">회원권</button>
+            </div>
             <table className="ClientInfoTable">
                 <tr>    {/* 사용자명 + 학습한 시간 */}
                     <td className="makeLine" colSpan="2">ID : {userId} 님의 학습한 시간</td>

@@ -8,17 +8,17 @@ const imageArr = [
   {
     label : "image1",
     alt:'mainImageNo1',
-    url: process.env.PUBLIC_URL + '/mainImage1.jpg'
+    url: process.env.PUBLIC_URL + './MainImages/mainImage1.jpg'
   },
   {
     label : "image2",
     alt:'mainImageNo2',
-    url: process.env.PUBLIC_URL + '/mainImage2.jpg'
+    url: process.env.PUBLIC_URL + './MainImages/mainImage2.jpg'
   },
   {
     label : "image3",
     alt:'mainImageNo3',
-    url: process.env.PUBLIC_URL + '/mainImage3.png'
+    url: process.env.PUBLIC_URL + './MainImages/mainImage3.png'
   }
 ];
 

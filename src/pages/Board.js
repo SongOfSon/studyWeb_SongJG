@@ -1,62 +1,58 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import CustomPagination from "../components/CustomPagination";
+import CustomPagination from "../Components/CustomPagination"
 
 const Board = ( props ) => {
-// React hooks
+    // React hooks
   const navigate = useNavigate('');
 
-// BoardData
-  const posts = props.generalBoardData;
-
-// Pagination을 위한 변수
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit;
-// handle
-  const handleNav = e => navigate('/WritePost');
-
-//Func
-const deletePost = () => {
-
-}
-
-//UI
+  // BoardData
+    const posts = props.generalBoardData;
+  
+  // Pagination을 위한 변수
+    const [limit, setLimit] = useState(10);
+    const [page, setPage] = useState(1);
+    const offset = (page - 1) * limit;
+  // handle
+    const handleNav = e => navigate('/WritePost');
+  
+  //Func
+  const deletePost = () => {
+  
+  }
+    //UI
   return (
-    <div className="BoardTableCon"> 
-      <h2>게시판</h2>
-        <table className="BoardTable">
-
-          <thead className="HeadTableInB">
+    <div className="Board-wrapper"> 
+        <table className="Board-table">
+          <thead className="Board-table-Header">
             <tr>
-              <th className="BoardTableIdTh">글번호</th>
-              <th className="BoardTableTitleTh">제목</th>
-              <th className="BoardTableAuthorTh">작성자</th>
-              <th className="BoardTableDateTh">작성일</th>
+              <th className="Board-table-th-Num">NO.</th>
+              <th className="Board-table-th-Title">제목</th>
+              <th className="Board-table-th-Author">작성자</th>
+              <th className="Board-table-th-CreateDate">작성일</th>
             </tr>
           </thead>
-
-          
-          <tbody>
+          <tbody className="Board-table-Body">
             {posts.slice(offset, offset + limit).map((post) => (
               <tr key={post.id} Link={`/board/${props.generalBoardData.groupId}`}
                 id={`${!(post.id % 2) && post.id !== 0?'InsertLine':'NoLine'}`}>
-                <td className="BoardTableIdTd">{post.id}</td>
-                <td className="BoardTableTitleTd">{post.title}</td>
-                <td className="BoardTableAuthorTd">{post.author}</td>
-                <td className="BoardTableDateTd">{post.writeDate}</td>
+                <td className="Board-table-td-Num">{post.id}</td>
+                <td className="Board-table-td-Title">{post.title}</td>
+                <td className="Board-table-td-Author">{post.author}</td>
+                <td className="Board-table-td-CreateDate">{post.writeDate}</td>
               </tr>
             ))}
           </tbody>
-
         </table>
-        
-        <div className="BoardTableConBottom">
-          <div className="BoardTableConBottomPagination">
+        <div className="Board-table-Footer">
+          <></>
+          <div className="Board-table-Footer-Pagination">
             <CustomPagination total={posts.length} limit={limit} page={page} setPage={setPage}/>
           </div>
-          <button name="wirteBtn" onClick={handleNav}>글 작성</button>
-          <button name="removeBtn" onClick={deletePost}>글 삭제</button>
+          <div className="Board-table-Footer-Buttons">
+            <button name="Board-writePost-Button" onClick={handleNav}>글 작성</button>
+            <button name="Board-deletePost-Button" onClick={deletePost}>글 삭제</button>
+          </div>
         </div>
     </div>
   );
