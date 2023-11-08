@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 // CSS import
-import "./IndexControl/CSSList.js"
+import "./IndexControl/CSSList.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App />
-  </React.StrictMode>
+  // </React.StrictMode>
 );

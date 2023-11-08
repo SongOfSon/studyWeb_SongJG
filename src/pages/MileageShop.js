@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CustomPagination from "../Components/CustomPagination";
+import IamportPayment from "../Components/IamportPayment";
 
 function MileageShop( props ) {
   const [username, setUsername] = useState("Kim");
@@ -90,7 +91,7 @@ function MileageShop( props ) {
                   <td>
                     <img src = {product.img}/>
                     <h2>{product.productName}</h2>
-                    <button>구입하기</button> 
+                    <IamportPayment/> 
                   </td>
                 : <tr/>
                 }
