@@ -1,0 +1,85 @@
+.StudyGroup-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 750px;
+}
+
+.StudyGroup-table{
+    width: 100%;
+    border-collapse: collapse;
+
+    text-align: center;
+}
+
+.StudyGroup-table-header{
+    background-color: rgb(231, 231, 231);
+    height: 40px;
+
+    font-size: 30px;
+    font-family: 'Arial', sans-serif;
+}
+
+    .StudyGroup-table-header-tr > th{
+        padding: 0px 10px 0px 10px;
+    }
+        .StudyGroup-table-header-group-name{
+            text-align: left;
+        }
+
+    .StudyGroup-table-body{
+        font-size: 28px;
+    }
+        .StudyGroup-table-body-tr > td{
+            padding: 10px;
+        }
+        .StudyGroup-table-body-group-name{
+            text-align: left;
+        }
+
+        .StudyGroup-table-body-group-checkJoin{
+            text-align: center;            
+        }
+
+    .StudyGroup-footer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        width: 100%;
+    }
+    .StudyGroup-footer-create-buttons{
+        display: flex;
+        justify-content: end;
+
+        width: 100%;
+    }
+
+    .StudyGroup-footer-create-button{
+        border: 0;
+        border-radius: 10px;
+        background-color: rgb(175, 166, 45);
+        
+        text-align: center;  
+        font-size: 20px;
+        font-weight: 700;
+        color: rgb(220, 253, 215);
+  
+        width: 120px;
+        height: 30px;
+    }
+
+    .StudyGroup-joinable-possiable, .StudyGroup-joinable-impossiable{
+        border: 0;
+        border-radius:10px;
+
+        font-weight:bold;
+        width:75px;
+    }
+    .StudyGroup-joinable-possiable{
+        background-color:greenyellow
+    }
+    .StudyGroup-joinable-impossiable{
+        background-color:rgb(255, 52, 52)
+    }

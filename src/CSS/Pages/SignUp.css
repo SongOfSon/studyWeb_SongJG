@@ -1,4 +1,4 @@
-.signUpContainer {
+.signup-wrapper {
     align-items: center;
     text-align: center;
 
@@ -7,22 +7,22 @@
     margin-left: auto;
     margin-right: auto;
 }
-
-    .signUpContainer > img {
+    .signup-wrapper > img {
         height: 200px;
         width: auto;
         
         padding-bottom: 20px;
     }
 
-    .signUpContainer > form{
+/* signup input  */
+    .signup-input-wrapper{
         display: flex;
         flex-direction: column;
 
         gap: 10px;
     }
-
-    .signUpContainer > form > input{
+    
+    .signup-input-wrapper > input{
         border-radius: 8px;
         border: 1px solid greenyellow;
 
@@ -37,7 +37,7 @@
         margin-right: auto;
     }
 
-    .signUpContainer > form > div> button {
+    .signup-input-wrapper > div> button {
         margin-bottom: 7px;
         border-radius: 7px;
         border: 1px solid green;

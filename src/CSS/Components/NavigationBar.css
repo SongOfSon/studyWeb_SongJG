@@ -1,5 +1,5 @@
 .Entire-NavBar-wrapper{
-    margin:50px 100px 50px 100px;
+    margin:0px 100px 50px 100px;
 
     width: 1704px;
     height: auto;
@@ -46,7 +46,7 @@
 
 /* NavBottom */
 .Components-NavBar-wrapper{
-    margin: 10px 10px 0 10px;
+    margin: 0px 10px 0 10px;
 
 
     display: flex;

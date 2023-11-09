@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import CustomPagination from '../Components/CustomPagination';
 
 const Timer = () => {
 // timer Data
@@ -14,8 +15,13 @@ const Timer = () => {
     const [recordTime, setRecordTime] = useState('');
     const [totalTime, setTotalTime] = useState(0);
 
+// Pagination을 위한 변수
+    const [limit, setLimit] = useState(10); // 한 페이지에 나타나는 수
+    const [page, setPage] = useState(1);    // 현재 페이지 저장 변수
+    const offset = (page - 1) * limit;
+
 // handle
-    const handleRecordSubject = e => setSubject(e.target.value);
+    const handleRecordTimer = e => setSubject(e.target.value);
     useEffect(() => {
         let interval;
         if (isActive) {
@@ -34,7 +40,9 @@ const Timer = () => {
             user:'',
             subject:subject,
             recordTime:time,
+            studyDate:'newDate()',
         }]);
+        setSubject('');
         setIsActive(false);
         setTime(0);
     };
@@ -57,7 +65,7 @@ const Timer = () => {
                 <button className="timer-button" onClick={toggleTimer}>
                     <img src={process.env.PUBLIC_URL + './TimerIcons/playBtn.png'}alt='playBtn'/>
                 </button>
-                <input className="timer-subject-input" type='text' value={subject} onChange={e => handleRecordSubject(e)}/>
+                <input className="timer-subject-input" type='text' value={subject} onChange={e => handleRecordTimer(e)}/>
                 </div>
                 :
                 <div className="timer-controls">
@@ -79,7 +87,7 @@ const Timer = () => {
                         </tr>
                     </thead>
                     <tbody className='timer-record-table-body'>
-                        {record.map((record, index) =>(
+                        {record.slice(offset, offset + limit).map((record, index) =>(
                         <tr key={index}>
                             <td>{record.subject}</td>
                             <td>{record.recordTime}</td>
@@ -87,6 +95,9 @@ const Timer = () => {
                         }
                     </tbody>
                 </table>
+                <div className="Timer-table-Footer-Pagination">
+                  <CustomPagination total={record.length} limit={limit} page={page} setPage={setPage}/>
+                </div>
             </div>
         </div>
     );

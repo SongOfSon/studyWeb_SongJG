@@ -12,15 +12,18 @@ import {
   Signup,
   StudyGroup,
   Timer,
-  Inquery
+  Inquery,
 } from "./IndexControl/PagesList.js";
 
 // Components Import
 import {
   NavigationBar,
   Footer,
-  NotExistPage
+  NotExistPage,
+  WritePost,
+  CreateGroup,
 } from "./IndexControl/ComponentsList.js";
+
 function App() {
   //generalData
   const [generalUserData, setGeneralUserData] = useState([
@@ -44,194 +47,217 @@ function App() {
     {
       groupId: 0,
       groupName: "",
-      groupTitle: "",
-      groupContent: "",
+      groupInfo: "",
       groupInterest: "",
-      groupMember: 0,
+      groupMaxMember: "",
+      groupCurrentMember: 0,
       joinable: false
     },
     {
       groupId: 1,
       groupName: "temp name 001",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 10,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 10,
       joinable: false
     },
     {
       groupId: 2,
       groupName: "temp name 002",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 3,
       groupName: "temp name 003",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 4,
       groupName: "temp name 004",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 5,
       groupName: "temp name 005",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 6,
       groupName: "temp name 006",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 7,
       groupName: "temp name 007",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 8,
       groupName: "temp name 008",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 9,
       groupName: "temp name 009",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 10,
       groupName: "temp name 010",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 11,
       groupName: "temp name 011",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 12,
       groupName: "temp name 012",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 13,
       groupName: "temp name 013",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 14,
       groupName: "temp name 014",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 15,
       groupName: "temp name 015",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 16,
       groupName: "temp name 016",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 17,
       groupName: "temp name 017",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 18,
       groupName: "temp name 018",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 19,
       groupName: "temp name 019",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 20,
       groupName: "temp name 020",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 21,
       groupName: "temp name 021",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 22,
       groupName: "temp name 022",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     },
     {
       groupId: 23,
       groupName: "temp name 023",
-      groupTitle: "temp title",
-      groupInterest: "temp field",
-      groupMember: 1,
+      groupInfo: "temp info", 
+      groupInterest: "",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: true
     }
   ]);
@@ -486,7 +512,6 @@ function App() {
   const handleLogin = e => setIsLogin(e.target.value);
   return (
     <BrowserRouter>
-      {console.log(`${message} 서버연결확인`)}
       <div className="App">
         <header className="header-container">
           <NavigationBar isLogin={isLogin} handleLogin={handleLogin} />
@@ -515,6 +540,13 @@ function App() {
                 />
               }
             />
+            <Route 
+              path="/creategroup"
+              exact
+              element={<CreateGroup
+                generalGroupData={generalGroupData}
+                setGeneralGroupData={setGeneralGroupData}
+              />}/>
             <Route
               path="/Board"
               exact
@@ -527,6 +559,13 @@ function App() {
                 />
               }
             />
+            <Route path="/WritePost" 
+            exact 
+            element={<WritePost
+              generalUserData={generalUserData}
+              generalBoardData={generalBoardData}
+              setGeneralBoardData={setGeneralBoardData}/>}/>
+            
             <Route path="/MileageShop" exact element={<MileageShop />} />
             <Route path="/Inquery" exact element={<Inquery />} />
             <Route

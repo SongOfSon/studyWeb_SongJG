@@ -21,7 +21,7 @@ const Profile = ( props ) => {
         }]);
 
     const interstList = [
-        {},
+        {value:null, name: '선택'},
         {value:"국어", name : "국어"},
         {value:"수학", name : "수학"},
         {value:"영어", name : "영어"},
@@ -71,7 +71,10 @@ const Profile = ( props ) => {
                 <tr>    {/* 사용자가 등록한 관심분야 표시 */}
                     <div className="dataViewLine"> 
                       {!visableInter && <td>{userInterst}</td> }
-                      {visableInter && <select onChange={handleInterest} className= "selectInterstBox">
+                      {visableInter && 
+                        <select 
+                          onChange={handleInterest}
+                          className= "selectInterstBox">
                         {interstList.map((option) => 
                           <option key={option.value} value={option.value}>
                             {option.name}

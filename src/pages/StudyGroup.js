@@ -3,19 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import CustomPagination from "../Components/CustomPagination";
 
 
-const StudyGroup = ( props 
-  /*{generalGroupData, setGeneralGroupData}*/ ) => {
+const StudyGroup = ( props ) => {
 
 // React hooks
   const nav = useNavigate("");
 
 // Group Data
   const [groupData, setGroupData] = useState([{
-    groupId : 0,
-    groupName : '',
-    groupTitle : '',
-    groupInterest : '',
-    groupMember : 0,
+    groupId: 0,
+    groupName: "",
+    groupInfo: "",
+    groupInterest: "",
+    groupMaxMember: "",
+    groupCurrentMember: 0,
+    joinable: false
   }])
   const sampleData = props.generalGroupData;
   
@@ -26,53 +27,55 @@ const StudyGroup = ( props
   
 
   return (
-    <div className="StudyGroupTableCon">
-      <table className="StudyGroupTable">
-
-        <thead>
-          <tr className="HeadTableInSG">
-            <th>그룹 이름</th>
-            <th>제목</th>
-            <th>관심 분야</th>
-            <th>참여 인원</th>
-            <th name="checkJoin">참여 가능 여부</th>
+    <div className="StudyGroup-wrapper">
+      <table className="StudyGroup-table">
+        <thead className="StudyGroup-table-header">
+          <tr className="StudyGroup-table-header-tr">
+            <th className="StudyGroup-table-header-group-name">그룹 이름</th>
+            <th className="StudyGroup-table-header-group-interest">관심 분야</th>
+            <th className="StudyGroup-table-header-group-member">참여 인원</th>
+            <th className="StudyGroup-table-header-group-checkJoin">참여</th>
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className="StudyGroup-table-body">
           {sampleData.slice(offset, offset + limit).map((data, index) => (
-            <tr key={index} id={`${index % 2 && index !== 0?'InsertLine':'NoLine'}`}>
-              <td>{data.groupName}</td>
-              <td>{data.groupTitle}</td>
-              <td>{data.groupInterest}</td>
-              <td>{data.groupMember} / 10</td>
-              <td style={{textAlign:"center",}}>
+            <tr className="StudyGroup-table-body-tr">
+              <td className="StudyGroup-table-body-group-name">{data.groupName}</td>
+              <td className="StudyGroup-table-body-group-interest">{data.groupInterest}</td>
+              <td className="StudyGroup-table-body-group-member">{data.groupCurrentMember}/{data.groupMaxMember}</td>
+              <td className="StudyGroup-table-body-group-checkJoin" >
                 {data.joinable ? 
-                  <button style={{border:"0",borderRadius:"10px",backgroundColor:"greenyellow",fontWeight:"bold",width:"75px" }}>
+                  <button 
+                    className="StudyGroup-joinable-possiable">
                     가능</button> : 
-                  <button onClick={(e)=>{alert('현재 참여가 불가능 합니다')}} style={{ border:"0", borderRadius:"10px", backgroundColor:"rgb(255, 52, 52)", fontWeight:"bold", width:"75px"}}>
-                    불가능</button>}</td>
+                  <button 
+                    onClick={(e)=>{alert('현재 참여가 불가능 합니다')}} 
+                    className="StudyGroup-joinable-impossiable">
+                    불가능</button>}
+                  </td>
             </tr>
           ))}
             
           </tbody>
 
       </table>
-        <div className="StudyGroupTableConBottom">
-          <div className="StudyGroupTableConBottomPagination">
-          <CustomPagination total={sampleData.length} limit={limit} page={page} setPage={setPage}/>
-          </div>
-            <button 
-              type="submit" 
-              onClick={e=>nav("/createstudygroup")}
-              style={{ 
-                textAlign: 'center', 
-                margin: '20px'
-                }}>
-              그룹 만들기
-            </button>
+      <div className="StudyGroup-footer">
+        <div className="StudyGroup-footer-pagination">
+        <CustomPagination total={sampleData.length} limit={limit} page={page} setPage={setPage}/>
+        </div>
+        <div className="StudyGroup-footer-create-buttons">
+          <button 
+            className="StudyGroup-footer-create-button"
+            type="submit" 
+            onClick={e=>nav("/creategroup")}
+            style={{ 
+              }}>
+            그룹 만들기
+          </button>
         </div>
       </div>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 // common CSS
+import "../CSS/index.css"
 import "../CSS/App.css";
 
 // pages CSS
@@ -20,3 +21,5 @@ import "../CSS/Components/NavigationBar.css";
 import "../CSS/Components/Footer.css";
 import "../CSS/Components/CustomPagination.css";
 import "../CSS/Components/NotExistPage.css";
+import "../CSS/Components/WritePost.css";
+import "../CSS/Components/CreateGroup.css"

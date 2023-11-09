@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 function Signup(props) {
   // React hooks
-  const nav = useNavigate("");
+  const navigate = useNavigate("");
 
   // userData
+  const [userNums, setUserNums] = useState(0);
   const [newUserIdNum, setNewUserIdNum] = useState(0);
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
@@ -30,6 +31,9 @@ function Signup(props) {
     userJoinGroup: []
   };
 
+  // empty input check
+  const [allow, setAllow] = useState(true);
+
   // handle
   const handleUserName = e => setUserName(e.target.value);
   const handleUserId = e => setUserId(e.target.value);
@@ -45,45 +49,40 @@ function Signup(props) {
     }
   };
 
-  // signup func
-  // empty input check
-  const [allow, setAllow] = useState(true);
-
-  const signup = useEffect(() => {
-    // let generalUserDatas = props.generalUserData;
-    // let pushNewData = [...generalUserDatas, newUserData];
-    // props.setGeneralUserData(pushNewData);
-    if (userName && userId && userPassword) {
-      if (userPassword === passwordConfirm) {
-        setAllow(false);
-        axios
-          .post("/join", {
-            user_id: userId,
-            username: userName,
-            password: userPassword
-          })
-          .then(response => {
-            // signup success
-            nav("/");
-            console.log(response);
-          })
-          .catch(error => {
-            // signup fail
-            console.log(error);
+  // func
+  const handleSignup = async () => {
+    console.log(`이름 ${userName} / ID ${userId} / PW ${userPassword}`)
+    if(userName !== ''){
+      if(userId !== ''){
+        if(userPassword === passwordConfirm){
+          const newUserData = {
+            user_id:userId,
+            username:userName,
+            password:userPassword,
+          };
+          await axios.
+            post('/join', newUserData, {
+            header: {
+              'Contnent-Type': 'application/json',
+            },
+          }).then((res) => {
+            alert(`${res}`);
+            navigate('/');
+          }).catch(err => {
+            alert(err);
+            console.log(err);
           });
-      }
-      return;
-    }
-
-    setAllow(true);
-  }, [userName, userId, userPassword, passwordConfirm]);
+        }alert('비밀번호 불일치');
+      }alert('ID 공란');
+    }alert('이름 공란');
+  };
 
   // UI
   return (
-    <div className="signUpContainer">
+    <div className="signup-wrapper">
       <img src={process.env.PUBLIC_URL + "./NavIcons/logo.png"} alt="Logo" />
 
-      <form name="signUpForm" onSubmit={signup}>
+      <div className="signup-input-wrapper">
         <input
           name="NameInputBox"
           type="text"
@@ -134,22 +133,11 @@ function Signup(props) {
           <button type='button' onClick={handleAuthCode}>인증 확인</button>
           <br/> */}
         <div>
-          {allow && (
-            <button
-              disabled={allow}
-              style={{ backgroundColor: "gray", border: "0px" }}
-              type="submit"
-            >
+          <button onClick={handleSignup}>
               회원가입
             </button>
-          )}
-          {!allow && (
-            <button disabled={allow} type="submit">
-              회원가입
-            </button>
-          )}
         </div>
-      </form>
+      </div>
     </div>
   );
 }

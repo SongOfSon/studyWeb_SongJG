@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CustomPagination({ total, limit, page, setPage }) {
+const CustomPagination = ({ total, limit, page, setPage }) => {
     const numPages = Math.ceil(total / limit);
   
     return (
