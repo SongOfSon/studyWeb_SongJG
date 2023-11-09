@@ -48,11 +48,6 @@ const navigate = useNavigate('');
         .then((response) => {
           alert('로그인에 성공했습니다!');
           navigate('/');
-          localStorage.setItem('username', response.data.username);
-          localStorage.setItem(
-            'accessToken',
-            response.headers['x-auth-access-token']
-          );
         })
         .catch(
           (e) => alert(JSON.parse(e.request.response).error) // 오류 출력
