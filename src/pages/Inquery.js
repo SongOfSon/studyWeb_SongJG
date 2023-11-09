@@ -34,11 +34,9 @@ const userName = '사용자';
         };
 
     return (
-        <div>
+        <div className='Inquery-wrapper'>
             <ThemeProvider theme={theme}>
-            <ChatBot
-                steps={steps}  
-            />
+                <ChatBot steps={steps}/>
             </ThemeProvider>
         </div>
     );

@@ -26,9 +26,9 @@ const IamportPayment = (effect, deps) => {
           name: '테스트 상품',
           amount: 1004,
           buyer_email: 'test@naver.com',
-          buyer_name: '코드쿡',
+          buyer_name: 'test',
           buyer_tel: '010-1234-5678',
-          buyer_addr: '서울특별시',
+          buyer_addr: 'test-addr',
           buyer_postcode: '123-456',
         }, async (rsp) => {
           try {
@@ -46,7 +46,7 @@ const IamportPayment = (effect, deps) => {
       };
     
       return (
-        <div>
+        <div className="Iamport-wrapper">
           <button onClick={requestPay}>결제하기</button>
         </div>
       );

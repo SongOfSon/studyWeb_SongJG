@@ -1,78 +1,71 @@
-.MileageShopCon{
+.Mileage-shop-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
 }
 
-    .MileageShopCon > h2{
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
-
-
-.MileageShopBody{
-    display:flex;
-
-    width: 100%;
-    height: auto;
-
-    column-gap: 10px;
-}
-
-    .MileageShopBody > table {
-        width: 90%;
-        height: 650px;
-
-        display: inline-block;
-        
-        border-collapse: separate;
-        border-spacing: 80px 50px;
-    }
-
-    .MileageShopBody > table > tr{
-        display: flex;
-    }
-
-        .MileageShopBody > table > td{
-            text-align: center;
-
-            margin:5px;
-
-            width: 200px;
-            height: auto;
-        }
-
-            .MileageShopBody > table > td > img{
-                border: 1px solid rgb(184, 235, 184);
-                border-radius: 30px;
-                width: 170px;
-            }
-
-            .MileageShopBody > table > td > button{
-                border: 1px solid rgb(184, 235, 184);
-                border-radius: 20px;
-                background-color: rgb(184, 235, 184);
-                
-
-                width: 85px;
-            }
-
-
-
-
-
-
-    .ClientMileageInfo > p {
-        font-size: 20px;
-    }
-
-    
-.MileageShopPagination{
-    display: flex; 
+  .Mileage-shop-product-list{
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    flex-direction: row;
 
-    font-size: 20px;
-    
-    width: auto;
+    height: 100%;
+  }
 
-    margin-right: 16%;
+  .Mileage-shop-product-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 500px;
+  }
+    .Mileage-shop-product-info-table{
+      border-collapse: collapse;
+    }
+
+    .Mileage-shop-product-info-td{
+      text-align: center;
+
+      background-color: aliceblue;
+    }
+    .Mileage-shop-product-info-productImg {
+      width: 180px;
+      height: 180px;
+    }
+    .Mileage-shop-product-info-bottom{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      width: 80%;
+    }
+
+.Mileage-shop-table-bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+
+  width: 100%;
+}
+
+.Mileage-shop-table-bottom > Button{
+  border: 0;
+  border-radius: 10px;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(220, 253, 215);
+
+  width: 90px;
+  height: 30px;
+}
+.Mileage-shop-table-bottom-purchase{
+  background-color: rgb(175, 166, 45);
+
+  margin-right: 10px;
+}
+.Mileage-shop-table-bottom-cancel{
+  background-color: rgb(255, 65, 65);
 }
