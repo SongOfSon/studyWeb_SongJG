@@ -160,3 +160,53 @@
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
+
+/* timer data css*/
+.Calendar-recordTime-table-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid grey;
+  width: 360px;
+  height: 600px;
+}
+.Calendar-recordTime-table-top{
+  border: 1px solid red;
+}
+.Calendar-recordTime-table-bottom{
+  border: 1px solid blue;
+}
+  .Calendar-recordTime-table-top-head{
+    display: flex;
+    justify-content: space-around;
+
+    background-color: rgb(106, 106, 231);
+  }
+  .Calendar-recordTime-table-top-head-alert{
+    text-align: center;
+    font-size: 30px;
+  }
+
+.Calendar-recordTime-table-bottom{
+  display: flex;
+  flex-direction: column;
+}
+  .Calendar-recordTime-table-bottom-today,
+  .Calendar-recordTime-table-bottom-allday{
+    display: flex;
+    flex-direction: row;
+
+    background-color: rgb(179, 250, 46);
+
+    padding : 10px;
+    font-size: 20px;
+  }
+
+  .Calendar-recordTime-table-bottom-today-left,
+  .Calendar-recordTime-table-bottom-allday-left{
+    width: 220px;
+  }
+  .Calendar-recordTime-table-bottom-today-right,
+  .Calendar-recordTime-table-bottom-allday-right{
+    width: 100px;
+  }

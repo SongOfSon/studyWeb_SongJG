@@ -28,8 +28,8 @@ function App() {
   //generalData
   const [generalUserData, setGeneralUserData] = useState([
     {
-      userIdNum: 0,
-      userName: "송정근",
+      userNum: 0,
+      userName: "관리자",
       userId: "admin",
       userPassword: "1234",
       userEmail: "",
@@ -40,9 +40,12 @@ function App() {
     }
   ]);
   const [currentLoginUser, setCurrentLoginUser] = useState({
-    userIdNum: "",
-    userName: ""
+    userNum: null,
+    userName: null,
+    userId:null,
+    userPW:null,
   });
+  const [isLogin, setIsLogin] = useState(false);
   const [generalGroupData, setGeneralGroupData] = useState([
     {
       groupId: 0,
@@ -152,127 +155,31 @@ function App() {
       groupCurrentMember: 1,
       joinable: true
     },
-    {
-      groupId: 12,
-      groupName: "temp name 012",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 13,
-      groupName: "temp name 013",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 14,
-      groupName: "temp name 014",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 15,
-      groupName: "temp name 015",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 16,
-      groupName: "temp name 016",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 17,
-      groupName: "temp name 017",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 18,
-      groupName: "temp name 018",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 19,
-      groupName: "temp name 019",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 20,
-      groupName: "temp name 020",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 21,
-      groupName: "temp name 021",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 22,
-      groupName: "temp name 022",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    },
-    {
-      groupId: 23,
-      groupName: "temp name 023",
-      groupInfo: "temp info", 
-      groupInterest: "",
-      groupMaxMember: 10,
-      groupCurrentMember: 1,
-      joinable: true
-    }
   ]);
   const [generalTimerData, setTimerData] = useState([
     {
-      userIdNum: "",
-      userName: "",
-      studySubject: "",
-      studyTime: "",
-      studyDate: ""
-    }
+      userNum: 0,
+      userName: generalUserData[0].userName,
+      studySubject: '테스트 과목 1',
+      studyTime: 3661,
+      studyDate: "2023-11-14"
+    },{
+      userNum: 0,
+      userName: generalUserData[0].userName,
+      studySubject: '테스트 과목 2',
+      studyTime: 7241,
+      studyDate: "2023-11-14"
+    },{
+      userNum: 0,
+      userName: generalUserData[0].userName,
+      studySubject: '테스트 과목 3',
+      studyTime: 6100,
+      studyDate: "2023-11-14"
+    },
   ]);
   const [generalCalendarData, setCalendarData] = useState([
     {
-      userIdNum: "",
+      userNum: "",
       userName: "",
       userCalMemo: ""
     }
@@ -362,132 +269,6 @@ function App() {
       content: "",
       writeDate: "2023-05-11"
     },
-    {
-      id: 13,
-      title: "샘플 글 13",
-      author: "작성자 13",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 14,
-      title: "샘플 글 14",
-      author: "작성자 14",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 15,
-      title: "샘플 글 15",
-      author: "작성자 15",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 16,
-      title: "샘플 글 16",
-      author: "작성자 16",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 17,
-      title: "샘플 글 17",
-      author: "작성자 17",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 18,
-      title: "샘플 글 18",
-      author: "작성자 18",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 19,
-      title: "샘플 글 19",
-      author: "작성자 19",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 20,
-      title: "샘플 글 20",
-      author: "작성자 20",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 21,
-      title: "샘플 글 21",
-      author: "작성자 21",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 22,
-      title: "샘플 글 22",
-      author: "작성자 22",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 23,
-      title: "샘플 글 23",
-      author: "작성자 23",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 24,
-      title: "샘플 글 24",
-      author: "작성자 24",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 25,
-      title: "샘플 글 25",
-      author: "작성자 25",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 26,
-      title: "샘플 글 26",
-      author: "작성자 26",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 27,
-      title: "샘플 글 27",
-      author: "작성자 27",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 28,
-      title: "샘플 글 28",
-      author: "작성자 28",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 29,
-      title: "샘플 글 29",
-      author: "작성자 29",
-      content: "",
-      writeDate: "2023-05-11"
-    },
-    {
-      id: 30,
-      title: "샘플 글 30",
-      author: "작성자 30",
-      content: "",
-      writeDate: "2023-05-11"
-    }
   ]);
 
   const [generalMileageData, setMileageData] = useState({});
@@ -501,20 +282,59 @@ function App() {
       });
   }, []);
 
-  // generalFunc
+// generalFunc
   // control User Data Func
-  const [isLogin, setIsLogin] = useState(false);
+  const signupAction = (num, name, id, pw, email, phone) => {
+    setGeneralUserData([...generalUserData,{
+      userNum: num,
+      userName: name,
+      userId: id,
+      userPassword: pw,
+      userEmail: email,
+      userPhoneNum: phone,
+      userMileage: "",
+      userInterest: "",
+      userJoinGroup: []
+    }])
+  };
+  const loginAction = ( num, name,  id, pw ) =>{
+    setCurrentLoginUser({
+      userNum: num,
+      userName: name,
+      userId: id,
+      userPW: pw,
+    });
+  };
+  //control Timer Data Func
+  const recordTimeToUser = (id, subject, time, date) => {
+    setTimerData([...generalTimerData,
+      {
+      userNum: id,
+      userName: generalUserData[id].userName,
+      studySubject: subject,
+      studyTime: time,
+      studyDate: date,
+    }])
+  }
 
   //control Group Data Func
 
   //control Board Data Func
+
+  //
   //handle
-  const handleLogin = e => setIsLogin(e.target.value);
+  const handleLogin = (bool) => setIsLogin(Boolean(bool));
   return (
     <BrowserRouter>
       <div className="App">
         <header className="header-container">
-          <NavigationBar isLogin={isLogin} handleLogin={handleLogin} />
+          <NavigationBar 
+                generalUserData={generalUserData}
+                currentLoginUser={currentLoginUser}
+                loginAction={loginAction}
+                handleLogin={handleLogin}
+                isLogin={isLogin}
+            />
         </header>
         <main className="main-container">
           <Routes>
@@ -524,12 +344,22 @@ function App() {
               exact
               element={
                 <Timer
+                  isLogin={isLogin}
+                  currentLoginUser={currentLoginUser}
                   generalTimerData={generalTimerData}
                   setTimerData={setTimerData}
+                  recordTimeToUser={recordTimeToUser}
                 />
               }
             />
-            <Route path="/Calendar" exact element={<Calendar />} />
+            <Route 
+              path="/Calendar" 
+              exact 
+              element={<Calendar 
+                currentLoginUser={currentLoginUser}
+                generalTimerData={generalTimerData}
+                generalCalendarData={generalCalendarData}
+                isLogin={isLogin}/>} />
             <Route
               path="/StudyGroup"
               exact
@@ -569,24 +399,12 @@ function App() {
             <Route path="/MileageShop" exact element={<MileageShop />} />
             <Route path="/Inquery" exact element={<Inquery />} />
             <Route
-              path="/Login"
-              exact
-              element={
-                <Login
-                  currentLoginUser={currentLoginUser}
-                  setCurrentLoginUser={setCurrentLoginUser}
-                  generalUserData={generalUserData}
-                  setIsLogin={setIsLogin}
-                />
-              }
-            />
-            <Route
               path="/join"
               exact
               element={
                 <Signup
                   generalUserData={generalUserData}
-                  setGeneralUserData={setGeneralUserData}
+                  signupAction={signupAction}
                 />
               }
             />
@@ -595,8 +413,7 @@ function App() {
               exact
               element={
                 <Profile
-                  setGeneralUserData={setGeneralUserData}
-                  setGeneralGroupData={setGeneralGroupData}
+                  currentLoginUser={currentLoginUser}
                 />
               }
             />

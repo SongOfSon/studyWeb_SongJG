@@ -5,8 +5,8 @@ const Profile = ( props ) => {
     const navigate = useNavigate('');
 
     //userData
-    const [userName, setUserName] = useState('');
-    const [userId, setUserId] = useState('');
+    const userName = props.currentLoginUser.userName;
+    const userId = props.currentLoginUser.userId;
     const [userStudyTime, setUserStudyTime] = useState({
         hour : 0,
         min: 0,
@@ -51,7 +51,7 @@ const Profile = ( props ) => {
             </div>
             <table className="ClientInfoTable">
                 <tr>    {/* 사용자명 + 학습한 시간 */}
-                    <td className="makeLine" colSpan="2">ID : {userId} 님의 학습한 시간</td>
+                    <td className="makeLine" colSpan="2">{userName} 님의 학습한 시간</td>
                     <td></td>
                 </tr>
                 <tr>    {/* 학습한 시간 표시 */}

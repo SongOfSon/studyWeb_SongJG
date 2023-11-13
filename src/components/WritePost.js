@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,11 +17,11 @@ const WritePost = (props) => {
                      (date.getDate()< 9 ? "0"+(date.getDate() ):(date.getDate() ));
   const currentBoardDataSize = props.generalBoardData.length;
   const newBoardData = {
-    id : currentBoardDataSize + 1,
-    title : boardTitle,
-    author : '송정근',
-    content : boardContent,
-    writeDate : dateFormat,
+    post_id : 1,
+    title : '제목',
+    name : '이름',
+    content : '내용',
+    create_at : dateFormat,
   };
   
 // handle
@@ -29,13 +30,22 @@ const WritePost = (props) => {
 
 
   const hadleWriteSubmit = () =>{
-    if(boardTitle ==='' || boardContent === ''){
-      alert('공란')
-      return
-    }
-    props.setGeneralBoardData([...props.generalBoardData, newBoardData]);
-    navigate('/board');
-    console.log(props.generalBoardData);
+  //   if(boardTitle ==='' || boardContent === ''){
+  //     alert('공란')
+  //     return
+  //   }
+    axios.post('/chat', newBoardData ,{
+      header: {
+        'Contnent-Type': 'application/json',
+      },
+    }).then(() => {
+      navigate('/board');
+    }).catch(err => {
+      console.log(err);
+    });
+    // props.setGeneralBoardData([...props.generalBoardData, newBoardData]);
+    // navigate('/board');
+    // console.log(props.generalBoardData);
   };
 
 // UI
@@ -43,9 +53,8 @@ return (
 
     <div className="WritePost-wrapper">
       <h2 className="WritePost-header">게시글 작성</h2>
-      <form 
-        className="WritePost-form" 
-        onSubmit={hadleWriteSubmit}>
+      <div
+        className="WritePost-form">
           <div className="WritePost-input-con">
             <input 
               className="WritePost-title-input" 
@@ -60,8 +69,8 @@ return (
               onChange={handleBoardContent} 
               placeholder="내용을 입력하세요"/>
           </div>
-          <button type="submit">등록</button>
-      </form>
+          <button onClick={hadleWriteSubmit}>등록</button>
+      </div>
     </div>
   );
 };

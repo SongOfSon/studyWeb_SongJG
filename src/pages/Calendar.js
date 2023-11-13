@@ -1,33 +1,49 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
+import moment from 'moment';
 
 const CalendarPage = ( props ) => {
 
 // calendar Data
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [studyTime, setStudyTime] = useState({});
+    const timerData = props.generalTimerData;
+    const formatSeletedDate = moment(selectedDate).format('YYYY-MM-DD');
+
+// Pagination을 위한 변수
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
 
 // handle
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
+  const handleDateChange = (date) => setSelectedDate(date);
+ 
+  const todayStudyTime = () => {
+    let studyTimeSum = 0;
+    for(let i = 0; i < timerData.length; i++){
+      if(props.generalTimerData[i].userNum === props.currentLoginUser.userNum){
+        if(props.generalTimerData[i].studyDate === formatSeletedDate){
+          studyTimeSum += props.generalTimerData[i].studyTime;
+        }
+      }
     }
-
-    const handleStudyTimeSave = (hours) => {
-        setStudyTime(prev => ({ ...prev, [selectedDate.toLocaleDateString()]: hours }));
+    const hours = Math.floor(studyTimeSum / 3600);
+    const minutes = Math.floor((studyTimeSum % 3600) / 60);
+    const seconds = studyTimeSum % 60;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+  };
+  const allStudyTime = () => {
+    let studyTimeSum = 0;
+    for(let i = 0; i< timerData.length; i++){
+      if(props.generalTimerData[i].userNum === props.currentLoginUser.userNum){
+        studyTimeSum += props.generalTimerData[i].studyTime;
+      }
     }
-
-    const getTotalStudyTimeForMonth = () => {
-        const month = selectedDate.getMonth();
-        const year = selectedDate.getFullYear();
-        let total = 0;
-        Object.keys(studyTime).forEach(date => {
-            const dateObj = new Date(date);
-            if (dateObj.getMonth() === month && dateObj.getFullYear() === year) {
-                total += Number(studyTime[date]);
-            }
-        });
-        return total;
-    }
+    const hours = Math.floor(studyTimeSum / 3600);
+    const minutes = Math.floor((studyTimeSum % 3600) / 60);
+    const seconds = studyTimeSum % 60;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+  };
 
 // UI
     return (
@@ -39,33 +55,41 @@ const CalendarPage = ( props ) => {
                         value={selectedDate}
                     />
                 </div>
-                <div className='Calendar-recordTime-table-container'>
-<table>
-    <tbody>
-        <tr>
-        {/* 로그인한 유저 확인 후 해당 유저의 학습한 내용을 금일 날짜에 맞춰 map이용하여 표 나열 */}
-        <td>
-            금일 공부 : {/* 타이머로부터 과목명 및 해당 공부 시간 호출 */}
-        </td>
-        </tr>
-    </tbody>
-</table>
-{/* 
-                    <div>
-                        <label>
-                            {selectedDate.toLocaleDateString()} 공부시간: 
-                            <select 
-                                onChange={(e) => handleStudyTimeSave(e.target.value)}
-                                value={studyTime[selectedDate.toLocaleDateString()] || 0}
-                            >
-                                {Array.from({length: 25}, (_, i) => <option key={i} value={i}>{i}</option>)}
-                            </select> 시간
-                        </label>
-                    </div>
-                    <p>이번달 총 공부시간: {getTotalStudyTimeForMonth()} 시간</p>*/}
-                </div> 
+      <div className='Calendar-recordTime-table-container'>
+        <div className='Calendar-recordTime-table-top'>
+            { props.isLogin !== false?
+             timerData.map((data, idx)=>(
+              props.currentLoginUser.userNum === props.generalTimerData[idx].userNum ?
+              props.generalTimerData[idx].studyDate === formatSeletedDate?
+              <div className='Calendar-recordTime-table-top-head'>
+                <div>{data.studySubject}</div>
+                <div>{String(Math.floor(data.studyTime / 3600)).padStart(2, '0')}
+                :{String(Math.floor((data.studyTime % 3600) / 60)).padStart(2, '0')}
+                :{String(Math.floor((data.studyTime% 60))).padStart(2, '0')}
+                </div>
+              </div>
+              :<></>:<></>
+            )):<div className='Calendar-recordTime-table-top-head-alert'>로그인이 필요합니다</div>}
+          <div className='Calendar-recordTime-table-top-body'>
+          </div>
         </div>
-    );
+        
+          { props.isLogin !== false?
+          <div className='Calendar-recordTime-table-bottom'>
+            <div className='Calendar-recordTime-table-bottom-today'>
+              <div className='Calendar-recordTime-table-bottom-today-left'>금일 학습 시간</div>
+              <div className='Calendar-recordTime-table-bottom-today-right'>{todayStudyTime()}</div>
+            </div>
+            <div className='Calendar-recordTime-table-bottom-allday'>
+              <div className='Calendar-recordTime-table-bottom-allday-left'>총 학습 시간</div>
+              <div className='Calendar-recordTime-table-bottom-allday-right'>{allStudyTime()}</div>
+            </div>
+          </div> 
+          :<></>}
+        </div>
+      
+    </div>
+  );
 }
 
 export default CalendarPage;

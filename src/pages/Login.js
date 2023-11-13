@@ -9,13 +9,9 @@ const navigate = useNavigate('');
 // User Data
     const [userId, setUserId] = useState('');
     const [userPW, setUserPW] = useState('');
-    let savedUserId = props.generalUserData;
-    let savedUserPassword = props.generalUserData;
-    let userDataSize = 1;
 
 // Modal
     const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
-    const modalBackground = useRef();
 // handle
     const handleUserId = e => setUserId(e.target.value);
     const handleUserPW = e => setUserPW(e.target.value);
@@ -54,6 +50,24 @@ const navigate = useNavigate('');
         );
     };
   
+    const handleLoginOnLocal = () => {
+      if(userId !== '' && userPW !== ''){
+        for(let i = 0 ; i < props.generalUserData.length ; i++){
+          if(props.generalUserData[i].userId === userId &&
+            props.generalUserData[i].userPassword === userPW){
+            props.loginAction(
+              props.generalUserData[i].userNum,
+              props.generalUserData[i].userName,
+              props.generalUserData[i].userId,
+              props.generalUserData[i].userPassword,
+            );
+            props.handleLogin(true);
+            alert(`${props.generalUserData[i].userName}님 접속을 환영합니다`);
+            closeModal();
+          }
+        }
+      }else alert('다시 입력해주세요');
+    }
 
 // UI
   return (
@@ -63,7 +77,7 @@ const navigate = useNavigate('');
         로그인</button>
       <div className={!loginModalIsOpen?'Login-wrapper':'Login-wrapper-show-background'}>
       {loginModalIsOpen ?
-        <div className='Login-modal-wrapper' >
+        <div className='Login-modal-wrapper'>
           <div className='Login-modal-header'>
             <button className='Login-modal-close-Btn' 
             onClick={closeModal}>X</button>
@@ -78,10 +92,7 @@ const navigate = useNavigate('');
                 type='password' value={userPW} 
                 onChange={handleUserPW} placeholder='패스워드를 입력해주세요'/>
               <button className='Login-modal-submitBtn' 
-                onClick={(e) => {
-                handleLogin(e);
-                closeModal();
-                }}>로그인</button>
+                onClick={handleLoginOnLocal}>로그인</button>
           </div>
           
           <div className='Login-modal-footer'>

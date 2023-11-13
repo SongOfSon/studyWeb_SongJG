@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import CustomPagination from '../Components/CustomPagination';
 
-const Timer = () => {
+const Timer = ( props ) => {
+// user Data
+  const userNum = props.currentLoginUser.userNum;
 // timer Data
-    const [time, setTime] = useState(0);
-    const [isActive, setIsActive] = useState(false);
-    const [record, setRecord] = useState([{
-        user:'1',
-        subject:'과목이름',
-        recordTime:'HH-MM-SS',
-    }])
-    const [user, setUser] = useState('');
-    const [subject, setSubject] = useState('');
-    const [recordTime, setRecordTime] = useState('');
-    const [totalTime, setTotalTime] = useState(0);
+  const [time, setTime] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const [record, setRecord] = useState([])
+  const date = new Date();
+  const dateFormat = date.getFullYear() + '-' + 
+                     (date.getMonth() + 1 < 9 ? "0"+(date.getMonth() + 1):(date.getMonth() + 1)) + '-' + 
+                     (date.getDate()< 9 ? "0"+(date.getDate() ):(date.getDate() ));
+  const [subject, setSubject] = useState('');
 
 // Pagination을 위한 변수
     const [limit, setLimit] = useState(10); // 한 페이지에 나타나는 수
@@ -28,21 +27,29 @@ const Timer = () => {
             interval = setInterval(() => {
                 setTime(prevTime => prevTime + 1);
             }, 1000);
-        } else if (!isActive && time !== 0) {
+        } else if (time !== 0) {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
     }, [isActive, time]);
 
+    const startTimer = () => {
+      if(props.isLogin !== false){
+        if(subject !== null && subject !== ''){
+          setIsActive(!isActive)
+        }else alert('과목을 입력하세요');
+      }else alert('로그인이 필요한 서비스 입니다.');
+    }
     const toggleTimer = () => setIsActive(!isActive);
     const resetTimer = () => {
-        setRecord([...record, {
-            user:'',
-            subject:subject,
-            recordTime:time,
-            studyDate:'newDate()',
+        setRecord([...record,{
+          userNum:'',
+          subject:subject,
+          recordTime:displayTime(),
         }]);
-        setSubject('');
+        props.recordTimeToUser(userNum, subject, time, dateFormat);
+        console.log(props.generalTimerData);
+        setSubject(null);
         setIsActive(false);
         setTime(0);
     };
@@ -55,52 +62,58 @@ const Timer = () => {
     };
 
 // UI
-    return (
-        <div className="timer-container">
-            <div className='timer-container-left'>
-            <h1 className="timer-title">Study Timer</h1>
-            <div className="timer-display">{displayTime()}</div>
+  return (
+    <div className="timer-container">
+      <div className='timer-container-left'>
+        <h1 className="timer-title">Study Timer</h1>
+          <div className="timer-display">{displayTime()}</div>
             {!isActive ? 
-                <div className="timer-controls">
-                <button className="timer-button" onClick={toggleTimer}>
-                    <img src={process.env.PUBLIC_URL + './TimerIcons/playBtn.png'}alt='playBtn'/>
+              <div className="timer-controls">
+                <button 
+                 className="timer-button" onClick={startTimer}>
+                  <img src={process.env.PUBLIC_URL + './TimerIcons/playBtn.png'}alt='playBtn'/>
                 </button>
-                <input className="timer-subject-input" type='text' value={subject} onChange={e => handleRecordTimer(e)}/>
-                </div>
-                :
-                <div className="timer-controls">
-                    <button className="timer-button" onClick={toggleTimer}>
-                        <img src={process.env.PUBLIC_URL + './TimerIcons/pauseBtn.png'}alt='pauseBtn'/>
-                    </button>
-                    <button className="timer-button" onClick={resetTimer}>
-                        <img src={process.env.PUBLIC_URL + './TimerIcons/resetBtn.png'}alt='resetBtn'/>
-                    </button>
-                </div>
-            }
-            </div>
-            <div className='timer-container-right'>
-                <table className='timer-record-table'>
-                    <thead className='timer-record-table-header'>
-                        <tr>
-                            <th>과목</th>
-                            <th>시간</th>
-                        </tr>
-                    </thead>
-                    <tbody className='timer-record-table-body'>
-                        {record.slice(offset, offset + limit).map((record, index) =>(
-                        <tr key={index}>
-                            <td>{record.subject}</td>
-                            <td>{record.recordTime}</td>
-                        </tr>))
-                        }
-                    </tbody>
-                </table>
-                <div className="Timer-table-Footer-Pagination">
-                  <CustomPagination total={record.length} limit={limit} page={page} setPage={setPage}/>
-                </div>
-            </div>
+                <input 
+                  className="timer-subject-input"
+                  type='text' 
+                  value={subject} 
+                  onChange={e => handleRecordTimer(e)}/>
+              </div>
+              :
+              <div className="timer-controls">
+                <button className="timer-button" onClick={toggleTimer}>
+                  <img src={process.env.PUBLIC_URL + './TimerIcons/pauseBtn.png'}alt='pauseBtn'/>
+                </button>
+                <button className="timer-button" onClick={resetTimer}>
+                  <img src={process.env.PUBLIC_URL + './TimerIcons/resetBtn.png'}alt='resetBtn'/>
+                </button>
+              </div>
+             }
+      </div>
+      <div className='timer-container-right'>
+          <table className='timer-record-table'>
+              <thead className='timer-record-table-header'>
+                  <tr>
+                      <th>과목</th>
+                      <th>시간</th>
+                  </tr>
+              </thead>
+              <tbody className='timer-record-table-body'>
+                  {record.slice(offset, offset + limit).map((record, index) =>(
+                  <tr key={index}>
+                      <td>{record.subject}</td>
+                      <td>{record.recordTime}</td>
+                  </tr>))
+                  }
+              </tbody>
+          </table>
+          {record.length > 10 ?
+          <div className="Timer-table-Footer-Pagination">
+            <CustomPagination total={record.length} limit={limit} page={page} setPage={setPage}/>
+          </div>:<></>}
         </div>
-    );
+    </div>
+  );
 };
 
 export default Timer;

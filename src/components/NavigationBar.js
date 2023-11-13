@@ -25,7 +25,7 @@ const NavigationBar = props => {
           // 로그인 상태 (true 상태)
           <div className="UserCompo-NavBar-wrapper">
             <div className="Logout-NavBar-wrapper">
-              <Link to={"/"} onClick={props.handleLogin}>
+              <Link to={"/"} onClick={e => props.handleLogin(false)}>
                 로그아웃
               </Link>
             </div>
@@ -37,7 +37,12 @@ const NavigationBar = props => {
           // 로그아웃 상태 (false 상태)
           <div className="UserCompo-NavBar-wrapper">
             <div className="Login-NavBar-wrapper">
-              <Login />
+              <Login 
+                generalUserData={props.generalUserData}
+                currentLoginUser={props.currentLoginUser}
+                loginAction={props.loginAction}
+                handleLogin={props.handleLogin}
+                isLogin={props.isLogin}/>
             </div>
             <div className="Signup-NavBar-wrapper">
               <Link to={"/join"}>회원가입</Link>

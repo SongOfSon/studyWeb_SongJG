@@ -8,8 +8,7 @@ function Signup(props) {
   const navigate = useNavigate("");
 
   // userData
-  const [userNums, setUserNums] = useState(0);
-  const [newUserIdNum, setNewUserIdNum] = useState(0);
+  const userNum = props.generalUserData.length;
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -18,18 +17,6 @@ function Signup(props) {
   const [userEmail, setUserEmail] = useState(""); // 휴대폰 번호 또는 이메일 입력
   const [userPhoneNum, setUserPhoneNum] = useState(""); // 휴대폰 번호 또는 이메일 입력
   const [authCode, setAuthCode] = useState("");
-
-  let newUserData = {
-    userIdNum: Number(props.generalUserData.length),
-    userName: userName,
-    userId: userId,
-    userPassword: userPassword,
-    userEmail: userEmail,
-    userPhoneNum: userPhoneNum,
-    userMileage: "",
-    userInterest: "",
-    userJoinGroup: []
-  };
 
   // empty input check
   const [allow, setAllow] = useState(true);
@@ -72,9 +59,32 @@ function Signup(props) {
             alert(err);
             console.log(err);
           });
+          return;
         }alert('비밀번호 불일치');
+        return;
       }alert('ID 공란');
+      return;
     }alert('이름 공란');
+    return;
+  };
+
+  const handleSignupOnLocal = () =>{
+    if(userName != null){
+      if(userId != null){
+        if(userPassword != null &&
+           userPassword === passwordConfirm){
+          props.signupAction(
+            userNum, 
+            userName, 
+            userId, 
+            userPassword, 
+            userEmail, 
+            userPhoneNum);
+          alert(`${userName}님 회원가입을 축하드립니다`);
+          navigate('/');
+        }
+      }
+    }
   };
 
   // UI
@@ -133,7 +143,7 @@ function Signup(props) {
           <button type='button' onClick={handleAuthCode}>인증 확인</button>
           <br/> */}
         <div>
-          <button onClick={handleSignup}>
+          <button onClick={handleSignupOnLocal}>
               회원가입
             </button>
         </div>

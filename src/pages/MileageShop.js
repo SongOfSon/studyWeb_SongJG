@@ -88,47 +88,10 @@ function MileageShop( props ) {
     <div className="Mileage-shop-wrapper">
       <div className="Mileage-shop-product-list">
         <div className="Mileage-shop-product-info">
-          <table className="Mileage-shop-product-info-table">
-            <tbody className="Mileage-shop-product-info-tbody">
-              <tr className="Mileage-shop-product-info-tr"/>
-            {productList.map((product) => {return(
-              (product.id % 4) !== 0 ?
-              <>
-                <td className="Mileage-shop-product-info-td">
-                  <img 
-                    className="Mileage-shop-product-info-productImg"
-                    src={product.img} alt="productImg"/>
-                  <div className="Mileage-shop-product-info-bottom">
-                    <input 
-                      className="Mileage-shop-product-info-chkProduct"
-                      type="checkbox"
-                      checked={checkProudct}
-                      onChange={handleCheckProudct}/>
-                    <div className="Mileage-shop-product-info-name">
-                      {product.productName}
-                    </div>
-                  </div>
-                </td>
-              </>
-              :<>
-                <td className="Mileage-shop-product-info-td">
-                  <img 
-                    className="Mileage-shop-product-info-productImg"
-                    src={product.img} alt="productImg"/>
-                  <div className="Mileage-shop-product-info-bottom">
-                    <input 
-                      className="Mileage-shop-product-info-chkProduct"
-                      type="checkbox"/>
-                    <div className="Mileage-shop-product-info-name">
-                      {product.productName}
-                    </div>
-                  </div>
-                </td>
-                <tr/>
-              </>
-              )})}
-            </tbody>
-          </table>
+          <img className="" src="" alt=""/>
+          <input className="" type="checkbox" value={checkProudct} onChange={handleCheckProudct} />
+          {console.log(checkProudct)}
+          <div className=""></div>
           {checkProudct &&
             <div className="Mileage-shop-table-bottom">
             <button className="Mileage-shop-table-bottom-purchase">구매하기</button>
