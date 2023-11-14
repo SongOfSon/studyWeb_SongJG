@@ -3,15 +3,23 @@
   flex-direction: column;
   align-items: center;
 
-  height: 100%;
+  width: 100%;
+  height: auto;
 }
 
   .Mileage-shop-product-list{
     display: flex;
     flex-direction: column;
-    align-items: center;
+  }
+  .Mileage-shop-product-list-top,
+  .Mileage-shop-product-list-bottom{
+    display: flex;
+    flex-direction: row;
 
-    height: 100%;
+    padding: 50px 0 50px 0;
+
+    width: 100%;
+    height: 45%;
   }
 
   .Mileage-shop-product-info{
@@ -19,8 +27,23 @@
     flex-direction: column;
     justify-content: space-between;
 
-    height: 500px;
+    height: auto;
   }
+    .Mileage-shop-product-info-img > img{
+      width: 200px;
+    }
+    .Mileage-shop-product-info-img-bottom{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      width: 80%;
+    }
+    .Mileage-shop-product-info-chkbox{
+      display: flex;
+      justify-content: end;
+      width: 80%;
+    }
 
 .Mileage-shop-table-bottom{
   display: flex;
@@ -30,22 +53,99 @@
   width: 100%;
 }
 
-.Mileage-shop-table-bottom > Button{
+.Mileage-shop-table-bottom-purchase{
   border: 0;
   border-radius: 10px;
 
   font-size: 20px;
   font-weight: 700;
   color: rgb(220, 253, 215);
-
-  width: 90px;
-  height: 30px;
-}
-.Mileage-shop-table-bottom-purchase{
   background-color: rgb(175, 166, 45);
 
-  margin-right: 10px;
+  width: 120px;
+  height: 45px;
 }
-.Mileage-shop-table-bottom-cancel{
-  background-color: rgb(255, 65, 65);
+
+/* MileageShop Modal */
+.Mileage-shop-wrapper-backGround{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:500;
 }
+
+.Mileage-shop-Modal-Body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid rgb(179, 221, 186);
+  border-radius: 20px;
+  background-color: rgb(223, 245, 226);
+
+  width: 550px;
+  height: 500px;
+
+  font-size: 18px;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  z-index: 999;
+}
+  .Mileage-shop-Modal-product-list{
+    margin: 25px 10px 10px 10px;
+  }
+    .Mileage-shop-Modal-product-list-body{
+      width: 90%;
+      height: 20px;
+      text-align: center;
+    }
+      .Mileage-shop-Modal-product-list-productName,
+      .Mileage-shop-Modal-product-list-productPrice{
+        padding: 5px;
+        font-size: 20px;
+      }
+
+  .Mileage-shop-Modal-Body-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 95%;
+    padding: 0 15px 20px 0;
+  }
+    .Mileage-shop-Modal-Body-bottom > button{
+      border: 0;
+      border-radius: 10px;
+
+      width: 55px;
+      font-size: 20px;
+      font-weight: 700;
+      color: rgb(220, 253, 215);
+    }
+      .Mileage-shop-Modal-Body-bottom-cancel{
+        background-color: rgb(255, 65, 65);
+        margin-left: 30px;
+      }
+
+  .Mileage-shop-Modal-product-list-foot{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 90%;
+
+    margin-top: 10px;
+
+    font-size: 20px;
+  }
+    .Mileage-shop-Modal-product-list-foot-left{
+      margin-right: 50px;
+    }

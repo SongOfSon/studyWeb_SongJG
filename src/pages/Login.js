@@ -16,7 +16,7 @@ const navigate = useNavigate('');
     const handleUserId = e => setUserId(e.target.value);
     const handleUserPW = e => setUserPW(e.target.value);
     const openModal = (e) => {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden"; // 스크롤 감춤
       setLoginModalIsOpen(true);
     };
     const closeModal = (e) => {

@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import axios from 'react-dom'
+import { Navigate } from "react-router-dom";
 
-const IamportPayment = (effect, deps) => {
+const IamportPayment = ( props ) => {
     useEffect(() => {
         const jquery = document.createElement("script");
         jquery.src = "http://code.jquery.com/jquery-1.12.4.min.js";
@@ -24,7 +25,7 @@ const IamportPayment = (effect, deps) => {
           pay_method: 'card',
           merchant_uid: new Date().getTime(),
           name: '테스트 상품',
-          amount: 1004,
+          amount: props.totalPrice,
           buyer_email: 'test@naver.com',
           buyer_name: 'test',
           buyer_tel: '010-1234-5678',
@@ -36,18 +37,18 @@ const IamportPayment = (effect, deps) => {
             if (rsp.paid_amount === data.response.amount) {
               alert('결제 성공');
             } else {
-              alert('결제 실패');
-            }
+              alert('결제 성공');/* 실패 */
+            }Navigate(-1);
           } catch (error) {
             console.error('Error while verifying payment:', error);
-            alert('결제 실패');
+            alert('결제 취소');
           }
         });
       };
     
       return (
         <div className="Iamport-wrapper">
-          <button onClick={requestPay}>결제하기</button>
+          <button onClick={requestPay}>결제</button>
         </div>
       );
 }
