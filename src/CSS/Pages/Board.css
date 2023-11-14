@@ -6,59 +6,59 @@
     height: 700px;
 }
 
-    .Board-table{
-        width: 100%;
-        border-collapse: collapse;
+  .Board-table{
+      width: 100%;
+      border-collapse: collapse;
 
-        text-align: left;
-    }
+      text-align: left;
+  }
 
-        .Board-table-Header{
-            background-color: rgb(231, 231, 231);
-            height: 40px;
+      .Board-table-Header{
+          background-color: rgb(231, 231, 231);
+          height: 40px;
 
-            font-size: 30px;
-            font-family: 'Arial', sans-serif;
-        }
-            .Board-table-Header > tr > th{
-                padding: 0 10px 0 10px;
-            }
-                .Board-table-th-Num{
-                    width: 8%;
-                }
-                .Board-table-th-Title{
-                    text-align: center;
-                    width: 58%;
-                }
-                .Board-table-th-Author{
-                    width: 17%;
-                }
-                .Board-table-th-CreateDate{
-                    text-align: center;
-                    width: 17%;
-                }
+          font-size: 30px;
+          font-family: 'Arial', sans-serif;
+      }
+          .Board-table-Header > tr > th{
+              padding: 0 10px 0 10px;
+          }
+              .Board-table-th-Num{
+                  width: 8%;
+              }
+              .Board-table-th-Title{
+                  text-align: center;
+                  width: 58%;
+              }
+              .Board-table-th-Author{
+                  width: 17%;
+              }
+              .Board-table-th-CreateDate{
+                  text-align: center;
+                  width: 17%;
+              }
 
-        .Board-table-Body{
-            font-size: 25px;
-        }
-            .Board-table-tr > td{
-                height: 30px;
-                padding: 10px;
-            }
-                .Board-table-td-Num{
-                    width: 8%;
-                }
-                .Board-table-td-Title{
-                    width: 58%;
+      .Board-table-Body{
+          font-size: 25px;
+      }
+          .Board-table-tr > td{
+              height: 30px;
+              padding: 10px;
+          }
+              .Board-table-td-Num{
+                  width: 8%;
+              }
+              .Board-table-td-Title{
+                  width: 58%;
 
-                }
-                .Board-table-td-Author{
-                    width: 17%;
-                }
-                .Board-table-td-CreateDate{
-                    text-align: right;
-                    width: 17%;
-                }
+              }
+              .Board-table-td-Author{
+                  width: 17%;
+              }
+              .Board-table-td-CreateDate{
+                  text-align: right;
+                  width: 17%;
+              }
 
 
 .board-footer{
@@ -74,7 +74,8 @@
 
             width: 100%;
         }
-        .Board-writePost-Button, .Board-deletePost-Button{
+        .Board-writePost-Button,
+        .Board-deletePost-Button{
             border: 0;
             border-radius: 10px;
       
@@ -86,10 +87,7 @@
             height: 30px;
         }
         .Board-writePost-Button{
-            background-color: rgb(175, 166, 45);
+            background-color: rgb(56, 175, 45);
 
             margin-right: 10px;
-        }
-        .Board-deletePost-Button{
-            background-color: rgb(255, 65, 65);
         }

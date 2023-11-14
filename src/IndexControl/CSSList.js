@@ -22,5 +22,7 @@ import "../CSS/Components/Footer.css";
 import "../CSS/Components/CustomPagination.css";
 import "../CSS/Components/NotExistPage.css";
 import "../CSS/Components/WritePost.css";
+import "../CSS/Components/BoardModal.css";
+import "../CSS/Components/GroupModal.css";
 import "../CSS/Components/CreateGroup.css"
 import "../CSS/Components/IamportPayment.css"

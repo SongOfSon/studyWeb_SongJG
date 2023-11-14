@@ -7,21 +7,20 @@ const WritePost = (props) => {
   const navigate = useNavigate('');
   
 // BoardData
-  const userName = props.currentLoginUser;
-  const [boardId, setBoardId] = useState(0);
+  const userName = props.currentLoginUser.userName;
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContent, setBoardContent] = useState('');
   const date = new Date();
   const dateFormat = date.getFullYear() + '-' + 
                      (date.getMonth() + 1 < 9 ? "0"+(date.getMonth() + 1):(date.getMonth() + 1)) + '-' + 
                      (date.getDate()< 9 ? "0"+(date.getDate() ):(date.getDate() ));
-  const currentBoardDataSize = props.generalBoardData.length;
+  
   const newBoardData = {
-    post_id : 1,
-    title : '제목',
-    name : '이름',
-    content : '내용',
-    create_at : dateFormat,
+    id : props.generalBoardData.at(-1).id + 1,
+    title : boardTitle,
+    author : userName,
+    content : boardContent,
+    writeDate : dateFormat,
   };
   
 // handle
@@ -48,6 +47,15 @@ const WritePost = (props) => {
     // console.log(props.generalBoardData);
   };
 
+  const handleWriteSubmitOnLocal = (e) => {
+    if(boardTitle !== null && boardTitle !== ''){
+      if(boardContent !== null && boardContent !== ''){
+      props.setGeneralBoardData([...props.generalBoardData, newBoardData]);
+      navigate('/board');
+      }else alert('내용이 비어있습니다');
+    }else alert('제목이 비어있습니다');
+  };
+
 // UI
 return (
 
@@ -62,14 +70,13 @@ return (
               value={boardTitle} 
               onChange={handleBoardTitle} 
               placeholder="제목을 입력하세요"/>
-            <input 
+            <textarea
               className="WritePost-content-input" 
-              type="text"
               value={boardContent} 
               onChange={handleBoardContent} 
               placeholder="내용을 입력하세요"/>
           </div>
-          <button onClick={hadleWriteSubmit}>등록</button>
+          <button onClick={handleWriteSubmitOnLocal}>등록</button>
       </div>
     </div>
   );

@@ -77,7 +77,7 @@ const CreateGroup = ( props ) => {
               value={groupName} 
               onChange={e => handleGroupName(e)} 
               placeholder="그룹명을 입력하세요"/>
-            <input 
+            <textarea 
               className="Create-group-info-input" 
               type="textarea"
               value={groupInfo} 

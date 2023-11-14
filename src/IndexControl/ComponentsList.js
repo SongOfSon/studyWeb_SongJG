@@ -1,8 +1,14 @@
-import NavigationBar from "../Components/NavigationBar";
+import NavigationBar from "../Components/Main/NavigationBar";
 import CustomPagination from "../Components/CustomPagination";
-import Footer from "../Components/Footer";
+import Footer from "../Components/Main/Footer";
 import NotExistPage from "../Components/NotExistPage";
-import WritePost from "../Components/WritePost"
-import CreateGroup from "../Components/CreateGroup"
+import WritePost from "../Components/Board/WritePost"
+import CreateGroup from "../Components/StudyGroup/CreateGroup"
 
-export { NavigationBar, CustomPagination, Footer, NotExistPage, WritePost, CreateGroup };
+export { 
+  NavigationBar, 
+  CustomPagination, 
+  Footer, 
+  NotExistPage, 
+  WritePost,
+  CreateGroup };

@@ -49,11 +49,11 @@ function App() {
   const [generalGroupData, setGeneralGroupData] = useState([
     {
       groupId: 0,
-      groupName: "",
-      groupInfo: "",
-      groupInterest: "",
-      groupMaxMember: "",
-      groupCurrentMember: 0,
+      groupName: "테스트 그룹 000",
+      groupInfo: "테스트 그룹 소갯글",
+      groupInterest: "테스트 관심 분야",
+      groupMaxMember: 10,
+      groupCurrentMember: 1,
       joinable: false
     },
     {
@@ -189,84 +189,84 @@ function App() {
       id: 1,
       title: "샘플 글 1",
       author: "작성자 1",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 2,
       title: "샘플 글 2",
       author: "작성자 2",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 3,
       title: "샘플 글 3",
       author: "작성자 3",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 4,
       title: "샘플 글 4",
       author: "작성자 4",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 5,
       title: "샘플 글 5",
       author: "작성자 5",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 6,
       title: "샘플 글 6",
       author: "작성자 6",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 7,
       title: "샘플 글 7",
       author: "작성자 7",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 8,
       title: "샘플 글 8",
       author: "작성자 8",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 9,
       title: "샘플 글 9",
       author: "작성자 9",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 10,
       title: "샘플 글 10",
       author: "작성자 10",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 11,
       title: "샘플 글 11",
       author: "작성자 11",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
     {
       id: 12,
       title: "샘플 글 12",
       author: "작성자 12",
-      content: "",
+      content: "a",
       writeDate: "2023-05-11"
     },
   ]);
@@ -318,9 +318,21 @@ function App() {
   }
 
   //control Group Data Func
+  const joinGroupAction = (id, newGroup) => {
+    generalUserData[id].userJoinGroup = [...generalUserData[id].userJoinGroup ,newGroup];
+    let findIdx = generalUserData.findIndex(UserData => UserData.id === id);
+    let copdiedData = [...generalBoardData];
+    copdiedData[findIdx].title = newGroup;
 
+  };
   //control Board Data Func
-
+  const modifyPostAction = ( currentPostId, title, content) => {
+    let findIdx = generalBoardData.findIndex(BoardData => BoardData.id === currentPostId);
+    let copdiedData = [...generalBoardData];
+    copdiedData[findIdx].title = title;
+    copdiedData[findIdx].content = content;
+    setGeneralBoardData(copdiedData);
+  }
   //
   //handle
   const handleLogin = (bool) => setIsLogin(Boolean(bool));
@@ -365,6 +377,9 @@ function App() {
               exact
               element={
                 <StudyGroup
+                  isLogin={isLogin}
+                  currentLoginUser={currentLoginUser}
+                  joinGroupAction={joinGroupAction}
                   generalGroupData={generalGroupData}
                   setGeneralGroupData={setGeneralGroupData}
                 />
@@ -382,16 +397,19 @@ function App() {
               exact
               element={
                 <Board
+                  isLogin={isLogin}
                   currentLoginUser={currentLoginUser}
                   generalUserData={generalUserData}
                   generalBoardData={generalBoardData}
                   setGeneralBoardData={setGeneralBoardData}
+                  modifyPostAction={modifyPostAction}
                 />
               }
             />
             <Route path="/WritePost" 
             exact 
             element={<WritePost
+              currentLoginUser={currentLoginUser}
               generalUserData={generalUserData}
               generalBoardData={generalBoardData}
               setGeneralBoardData={setGeneralBoardData}/>}/>

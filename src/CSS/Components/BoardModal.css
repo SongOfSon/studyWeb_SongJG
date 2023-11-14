@@ -1,0 +1,145 @@
+.Board-modal-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:500;
+}
+.Board-modal-body{
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 20px;
+  background-color: rgb(224, 235, 225);
+
+  width: 800px;
+  height: 600px;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  z-index: 999;
+}
+  .Board-modal-body-head{
+    display: flex;
+    justify-content:right;
+  }
+    .Board-modal-close-button{
+      margin: 10px;
+      border: 0px;
+      background-color: rgb(224, 235, 225);
+
+      width: 25px;
+      height: 25px;
+
+      color: rgb(252, 71, 71);
+      font-size: 20px;
+      font-weight: 700;
+    }
+.Board-modal-body-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  .Board-modal-body-body-top{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+    .Board-modal-body-body-top-top{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
+      .Board-modal-body-body-id,
+      .Board-modal-body-body-Author{
+        width: 350px;
+      }
+      .Board-modal-body-body-Author{
+        text-align: right;
+        padding-right: 22px;
+      }
+.Board-modal-body-body-body{
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0 0 0;
+  width: 700px;
+}
+  .Board-modal-body-body-Title{
+    margin: 0 0 20px 0;
+  }
+  .Board-modal-body-body-content{
+    width: auto;
+    height: 350px;
+  }
+
+  
+.Board-modal-body-foot{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 95%;
+
+}
+  .Board-modal-body-foot-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+  }
+    .Board-modal-foot-modify-button,
+    .Board-modal-foot-delete-button,
+    .Board-modal-foot-modify-confirm-button{
+      border: 0;
+      border-radius: 10px;
+
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      color: rgb(220, 253, 215);
+
+      width: 90px;
+      height: 30px;
+    }
+      .Board-modal-foot-modify-confirm-button{
+        background-color: rgb(45, 175, 77)
+      }
+      .Board-modal-foot-modify-button{
+        background-color: rgb(175, 166, 45);
+
+        margin-right: 10px;
+      }
+      .Board-modal-foot-delete-button{
+          background-color: rgb(255, 65, 65);
+      }
+/* modify modal css*/
+.Board-modal-body-Modify{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  .Board-modal-body-Modify-Title{
+    width: 600px;
+    height: 30px;
+    font-size: 25px;
+
+    margin: 10px 0 10px 0;
+  }
+  .Board-modal-body-Modify-Content{
+    vertical-align:top;
+    width: 600px;
+    height: 350px;
+    font-size: 25px;
+    margin-bottom: 20px;
+    
+    resize: none;
+    white-space: pre;
+  }

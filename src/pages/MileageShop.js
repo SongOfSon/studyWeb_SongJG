@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CustomPagination from "../Components/CustomPagination";
-import IamportPayment from "../Components/IamportPayment";
+import IamportPayment from "../Components/MileageShop/IamportPayment";
 
 function MileageShop( props ) {
 // MileageShop Data
@@ -98,7 +98,7 @@ function MileageShop( props ) {
   };
   const totalProductPriceCal = () => {
     let totalPrice = 0;
-    for(let i = 0 ; i < productList.length ; i++){
+    for(let i = 0 ; i < productList.length + 1; i++){
       if(checkProudct.includes(i) === true ){
         totalPrice += productList[i-1].price;
       }
