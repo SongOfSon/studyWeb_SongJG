@@ -11,7 +11,6 @@ const BoardModal = ( props ) => {
 // handle
   const handleTitle = e => setCurrentPostTitle(e.target.value);
   const handleContent = e => setCurrentPostContent(e.target.value);
-  
 
 // func
   const modifyCheck = (bool) => setcheckModify(Boolean(bool));

@@ -420,7 +420,11 @@ function App() {
               setGeneralBoardData={setGeneralBoardData}/>}/>
             
             <Route path="/MileageShop" exact element={<MileageShop />} />
-            <Route path="/Inquery" exact element={<Inquery />} />
+            <Route 
+              path="/Inquery" 
+              exact 
+              element={<Inquery 
+                currentLoginUser={currentLoginUser}/>} />
             <Route
               path="/join"
               exact

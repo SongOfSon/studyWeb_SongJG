@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import IamportPayment from "../Components/MileageShop/IamportPayment";
+import MembershipPay from "../Components/Profile/MembershipPay";
 
 const Profile = ( props ) => {
 // React hook
@@ -14,6 +14,7 @@ const navigate = useNavigate('');
   const userData = props.generalUserData[userNum]
 
 // userData
+  const [memberShipTime, setMemberShipTime] = useState(90061);
   const [userMileage, setUserMileage] = useState(0);
   const [userInterst, setUserInterest] = useState(null);
 
@@ -46,8 +47,13 @@ const interstList = [
     const seconds = studyTimeSum % 60;
     return `${String(hours)}시간 ${String(minutes).padStart(2, '0')}분 ${String(seconds).padStart(2, '0')} 초`
   };
-  const handleGroupJoin = () => {
-    
+
+
+  const handleMemberShipTime = () => {
+    const days = Math.floor(memberShipTime / 86400);
+    const hours = Math.floor((memberShipTime % 60));
+    const minutes = Math.floor((memberShipTime % 3600) / 60);
+    return `${String(days)}일 ${String(hours).padStart(2, '0')}시간 ${String(minutes).padStart(2, '0')}분`
   }
 
 
@@ -61,7 +67,10 @@ return (
         <div className="Profile-userName-box"> {userName} </div> 
         님의 정보 입니다. 
       </h2>
-      <button className="Profile-membership-button">회원권</button>
+      <div className="Profile-membership">
+        <MembershipPay setMemberShipTime={setMemberShipTime}/>
+        <div className="Profile-membership-time">잔여 시간 <br/>{handleMemberShipTime()}</div>
+      </div>
     </div>
     <table className="ClientInfoTable">
       <tr className="ClientInfoTable-timer">

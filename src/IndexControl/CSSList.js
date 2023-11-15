@@ -26,3 +26,4 @@ import "../CSS/Components/BoardModal.css";
 import "../CSS/Components/GroupModal.css";
 import "../CSS/Components/CreateGroup.css"
 import "../CSS/Components/IamportPayment.css"
+import "../CSS/Components/MembershipPay.css";
