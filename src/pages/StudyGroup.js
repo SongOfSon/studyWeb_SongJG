@@ -11,7 +11,7 @@ const StudyGroup = ( props ) => {
 
 // data
   const currentClickedGroupNum = (pagenationNum, currentId) =>{
-    return (pagenationNum - 1)*8 + currentId + 1;  
+    return ((pagenationNum - 1)*8 + currentId);  
   } 
 
 // Modal
@@ -41,27 +41,29 @@ const [clickedModalNum, setClickModalNum] = useState(0);
 
   const handleMaxMember = (idx) => {
     if(props.generalGroupData[idx].groupMaxMember === props.generalGroupData[idx].groupCurrentMember){
-      return true;
-    }else return false;
+      return true; // Max
+    }else return false; // None-max
+  } 
+  const handleCurrentJoinGroup = (idx) => {
+    if(props.generalUserData[props.currentLoginUser.userNum].userJoinGroup.includes(props.generalGroupData[idx].groupId)){
+      return true; // joined
+    }else return false; // None-joined
   }
-  const handleJoinGroup = (idx) => {
-    if(props.generalGroupData[0].groupMaxMember !== props.generalGroupData[0].groupCurrentMember){
 
-    }else if(props.generalGroupData[0].groupMaxMember === props.generalGroupData[0].groupCurrentMember){
-    alert('참여 불가');
-    setModalIsOpen(false);
+  const handleGroupList = (id) =>{
+    if(props.generalGroupData[id].groupCurrentMember < 1){
+
     }
   }
-  
 
 return (
   <div className="StudyGroup-wrapper">
-    <div className="StudyGroup-wrapper-inner">
+    <div className="StudyGroup-wrapper-inner" >
       <div className="Group-Poster-inner-top">
       {props.generalGroupData.slice(offset, offset + limit).map((groupData, idx, groupDataT) => (
         <React.Fragment>
             {idx < 4 ?
-            <div className="Group-Poster-body" onClick={() => openModal(idx)}>
+            <div className="Group-Poster-body" onChange={()=>handleGroupList(currentClickedGroupNum(page,idx))} onClick={() => openModal(idx)}>
               <div className="Group-Poster-body-header">
                 <div className="Group-Poster-body-header-groupId">
                   {groupData.groupId}</div>
@@ -71,7 +73,11 @@ return (
               <div className="Group-Poster-body-footer">
                 <div className="Group-Poster-body-footer-interest">
                   {groupData.groupInterest}</div>
-                <div className={handleMaxMember(idx)?"Group-Poster-body-footer-member-con-maxMem":"Group-Poster-body-footer-member-con"}>
+                <div 
+                  className={handleMaxMember(currentClickedGroupNum(page,idx))?
+                    "Group-Poster-body-footer-member-con-maxMem":
+                    handleCurrentJoinGroup(currentClickedGroupNum(page,idx))?"Group-Poster-body-footer-member-con-joined"
+                      :"Group-Poster-body-footer-member-con"}>
                   <div className="Group-Poster-body-footer-member">
                     {groupData.groupCurrentMember} / {groupData.groupMaxMember}</div>
                 </div>
@@ -81,11 +87,15 @@ return (
             <GroupModal
               groupDataT={groupDataT}
               page={page}
+              idx={idx}
               clickedModalNum={clickedModalNum}
+              handleMaxMember={handleMaxMember}
+              currentClickedGroupNum={currentClickedGroupNum}
               modalIsOpen={modalIsOpen}
               closeModal={closeModal}
               isLogin={props.isLogin}
               currentLoginUser={props.currentLoginUser}
+              generalUserData={props.generalUserData}
               generalGroupData={props.generalGroupData}
               setGeneralGroupData={props.setGeneralGroupData}
             />:<></>}
@@ -98,8 +108,10 @@ return (
           {!(idx < 4 )?
             <div className="Group-Poster-body" onClick={() => openModal(idx)}>
               <div className="Group-Poster-body-header">
-                <div className="Group-Poster-body-header-groupId">{groupData.groupId}</div>
-                <div className="Group-Poster-body-header-groupName">{groupData.groupName}</div>
+                <div className="Group-Poster-body-header-groupId">
+                  {groupData.groupId}</div>
+                <div className="Group-Poster-body-header-groupName">
+                  {groupData.groupName}</div>
               </div>
               <div className="Group-Poster-body-footer">
                 <div className="Group-Poster-body-footer-interest">

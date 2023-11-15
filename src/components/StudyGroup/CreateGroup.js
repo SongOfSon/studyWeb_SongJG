@@ -6,9 +6,9 @@ const CreateGroup = ( props ) => {
 // React hooks
   const navigate = useNavigate();
 // StudyGroup Data
-  const [groupId, setGroupId] = useState(null);
-  const [groupName, setGroupName] = useState(null);
-  const [groupInfo, setGroupInfo] = useState(null);
+  const [groupId, setGroupId] = useState('');
+  const [groupName, setGroupName] = useState('');
+  const [groupInfo, setGroupInfo] = useState('');
   const [groupInterest, setGroupInterest] = useState('선택해주세요');
   const interstList = [
     {value:null, name: '선택'},
@@ -21,11 +21,11 @@ const CreateGroup = ( props ) => {
     {value:"공무원", name : "공무원"},
     {value:"자격증", name : "자격증"},
 ]
-  const [groupMaxMember, setGroupMaxMember] = useState(null);
+  const [groupMaxMember, setGroupMaxMember] = useState('');
 
   const newGroupData =
     { 
-      groupId: groupId,
+      groupId: props.generalGroupData.at(-1).groupId + 1,
       groupName: groupName,
       groupInfo: groupInfo,
       groupInterest: groupInterest,
@@ -41,12 +41,19 @@ const CreateGroup = ( props ) => {
   const handleGroupMaxMember = e => setGroupMaxMember(e.target.value);
 
   const createNewGroup = () =>{
+    if(props.isLogin === false){
+      alert('로그인이 필요한 서비스 입니다');
+      return navigate('/');
+    }
     if(groupName !== null){
       if(groupInfo !== null){
         if(groupInterest !== null){
           if(groupMaxMember !== null){
             if(groupMaxMember <= 10 && groupMaxMember > 0){
-              props.setGeneralGroupData([...props.generalGroupData, newGroupData])  
+              let currentUserDataCopied = props.generalUserData;
+              currentUserDataCopied[props.currentLoginUser.userNum].userJoinGroup.push(newGroupData.groupId);
+              props.setGeneralUserData(currentUserDataCopied);
+              props.setGeneralGroupData([...props.generalGroupData, newGroupData]);
               navigate('/StudyGroup');            
               console.log('이상 없음');
               return;

@@ -22,7 +22,7 @@ const BoardModal = ( props ) => {
       }else return false
     }else return false
   }
-  const modiftPost = ( clickedModalNum, pageNum ) =>{
+  const modifyPost = ( clickedModalNum, pageNum ) =>{
     const currentPostNum = (pageNum - 1)*10 + clickedModalNum + 1;
     if(props.currentLoginUser.userName === props.postT[props.clickedModalNum].author)
       if(currentPostTitle !== '' && currentPostTitle !== null)
@@ -85,7 +85,7 @@ const BoardModal = ( props ) => {
             checkModify?
               <button 
                 className='Board-modal-foot-modify-confirm-button'
-                onClick={() => modiftPost(props.clickedModalNum, props.page)}>
+                onClick={() => modifyPost(props.clickedModalNum, props.page)}>
                 수정하기</button>
             :<>
               <button 

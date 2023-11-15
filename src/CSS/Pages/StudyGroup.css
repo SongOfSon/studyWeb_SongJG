@@ -68,6 +68,13 @@
             background-color: rgb(210,210,0);
             padding: 5px;
           }
+          .Group-Poster-body-footer-member-con-joined{
+            border: 2px solid rgb(255, 196, 0);
+            border-radius: 7px;
+
+            background-color: rgb(210,210,0);
+            padding: 5px;
+          }
 
     .StudyGroup-footer{
         display: flex;

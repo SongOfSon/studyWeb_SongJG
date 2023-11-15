@@ -72,6 +72,9 @@ const navigate = useNavigate('');
 // UI
   return (
     <>
+    {props.isLogin?
+    navigate('/')
+    :<>
     <button className='Login-modal-open-Btn' 
       onClick={openModal}>
         로그인</button>
@@ -98,7 +101,7 @@ const navigate = useNavigate('');
           <div className='Login-modal-footer'>
           </div>
     </div>:null}
-  </div>
+  </div></>}
   </>
 );
 };

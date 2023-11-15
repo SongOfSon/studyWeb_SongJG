@@ -46,15 +46,18 @@ const CalendarPage = ( props ) => {
   };
 
 // UI
-    return (
-        <div className="Calendar-wrapper">
-                <div className='Calendar-container'>
-                    <Calendar 
-                        className="customCalendar"
-                        onChange={handleDateChange}
-                        value={selectedDate}
-                    />
-                </div>
+  return (
+    <div className="Calendar-wrapper">
+      <div className='Calendar-container'>
+          <Calendar 
+            onChange={handleDateChange}
+            value={selectedDate}
+            formatDay={(locale, date) => moment(date).format("DD")}
+            showNeighboringMonth={false}
+            minDetail="year"
+            navigationLabel={null}
+          />
+      </div>
       <div className='Calendar-recordTime-table-container'>
         <div className='Calendar-recordTime-table-top'>
             { props.isLogin !== false?
@@ -77,12 +80,16 @@ const CalendarPage = ( props ) => {
           { props.isLogin !== false?
           <div className='Calendar-recordTime-table-bottom'>
             <div className='Calendar-recordTime-table-bottom-today'>
-              <div className='Calendar-recordTime-table-bottom-today-left'>금일 학습 시간</div>
-              <div className='Calendar-recordTime-table-bottom-today-right'>{todayStudyTime()}</div>
+              <div className='Calendar-recordTime-table-bottom-today-left'>
+                금일 학습 시간</div>
+              <div className='Calendar-recordTime-table-bottom-today-right'>
+                {todayStudyTime()}</div>
             </div>
             <div className='Calendar-recordTime-table-bottom-allday'>
-              <div className='Calendar-recordTime-table-bottom-allday-left'>총 학습 시간</div>
-              <div className='Calendar-recordTime-table-bottom-allday-right'>{allStudyTime()}</div>
+              <div className='Calendar-recordTime-table-bottom-allday-left'>
+                총 학습 시간</div>
+              <div className='Calendar-recordTime-table-bottom-allday-right'>
+                {allStudyTime()}</div>
             </div>
           </div> 
           :<></>}

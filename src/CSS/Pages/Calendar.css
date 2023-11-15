@@ -14,24 +14,34 @@
 
 /* imported react-calendar css */
 .react-calendar {
-  width: 700px;
-  height: 600px;
-  background: white;
-  border: 1px solid #a0a096;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.125em;
+    width: 700px;
+    height: 600px;
+    max-width: 100%;
+
+    background: white;
+    box-shadow: 0px 0px 20px #e0e0e0;
+
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.125em;
+
+    font-size: 23px;
 }
 
 .react-calendar--doubleView {
   width: 700px;
 }
 
-.react-calendar--doubleView .react-calendar__viewContainer {
+.react-calendar--doubleView 
+.react-calendar__viewContainer {
   display: flex;
   margin: -0.5em;
 }
 
-.react-calendar--doubleView .react-calendar__viewContainer > * {
+.react-calendar--doubleView 
+.react-calendar__viewContainer > * {
   width: 50%;
   margin: 0.5em;
 }
@@ -60,6 +70,11 @@
   height: 44px;
   margin-bottom: 1em;
 }
+  .react-calendar__navigation__arrow ,
+  .react-calendar__navigation__prev2-button,
+  .react-calendar__navigation__label{
+    font-size: 23px;
+  }
 
 .react-calendar__navigation button {
   min-width: 44px;
@@ -79,12 +94,11 @@
   text-align: center;
   text-transform: uppercase;
   font: inherit;
-  font-size: 0.75em;
   font-weight: bold;
 }
 
 .react-calendar__month-view__weekdays__weekday {
-  padding: 0.5em;
+  padding: 1em;
 }
 
 .react-calendar__month-view__weekNumbers .react-calendar__tile {
@@ -97,7 +111,6 @@
 }
 
 .react-calendar__month-view__days__day--weekend {
-  color: #d10000;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
@@ -163,24 +176,24 @@
 
 /* timer data css*/
 .Calendar-recordTime-table-container{
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid grey;
+  
   width: 360px;
-  height: 600px;
+  height: 400px;
+  box-shadow: 0px 0px 20px #e0e0e0;
 }
 .Calendar-recordTime-table-top{
-  border: 1px solid red;
 }
 .Calendar-recordTime-table-bottom{
-  border: 1px solid blue;
 }
   .Calendar-recordTime-table-top-head{
     display: flex;
     justify-content: space-around;
-
-    background-color: rgb(106, 106, 231);
+    font-size: 20px;
+    padding: 5px 0 5px 0;
   }
   .Calendar-recordTime-table-top-head-alert{
     text-align: center;
@@ -190,13 +203,14 @@
 .Calendar-recordTime-table-bottom{
   display: flex;
   flex-direction: column;
+
+  background-color: rgb(179, 250, 46);
+  border-radius: 10px;
 }
   .Calendar-recordTime-table-bottom-today,
   .Calendar-recordTime-table-bottom-allday{
     display: flex;
     flex-direction: row;
-
-    background-color: rgb(179, 250, 46);
 
     padding : 10px;
     font-size: 20px;

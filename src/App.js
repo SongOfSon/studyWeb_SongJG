@@ -36,7 +36,7 @@ function App() {
       userPhoneNum: "",
       userMileage: "",
       userInterest: "",
-      userJoinGroup: []
+      userJoinGroup: [0,2,8,7]
     }
   ]);
   const [currentLoginUser, setCurrentLoginUser] = useState({
@@ -379,9 +379,10 @@ function App() {
                 <StudyGroup
                   isLogin={isLogin}
                   currentLoginUser={currentLoginUser}
-                  joinGroupAction={joinGroupAction}
+                  generalUserData={generalUserData}
                   generalGroupData={generalGroupData}
                   setGeneralGroupData={setGeneralGroupData}
+                  joinGroupAction={joinGroupAction}
                 />
               }
             />
@@ -389,6 +390,10 @@ function App() {
               path="/creategroup"
               exact
               element={<CreateGroup
+                isLogin={isLogin}
+                currentLoginUser={currentLoginUser}
+                generalUserData={generalUserData}
+                setGeneralUserData={setGeneralUserData}
                 generalGroupData={generalGroupData}
                 setGeneralGroupData={setGeneralGroupData}
               />}/>
@@ -431,7 +436,14 @@ function App() {
               exact
               element={
                 <Profile
+                  isLogin={isLogin}
                   currentLoginUser={currentLoginUser}
+                  generalUserData={generalUserData}
+                  setGeneralUserData={setGeneralUserData}
+                  generalGroupData={generalGroupData}
+                  setGeneralGroupData={setGeneralGroupData}
+                  generalTimerData={generalTimerData}
+                  setTimerData={setTimerData}
                 />
               }
             />
