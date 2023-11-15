@@ -54,9 +54,9 @@ const CreateGroup = ( props ) => {
               currentUserDataCopied[props.currentLoginUser.userNum].userJoinGroup.push(newGroupData.groupId);
               props.setGeneralUserData(currentUserDataCopied);
               props.setGeneralGroupData([...props.generalGroupData, newGroupData]);
-              navigate('/StudyGroup');            
-              console.log('이상 없음');
-              return;
+              console.log(props.generalGroupData);
+              console.log(props.generalUserData[props.currentLoginUser.userNum])
+              return navigate('/StudyGroup');
             }alert('인원수는 1 ~ 10 사이에서 입력해주세요');
               return;
           }alert('인원수를 입력해주세요');

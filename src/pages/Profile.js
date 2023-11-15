@@ -7,7 +7,7 @@ const Profile = ( props ) => {
 const navigate = useNavigate('');
 
 // data - only raed
-  const userNum = props.currentLoginUser.userNum
+  const userNum =  Number(props.currentLoginUser.userNum)
   const userName = props.currentLoginUser.userName;
   const userId = props.currentLoginUser.userId;
   const timerData = props.generalTimerData;  
@@ -18,7 +18,7 @@ const navigate = useNavigate('');
   const [userMileage, setUserMileage] = useState(0);
   const [userInterst, setUserInterest] = useState(null);
 
-const interstList = [
+  const interstList = [
     {value:null, name: '선택'},
     {value:"국어", name : "국어"},
     {value:"수학", name : "수학"},
@@ -38,7 +38,7 @@ const interstList = [
   const allStudyTime = () => {
     let studyTimeSum = 0;
     for(let i = 0; i< timerData.length; i++){
-      if(props.generalTimerData[i].userNum === props.currentLoginUser.userNum){
+      if(props.generalTimerData[i].userNum === userNum){
         studyTimeSum += props.generalTimerData[i].studyTime;
       }
     }
@@ -48,7 +48,6 @@ const interstList = [
     return `${String(hours)}시간 ${String(minutes).padStart(2, '0')}분 ${String(seconds).padStart(2, '0')} 초`
   };
 
-
   const handleMemberShipTime = () => {
     const days = Math.floor(memberShipTime / 86400);
     const hours = Math.floor((memberShipTime % 60));
@@ -56,12 +55,21 @@ const interstList = [
     return `${String(days)}일 ${String(hours).padStart(2, '0')}시간 ${String(minutes).padStart(2, '0')}분`
   }
 
+  const handleGroupQuit = (groupId) =>{
+    let savedData = props.generalUserData;
+    let filtered = savedData[userNum].userJoinGroup.filter(id => id !== groupId);
+    savedData[userNum].userJoinGroup = filtered;
+    props.setGeneralUserData(savedData);
+
+    props.changeGroupMember(groupId);
+    navigate('/Profile');
+  }
 
 // UI
 return (
-  <>
-  {props.isLogin?
   <div className="Profile-wrapper">
+  {props.isLogin?
+  <>
     <div className="Profile-header">
       <h2> 
         <div className="Profile-userName-box"> {userName} </div> 
@@ -123,19 +131,26 @@ return (
           </tr>
       <tr>    {/* 사용자가 가입한 스터디 그룹 표시*/}
         <div className="dataViewLine-studyGroup">
-            {props.generalUserData[props.currentLoginUser.userNum].userJoinGroup.map((group, idx, groupT) => (
+          {props.generalUserData[userNum].userJoinGroup.length > 0?
+            props.generalUserData[props.currentLoginUser.userNum].userJoinGroup.map((group, idx, groupT) => (
             <div className="Profile-group-view">
-                <div className="Profile-group-view-groupName">{props.generalGroupData[group].groupName}</div>
+                <div className="Profile-group-view-groupName">
+                  {props.generalGroupData[group].groupName}</div>
                 <div className="Profile-group-view-bottom">
-                  <div className="Profile-group-view-groupMember">{props.generalGroupData[group].groupCurrentMember} / {props.generalGroupData[group].groupMaxMember}</div>
-                  <button className="Profile-group-view-quitBtn">X</button>
+                  <div className="Profile-group-view-groupMember">
+                    {props.generalGroupData[group].groupCurrentMember} / {props.generalGroupData[group].groupMaxMember}</div>
+                  <button 
+                    className="Profile-group-view-quitBtn" 
+                    onClick={e=>handleGroupQuit(group, props.page)}>X</button>
                 </div>
             </div>
-            ))}
+            )):
+          <></>}
         </div>
       </tr>
     </table>
-  </div>:navigate('/')}</>
+    </>:navigate('/')}
+  </div>
 )
 }
 

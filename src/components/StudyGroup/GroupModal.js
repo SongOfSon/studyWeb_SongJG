@@ -7,24 +7,32 @@ const GroupModal = ( props ) => {
   const groupInterest = props.groupDataT[props.clickedModalNum].groupInterest;
   const maxMemberNum = Number(props.groupDataT[props.clickedModalNum].groupMaxMember);
   const currentMemberNum = Number(props.groupDataT[props.clickedModalNum].groupCurrentMember);
-  const currentSelectGroup = props.currentClickedGroupNum(props.page, 0);
+  const currentSelectGroup = Number(props.clickedModalNum) + (props.page - 1) * 8;
 // Modal
 
 // handle
  
 // func
-  const handleJoinGroup = ( id ) => {
+  const handleJoinGroup = (  ) => {
+    if(!props.isLogin)
+      return alert('로그인이 필요합니다');
+    if(props.generalUserData[props.currentLoginUser.userNum].userJoinGroup.length >= 4)
+      return alert('가입 가능한 그룹 수를 초과하였습니다');
     if(maxMemberNum === currentMemberNum){
-        alert('참여 불가');
-        props.closeModal();
+      alert('참여 불가');
+      props.closeModal();
     }else if(props.generalUserData[props.currentLoginUser.userNum].userJoinGroup.includes(currentSelectGroup)){
-        console.log(currentSelectGroup);
-        alert('현재 참여중');
-        props.closeModal();
+      alert('현재 참여중');
+      props.closeModal();
     }else if(maxMemberNum > currentMemberNum){
-      console.log(props.generalUserData[props.currentLoginUser.userNum].userJoinGroup.includes(currentSelectGroup));
-      console.log(props.idx);
-        alert('참여 완료');
+      const savedUserData = props.generalUserData;
+      const savedGroupData = props.generalGroupData;
+      savedUserData[props.currentLoginUser.userNum].userJoinGroup.push(currentSelectGroup);
+      savedGroupData[currentSelectGroup].groupCurrentMember++;
+      props.setGeneralGroupData(savedGroupData);
+      props.setGeneralUserData(savedUserData);
+      alert('참여 완료');
+      props.closeModal();
     }
   }
 
@@ -50,7 +58,7 @@ const GroupModal = ( props ) => {
           <div className='Group-modal-body-footer'>
             <button 
               className='Group-modal-body-footer-joinGroup-btn'
-              onClick={() => handleJoinGroup(props.idx)}>
+              onClick={() => handleJoinGroup()}>
               참여</button>
           </div>
       </div>

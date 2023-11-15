@@ -45,25 +45,25 @@ const [clickedModalNum, setClickModalNum] = useState(0);
     }else return false; // None-max
   } 
   const handleCurrentJoinGroup = (idx) => {
+    if(props.isLogin === false)
+      return false;
     if(props.generalUserData[props.currentLoginUser.userNum].userJoinGroup.includes(props.generalGroupData[idx].groupId)){
       return true; // joined
     }else return false; // None-joined
-  }
-
-  const handleGroupList = (id) =>{
-    if(props.generalGroupData[id].groupCurrentMember < 1){
-
-    }
   }
 
 return (
   <div className="StudyGroup-wrapper">
     <div className="StudyGroup-wrapper-inner" >
       <div className="Group-Poster-inner-top">
+                
       {props.generalGroupData.slice(offset, offset + limit).map((groupData, idx, groupDataT) => (
         <React.Fragment>
             {idx < 4 ?
-            <div className="Group-Poster-body" onChange={()=>handleGroupList(currentClickedGroupNum(page,idx))} onClick={() => openModal(idx)}>
+            <div 
+              key={groupData.id} 
+              className="Group-Poster-body"
+              onClick={() => openModal(idx)}>{console.log(groupDataT[idx].groupId)}
               <div className="Group-Poster-body-header">
                 <div className="Group-Poster-body-header-groupId">
                   {groupData.groupId}</div>
@@ -74,9 +74,10 @@ return (
                 <div className="Group-Poster-body-footer-interest">
                   {groupData.groupInterest}</div>
                 <div 
-                  className={handleMaxMember(currentClickedGroupNum(page,idx))?
+                  className={props.handleMaxMember(currentClickedGroupNum(page,idx))?
                     "Group-Poster-body-footer-member-con-maxMem":
-                    handleCurrentJoinGroup(currentClickedGroupNum(page,idx))?"Group-Poster-body-footer-member-con-joined"
+                    handleCurrentJoinGroup(currentClickedGroupNum(page,idx))?
+                      "Group-Poster-body-footer-member-con-joined"
                       :"Group-Poster-body-footer-member-con"}>
                   <div className="Group-Poster-body-footer-member">
                     {groupData.groupCurrentMember} / {groupData.groupMaxMember}</div>
@@ -85,6 +86,7 @@ return (
             </div>:null}
             {modalIsOpen?
             <GroupModal
+              groupData={groupData}
               groupDataT={groupDataT}
               page={page}
               idx={idx}
@@ -96,6 +98,7 @@ return (
               isLogin={props.isLogin}
               currentLoginUser={props.currentLoginUser}
               generalUserData={props.generalUserData}
+              setGeneralUserData={props.setGeneralUserData}
               generalGroupData={props.generalGroupData}
               setGeneralGroupData={props.setGeneralGroupData}
             />:<></>}
@@ -116,7 +119,12 @@ return (
               <div className="Group-Poster-body-footer">
                 <div className="Group-Poster-body-footer-interest">
                   {groupData.groupInterest}</div>
-                <div className={handleMaxMember(currentClickedGroupNum(page,idx))?"Group-Poster-body-footer-member-con-maxMem":"Group-Poster-body-footer-member-con"}>
+                  <div 
+                    className={props.handleMaxMember(currentClickedGroupNum(page,idx))?
+                    "Group-Poster-body-footer-member-con-maxMem":
+                    handleCurrentJoinGroup(currentClickedGroupNum(page,idx))?
+                    "Group-Poster-body-footer-member-con-joined"
+                      :"Group-Poster-body-footer-member-con"}>
                   <div className="Group-Poster-body-footer-member">
                     {groupData.groupCurrentMember} / {groupData.groupMaxMember}</div>
                 </div>

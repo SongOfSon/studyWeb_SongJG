@@ -30,7 +30,7 @@ const NavigationBar = props => {
               </Link>
             </div>
             <div className="Profie-NavBar-wrapper">
-              <Link to={"Profile"}>프로필</Link>
+              <Link to={"/Profile"}>프로필</Link>
             </div>
           </div>
         ) : (

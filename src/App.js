@@ -36,12 +36,12 @@ function App() {
       userPhoneNum: "",
       userMileage: "",
       userInterest: "",
-      userJoinGroup: [0,2,8,7]
+      userJoinGroup: [5]
     }
   ]);
   const [currentLoginUser, setCurrentLoginUser] = useState({
     userNum: null,
-    userName: null,
+    userName: '사용자',
     userId:null,
     userPW:null,
   });
@@ -325,6 +325,11 @@ function App() {
     copdiedData[findIdx].title = newGroup;
 
   };
+  const handleMaxMember = ( id ) => {
+    if(generalGroupData[id].groupMaxMember === generalGroupData[id].groupCurrentMember){
+      return true; // Max
+    }else return false; // None-max
+  }
   //control Board Data Func
   const modifyPostAction = ( currentPostId, title, content) => {
     let findIdx = generalBoardData.findIndex(BoardData => BoardData.id === currentPostId);
@@ -333,9 +338,20 @@ function App() {
     copdiedData[findIdx].content = content;
     setGeneralBoardData(copdiedData);
   }
-  //
+  // control Profile Data Func
+  const changeGroupMember = (groupId) => {
+    const copiedData = generalGroupData;
+    copiedData[groupId].groupCurrentMember --
+    if(copiedData[groupId].groupCurrentMember === 0){
+      let filteredData = copiedData.filter( id => id.groupId !== groupId);
+      return setGeneralGroupData(filteredData);
+    }
+    setGeneralBoardData(copiedData);
+  }
+
   //handle
   const handleLogin = (bool) => setIsLogin(Boolean(bool));
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -380,9 +396,11 @@ function App() {
                   isLogin={isLogin}
                   currentLoginUser={currentLoginUser}
                   generalUserData={generalUserData}
+                  setGeneralUserData={setGeneralUserData}
                   generalGroupData={generalGroupData}
                   setGeneralGroupData={setGeneralGroupData}
                   joinGroupAction={joinGroupAction}
+                  handleMaxMember={handleMaxMember}
                 />
               }
             />
@@ -448,6 +466,7 @@ function App() {
                   setGeneralGroupData={setGeneralGroupData}
                   generalTimerData={generalTimerData}
                   setTimerData={setTimerData}
+                  changeGroupMember={changeGroupMember}
                 />
               }
             />

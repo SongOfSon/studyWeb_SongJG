@@ -71,20 +71,21 @@ function Signup(props) {
   const handleSignupOnLocal = () =>{
     if(userName != null){
       if(userId != null){
-        if(userPassword != null &&
-           userPassword === passwordConfirm){
-          props.signupAction(
-            userNum, 
-            userName, 
-            userId, 
-            userPassword, 
-            userEmail, 
-            userPhoneNum);
-          alert(`${userName}님 회원가입을 축하드립니다`);
-          navigate('/');
-        }
-      }
-    }
+        if(userPassword != null){
+          if(userPassword === passwordConfirm){
+            props.signupAction(
+              userNum, 
+              userName, 
+              userId, 
+              userPassword, 
+              userEmail, 
+              userPhoneNum);
+            alert(`${userName}님 회원가입을 축하드립니다`);
+            return navigate('/');
+          }return alert('비밀번호 불일치');
+        }return alert('비밀번호 공란');
+      }return alert('ID 공란');
+    }return alert('이름 공란');
   };
 
   // UI
