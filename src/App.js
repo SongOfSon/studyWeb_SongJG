@@ -437,7 +437,10 @@ function App() {
               generalBoardData={generalBoardData}
               setGeneralBoardData={setGeneralBoardData}/>}/>
             
-            <Route path="/MileageShop" exact element={<MileageShop />} />
+            <Route path="/MileageShop" 
+              exact 
+              element={<MileageShop 
+                generalUserData={generalUserData}/>} />
             <Route 
               path="/Inquery" 
               exact 

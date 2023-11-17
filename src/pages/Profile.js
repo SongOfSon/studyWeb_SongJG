@@ -20,12 +20,12 @@ const navigate = useNavigate('');
 
   const interstList = [
     {value:null, name: '선택'},
-    {value:"국어", name : "국어"},
-    {value:"수학", name : "수학"},
-    {value:"영어", name : "영어"},
-    {value:"과학", name : "과학"},
-    {value:"역사", name : "역사"},
-    {value:"프로그래밍", name : "프로그래밍"},
+    {value:"회계사", name : "회계사"},
+    {value:"자산 운용사", name : "자산 운용사"},
+    {value:"토목공학 기술자", name : "토목공학 기술자"},
+    {value:"공인중개사", name : "공인중개사"},
+    {value:"세무사", name : "세무사"},
+    {value:"관세사", name : "관세사"},
     {value:"공무원", name : "공무원"},
     {value:"자격증", name : "자격증"},
   ]
@@ -95,7 +95,7 @@ return (
       <tr>
         <td className="makeLine">보유 마일리지</td>
         <td className="makeLine">
-          <button onClick={(e)=> navigate('/calendar')}>
+          <button >
             적립 내역 확인하기</button></td>
       </tr>
       <tr>    {/* 보유 마일리지 표시 */}

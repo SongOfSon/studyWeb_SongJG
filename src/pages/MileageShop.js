@@ -10,59 +10,59 @@ function MileageShop( props ) {
   const [productList, setProductList] = useState([
     {
       id : 1,
-      productName : "제품 1",
-      productIntro : "소개 1",
+      productName : "지우개",
+      productIntro : "지우개 입니다",
       price : 1000,
-      img : process.env.PUBLIC_URL + "./productImg/productImg.png",
+      img : process.env.PUBLIC_URL + "./productImg/eraser.png",
     },
     {
       id : 2,
-      productName : "제품 2",
-      productIntro : "소개 2",
+      productName : "볼펜",
+      productIntro : "볼펜 입니다",
       price : 2000,
-      img : process.env.PUBLIC_URL + "./productImg/productImg.png",
+      img : process.env.PUBLIC_URL + "./productImg/inkpen.png",
     },
     {
       id : 3,
-      productName : "제품 3",
-      productIntro : "소개 3",
-      price : 3000,
-      img : process.env.PUBLIC_URL + "./productImg/productImg.png",
+      productName : "노트북",
+      productIntro : "노트북 입니다",
+      price : 1500,
+      img : process.env.PUBLIC_URL + "./productImg/notebook.png",
     },
     {
       id : 4,
-      productName : "제품 4",
+      productName : "연필꽂이",
       productIntro : "소개 4",
-      price : 4000,
-      img : process.env.PUBLIC_URL + "./productImg/productImg.png",
+      price : 3500,
+      img : process.env.PUBLIC_URL + "./productImg/pen.png",
     },
     {
       id : 5,
-      productName : "제품 5",
+      productName : "필통",
       productIntro : "소개 5",
       price : 5000,
-      img : process.env.PUBLIC_URL + "./productImg/productImg.png",
+      img : process.env.PUBLIC_URL + "./productImg/pencase.png",
     },
     {
       id : 6,
-      productName : "제품 6",
+      productName : ".연필",
       productIntro : "소개 6",
-      price : 6000,
-      img : process.env.PUBLIC_URL + "./productImg/productImg.png",
+      price : 1100,
+      img : process.env.PUBLIC_URL + "./productImg/pencil.png",
     },
     {
       id : 7,
-      productName : "제품 7",
+      productName : "포스트잇",
       productIntro : "소개 7",
-      price : 7000,
-      img : process.env.PUBLIC_URL + "./productImg/productImg.png",
+      price : 700,
+      img : process.env.PUBLIC_URL + "./productImg/postit.png",
     },
     {
       id : 8,
-      productName : "제품 8",
+      productName : "A4 파일",
       productIntro : "소개 8",
-      price : 8000,
-      img : process.env.PUBLIC_URL + "./productImg/productImg.png",
+      price : 3000,
+      img : process.env.PUBLIC_URL + "./productImg/A4Files.png",
     },
   ]);
 // Modal
@@ -173,7 +173,7 @@ function MileageShop( props ) {
               <div className="Mileage-shop-Modal-product-list-foot-right">{totalProductPriceCal()} 원</div>
             </div>
           <div className="Mileage-shop-Modal-Body-bottom">
-            <IamportPayment totalPrice={totalPrice}/>
+            <button className="Mileage-shop-Modal-Body-bottom-purchase" onClick={e => closeModal(e)}>구매</button>
             <button className="Mileage-shop-Modal-Body-bottom-cancel" onClick={e => closeModal(e)}>취소</button>
           </div>
         </div>
