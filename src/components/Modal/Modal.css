@@ -1,0 +1,141 @@
+.Modal-Outter-button{
+  border: none;
+  background-color: transparent;
+
+  font-size: 18px;
+  font-family: inherit;
+}
+
+/* Modal common CSS*/
+.Modal-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:500;
+}
+
+.Modal-mainbody{  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 20px;
+  background-color: rgb(203, 255, 208);
+
+  width: 500px;
+  height: 550px;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  z-index: 999;
+}
+.Modal-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 10px;
+  width: 450px;
+  height: 185px;
+}
+  .Modal-close-button-con{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    width: 450px;
+  }
+    .Modal-close-button{
+      border: 0;
+      background-color:transparent;
+      
+      width: 30px;
+      height: 30px;
+
+      color: red;
+      font-size: 21px;
+      font-weight: 600;
+    }
+    .Modal-Logoimg{
+      width: 150px;
+      height: 150px;
+    }
+.Modal-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 400px;
+  height: 250px;
+}
+
+
+/* Login Modal CSS */
+  .Modal-ID-input-con,
+  .Modal-PW-input-con{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 350px;
+    margin-top: 20px;
+  }
+    .Modal-ID-input-con > label,
+    .Modal-PW-input-con > label{
+      font-size: 21px;
+
+      padding-left: 20px;
+    }
+    .Modal-Login-ID-input,
+    .Modal-Login-PW-input{
+      border: none;
+      border-radius: 8px;
+      width: 250px;
+      height: 35px;
+
+      font-size: 21px;
+    }
+    .Modal-Login-button{
+      border: none;
+      border-radius: 10px;
+      background-color: rgb(39, 238, 59);
+      margin: 50px 0 0 0;
+
+      color: rgb(238, 255, 163);
+      font-size: 21px;
+      font-weight: 650;
+
+      width: 100px;
+      height: 35px;
+    }
+
+.Modal-Login-footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 400px;
+  height: 50px;
+}
+
+.Modal-Login-footer > button{
+  border: none;
+  background-color: transparent;
+
+  font-size: 20px;
+
+  width: 100px;
+  height: 32px;
+}

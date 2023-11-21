@@ -1,0 +1,45 @@
+.Header-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  margin: 8px 100px -20px 100px;
+}
+
+.Header-Logo-image{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 155px;
+  height: 155px;
+}
+
+.Header-User-state-dependency-con{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-bottom: 20px;
+}
+
+.Header-Login-con,
+.Header-Signup-con,
+.Header-Logout-con,
+.Header-Profile-con{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+}
+.Header-Login-con,
+.Header-Logout-con{
+  background-color: greenyellow;
+}
+.Header-Signup-con,
+.Header-Profile-con{
+  background-color: rgb(39, 206, 206);
+}

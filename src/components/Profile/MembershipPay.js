@@ -1,5 +1,5 @@
 import React from 'react';
-import IamportPayment from "../MileageShop/IamportPayment";
+import IamportPayment from "../IamportPayment";
 import { useState } from 'react';
 
 const MembershipPay = (props) => {

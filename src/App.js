@@ -1,28 +1,27 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+// React import
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-// Pages Import
-import {
-  Main,
-  Board,
-  Calendar,
-  Login,
-  MileageShop,
-  Profile,
-  Signup,
-  StudyGroup,
-  Timer,
-  Inquery,
-} from "./IndexControl/PagesList.js";
+// Pages,Components import
+  // Pages
+  import Main from './pages/Main/Main';
+  import Signup from './components/Signup/Signup';
+  import Timer from './pages/Timer/Timer';
+  import Calendar from './pages/Calendar/Calendar';
+  import StudyGroup from './pages/StudyGroup/StudyGroup';
+  import Board from './pages/Board/Board';
+  import MileageShop from './pages/MileageShop/MileageShop';
+  import Inquery from './pages/Inquery/Inquery';
 
-// Components Import
-import {
-  NavigationBar,
-  Footer,
-  NotExistPage,
-  WritePost,
-  CreateGroup,
-} from "./IndexControl/ComponentsList.js";
+  // Components
+  import Header from './components/Header/Header';
+  import Navbar from './components/Navbar/Navbar';
+  import Footer from './components/Footer/Footer';
+  import NotExistPage from './pages/NotExistPage/NotExistPage';
+  import Profile from './components/Profile/Profile';
+
+// CSS import
+import './App.css';
 
 function App() {
   //generalData
@@ -271,17 +270,6 @@ function App() {
     },
   ]);
 
-  const [generalMileageData, setMileageData] = useState({});
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    fetch("/home")
-      .then(response => response.text())
-      .then(message => {
-        setMessage(message);
-      });
-  }, []);
-
 // generalFunc
   // control User Data Func
   const signupAction = (num, name, id, pw, email, phone) => {
@@ -348,115 +336,61 @@ function App() {
     }
     setGeneralBoardData(copiedData);
   }
+   //handle
+   const handleLogin = (bool) => setIsLogin(Boolean(bool));
 
-  //handle
-  const handleLogin = (bool) => setIsLogin(Boolean(bool));
-
+// UI
   return (
+    <>
     <BrowserRouter>
       <div className="App">
-        <header className="header-container">
-          <NavigationBar 
+          <div className='App-Header-con'>
+            <Header  
                 generalUserData={generalUserData}
                 currentLoginUser={currentLoginUser}
                 loginAction={loginAction}
                 handleLogin={handleLogin}
+                isLogin={isLogin}/>
+            <Navbar />
+          </div>
+          <div className='App-Body-con'>
+            <Routes>
+              <Route path='/' exact element={<Main />}/>
+              <Route path='/signup' exact element={<Signup 
+                generalUserData={generalUserData}
+                signupAction={signupAction}/>}/>
+              <Route path='/timer' exact element={<Timer 
                 isLogin={isLogin}
-            />
-        </header>
-        <main className="main-container">
-          <Routes>
-            <Route path="/" exact element={<Main />} />
-            <Route
-              path="/Timer"
-              exact
-              element={
-                <Timer
-                  isLogin={isLogin}
-                  currentLoginUser={currentLoginUser}
-                  generalTimerData={generalTimerData}
-                  setTimerData={setTimerData}
-                  recordTimeToUser={recordTimeToUser}
-                />
-              }
-            />
-            <Route 
-              path="/Calendar" 
-              exact 
-              element={<Calendar 
+                currentLoginUser={currentLoginUser}
+                generalTimerData={generalTimerData}
+                setTimerData={setTimerData}
+                recordTimeToUser={recordTimeToUser}/>}/>
+              <Route path='/calendar' exact element={<Calendar 
                 currentLoginUser={currentLoginUser}
                 generalTimerData={generalTimerData}
                 generalCalendarData={generalCalendarData}
-                isLogin={isLogin}/>} />
-            <Route
-              path="/StudyGroup"
-              exact
-              element={
-                <StudyGroup
-                  isLogin={isLogin}
-                  currentLoginUser={currentLoginUser}
-                  generalUserData={generalUserData}
-                  setGeneralUserData={setGeneralUserData}
-                  generalGroupData={generalGroupData}
-                  setGeneralGroupData={setGeneralGroupData}
-                  joinGroupAction={joinGroupAction}
-                  handleMaxMember={handleMaxMember}
-                />
-              }
-            />
-            <Route 
-              path="/creategroup"
-              exact
-              element={<CreateGroup
+                isLogin={isLogin}/>}/>
+              <Route path='/studygroup' exact element={<StudyGroup 
                 isLogin={isLogin}
                 currentLoginUser={currentLoginUser}
                 generalUserData={generalUserData}
                 setGeneralUserData={setGeneralUserData}
                 generalGroupData={generalGroupData}
                 setGeneralGroupData={setGeneralGroupData}
-              />}/>
-            <Route
-              path="/Board"
-              exact
-              element={
-                <Board
-                  isLogin={isLogin}
-                  currentLoginUser={currentLoginUser}
-                  generalUserData={generalUserData}
-                  generalBoardData={generalBoardData}
-                  setGeneralBoardData={setGeneralBoardData}
-                  modifyPostAction={modifyPostAction}
-                />
-              }
-            />
-            <Route path="/WritePost" 
-            exact 
-            element={<WritePost
-              currentLoginUser={currentLoginUser}
-              generalUserData={generalUserData}
-              generalBoardData={generalBoardData}
-              setGeneralBoardData={setGeneralBoardData}/>}/>
-            
-            <Route path="/MileageShop" 
-              exact 
-              element={<MileageShop 
-                generalUserData={generalUserData}/>} />
-            <Route 
-              path="/Inquery" 
-              exact 
-              element={<Inquery 
-                currentLoginUser={currentLoginUser}/>} />
-            <Route
-              path="/join"
-              exact
-              element={
-                <Signup
-                  generalUserData={generalUserData}
-                  signupAction={signupAction}
-                />
-              }
-            />
-            <Route
+                joinGroupAction={joinGroupAction}
+                handleMaxMember={handleMaxMember}/>}/>
+              <Route path='/board' exact element={<Board 
+                 isLogin={isLogin}
+                 currentLoginUser={currentLoginUser}
+                 generalUserData={generalUserData}
+                 generalBoardData={generalBoardData}
+                 setGeneralBoardData={setGeneralBoardData}
+                 modifyPostAction={modifyPostAction}/>}/>
+              <Route path='/mileageshop' exact element={<MileageShop 
+                generalUserData={generalUserData}/>}/>
+              <Route path='/inquery' exact element={<Inquery 
+                currentLoginUser={currentLoginUser}/>}/>
+                <Route
               path="/Profile"
               exact
               element={
@@ -473,16 +407,16 @@ function App() {
                 />
               }
             />
-            <Route path="/*" exact element={<NotExistPage />} />
-          </Routes>
-        </main>
-        <footer className="footer-container">
-          <Footer />
-        </footer>
+              <Route path='/*' exact element={<NotExistPage />}/>
+            </Routes>
+          </div>
+          <div className='App-Footer-con'>
+            <Footer/>
+          </div>
       </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </>
   );
 }
-// ReactModal.setAppElement('#root')
 
 export default App;

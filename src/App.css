@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'SOYOMapleBoldTTF';
+  src: url('./Font/SOYO Maple Regular.ttf') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  margin: 0;
+
+  width: 1903px;
+  max-height: 1800px;
+
+  font-family: 'SOYOMapleBoldTTF';
+  font-size: 18px;
+}
+
+.App-Body-con{
+  margin: 0px 300px 0px 300px;
+
+  width: auto;
+  height: 850px;
+}
