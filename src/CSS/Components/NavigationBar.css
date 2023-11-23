@@ -1,0 +1,65 @@
+.Entire-NavBar-wrapper{
+    margin:0px 100px 50px 100px;
+
+    width: 1704px;
+    height: auto;
+}
+
+ /* NavTop */
+.Top-NavBar-wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px 0 50px;
+}
+    .Logo-NavBar-wrapper{
+    }
+        .Logo-NavBar-wrapper > a > img{
+            width: 100px;
+            height: auto;
+        }
+
+    .UserCompo-NavBar-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 250px;
+    }
+
+        .Logout-NavBar-wrapper, .Profie-NavBar-wrapper, .Signup-NavBar-wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            border: 0;
+            border-radius: 10px;
+            background-color: rgb(47, 173, 43);
+
+            width: 100px;
+            height: 35px;
+            font-size: 20px;
+            font-weight: 900;
+        }
+        .Logout-NavBar-wrapper > a, .Profie-NavBar-wrapper > a, .Signup-NavBar-wrapper > a{
+            color: rgb(255, 255, 255);
+        }
+
+/* NavBottom */
+.Components-NavBar-wrapper{
+    margin: 0px 10px 0 10px;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 150px 10px 150px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background-color: rgb(0, 255, 115);
+}
+.Components-NavBar-wrapper > a > img {
+    width: 50px;
+    height: auto;
+}

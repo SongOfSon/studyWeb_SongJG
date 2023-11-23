@@ -1,0 +1,53 @@
+.WritePost-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+  .WritePost-header{
+    font-size: 40px;
+  }
+
+  .WritePost-form{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    margin-top: 50px;
+    width: 100%;
+  }
+    .WritePost-input-con{
+      display: flex;
+      flex-direction: column;
+
+      margin-bottom: 50px;
+
+      width: 100%;
+    }
+    .WritePost-content-input, .WritePost-title-input{
+      border: 1px solid grey;
+      
+      padding-left: 10px;
+      font-size: 25px;
+    }
+    .WritePost-title-input{
+      margin-bottom: 20px;
+      height: 50px;
+    }
+
+    .WritePost-content-input{
+      height: 200px;
+      resize: none;
+      white-space: pre;
+    }
+
+    .WritePost-form > button{
+      border: 0;
+      border-radius: 10px;
+      background-color:green;
+
+      font-size: 20px;
+      font-weight: 700;
+      color: rgb(220, 253, 215);
+
+      width: 130px;
+      height: 30px;
+    }

@@ -1,0 +1,98 @@
+.Create-group-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+  .Create-group-header{
+    font-size: 40px;
+  }
+
+  .Create-group-form{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    margin-top: 50px;
+    width: 100%;
+  }
+    .Create-group-input-con{
+      display: flex;
+      flex-direction: column;
+
+      margin-bottom: 50px;
+
+      width: 100%;
+    }
+      .Create-group-name-input, .Create-group-info-input{
+        border: 1px solid grey;
+        
+        padding-left: 10px;
+        font-size: 25px;
+      }
+      .Create-group-name-input{
+        margin-bottom: 20px;
+        height: 50px;
+      }
+
+      .Create-group-info-input{
+        height: 200px;
+      }
+
+    .Create-group-interest-select-con{
+      display: flex;
+      margin: 20px 0 20px 0;
+    }
+      .Create-group-interest-select-con > label{
+        font-size: 25px;
+        padding-right: 15px;
+      }
+      .Create-group-interest-select{
+        border: 1px solid grey;
+
+        font-size: 25px;
+        width: 150px;
+      }
+
+
+    .Create-group-max-member-input-con{
+      font-size: 25px;
+    }
+    .Create-group-max-member-input-none{
+      margin-bottom: 20px;
+      border: 1px solid grey;
+
+      font-size: 25px;
+
+      width: 260px;
+      height: 30px;
+    }
+    .Create-group-max-member-input-in{
+      margin-bottom: 20px;
+      border: 1px solid grey;
+
+      font-size: 25px;
+
+      width: 50px;
+      height: 30px;
+
+    }
+
+
+  .Create-group-button-con{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+
+    width: 100%;
+  }
+    .Create-group-button-con > button{
+      border: 0;
+      border-radius: 10px;
+      background-color:green;
+
+      font-size: 20px;
+      font-weight: 700;
+      color: rgb(220, 253, 215);
+
+      width: 130px;
+      height: 30px;
+    }
