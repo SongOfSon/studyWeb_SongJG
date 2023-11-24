@@ -1,4 +1,8 @@
+// React import
 import React from 'react';
+
+// CSS import
+import "./GroupModal.css"
 
 const GroupModal = ( props ) => {
 // data - only read
@@ -27,10 +31,11 @@ const GroupModal = ( props ) => {
     }else if(maxMemberNum > currentMemberNum){
       const savedUserData = props.generalUserData;
       const savedGroupData = props.generalGroupData;
-      savedUserData[props.currentLoginUser.userNum].userJoinGroup.push(props.clickedModalNum);
-      savedGroupData[props.clickedModalNum].groupMamberList.push(props.currentLoginUser.userName);
-      console.log(props.currentLoginUser.userName);
-      savedGroupData[props.clickedModalNum].groupCurrentMember++;
+
+      savedUserData[props.currentLoginUser.userNum].userJoinGroup.push(props.groupDataT[props.clickedModalNum].groupId);
+
+      savedGroupData[props.groupDataT[props.clickedModalNum].groupId].groupMamberList.push(props.currentLoginUser.userName);
+      savedGroupData[props.groupDataT[props.clickedModalNum].groupId].groupCurrentMember++;
       props.setGeneralGroupData(savedGroupData);
       props.setGeneralUserData(savedUserData);
       alert('참여 완료');

@@ -1,0 +1,144 @@
+.Mileage-list-check-button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  background-color: rgb(145, 189, 255);
+  color: black;
+
+  width: 180px;
+  
+  height: 38px;
+  font-size: 19px;
+  font-weight: bold;
+  text-align: center;
+}
+  /* back ground*/
+.Mileage-list-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:500;
+}
+
+/* modal */
+.Mileage-list-modal{
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid rgb(179, 221, 186);
+  border-radius: 20px;
+  background-color: rgb(223, 245, 226);
+
+  width: 550px;
+  height: 700px;
+  
+  color: black;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  z-index: 999;
+}
+  /* modal header */
+  .Mileage-list-modal-header{
+    display: flex;
+    justify-content:right;
+
+    padding: 10px 20px 0px 20px;
+  }
+    .Mileage-list-modal-header-exit-button{
+      background-color: inherit;
+
+      width: 25px;
+      height: 25px;
+
+      color: rgb(252, 71, 71);
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+  /* modal body */
+    .Mileage-list-modal-body{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      width: 100%;
+      height: 70%;
+
+      padding: 20px;
+    }
+    .Mileage-list-modal-body-table{
+      margin: 20px 0 20px 0;
+      width: 100%;
+      height: auto;
+    }
+      .Mileage-list-modal-body-table-header{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr, 1fr;
+
+        border-top: 3px solid rgb(0, 233, 39);
+        border-bottom: 3px solid rgb(0, 233, 39);
+
+        background-color: rgb(150,245,123);
+
+        margin-bottom: 5px;
+      }
+
+      .Mileage-list-modal-body-table-body{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr, 1fr;
+
+        width: 100%;
+        height: auto;
+      }
+        .Mileage-list-modal-body-td{
+          border-bottom: 1px solid rgb(0, 233, 39);
+        }
+  /* modal footer */
+  .Mileage-list-modal-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+    .Mileage-list-CustomPagenation-con{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .Mileage-list-modal-footer-buttons{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 75%;
+    }
+      .Mileage-list-modal-footer-check-mileage-button,
+      .Mileage-list-modal-footer-button{
+        margin: 20px 10px 0 10px;
+        border-radius: 10px;
+
+        font-size: 20px;
+
+        width: 190px;
+        height: 50px;
+      }
+      .Mileage-list-modal-footer-check-mileage-button{
+        background-color: rgb(150,245,123);
+      }

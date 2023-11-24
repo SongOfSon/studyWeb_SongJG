@@ -1,6 +1,10 @@
-import axios from "axios";
+// React import
 import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+// CSS import
+import "./WritePost.css"
 
 const WritePost = (props) => {
 // React hooks

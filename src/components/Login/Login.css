@@ -1,0 +1,117 @@
+/* background */
+.Login-wrapper-show-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:500;
+}
+
+/* login Button */
+.Login-modal-open-Btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border: 0;
+    border-radius: 10px;
+    background-color: rgb(47, 173, 43);
+
+    width: 100px;
+    height: 35px;
+    font-size: 20px;
+    font-weight: 900;
+
+    font-size: 20px;
+    color: white;
+}
+
+/* login modal window */
+.Login-modal-wrapper{
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid rgb(179, 221, 186);
+    border-radius: 20px;
+    background-color: rgb(223, 245, 226);
+
+    width: 450px;
+    height: 400px;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    z-index: 999;
+}
+    /* Login modal header */
+    .Login-modal-header{
+        display: flex;
+        justify-content:right;
+
+        padding: 10px 20px 0px 20px;
+    }
+    .Login-modal-logo{        
+        width: 120px;
+        height: 120px;
+        margin-bottom: 10px;
+    }
+
+    .Login-modal-close-Btn {
+        background-color: inherit;
+
+        width: 25px;
+        height: 25px;
+
+        color: rgb(252, 71, 71);
+        font-size: 20px;
+        font-weight: 700;
+    }
+    /* Login modal body */
+    .Login-modal-body{
+        padding: 10px 20px 10px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+        .Login-modal-Id-InputBox , .Login-modal-PW-InputBox{
+            border-radius: 8px;
+            border: 0px;
+
+            text-align: left;
+            text-indent: 0.5em;
+            font-size: 20px;
+            color: black;
+            
+
+            width: 250px;
+            height: 50px;
+            outline:none;
+
+            margin-bottom: 20px;
+        }
+
+        .Login-modal-submitBtn{
+            border-radius: 8px;
+            border: 1px solid green;
+            background-color: green;
+
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+
+            width: 80px;
+            height: 30px;
+
+            margin-top: 27px;
+        }
+
+    .Login-modal-footer{
+
+    }

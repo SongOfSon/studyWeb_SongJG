@@ -1,29 +1,32 @@
+// React import
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+// CSS import
+import "./App.css"
+
 // Pages Import
-import {
-  Main,
-  Board,
-  Calendar,
-  Login,
-  MileageShop,
-  Profile,
-  Signup,
-  StudyGroup,
-  Timer,
-  Inquery,
-} from "./IndexControl/PagesList.js";
+import Timer from "./Components/Timer/Timer.js"
+import CalendarPage from "./Components/Calendar/Calendar.js";
+import StudyGroup from "./Components/StudyGroup/StudyGroup.js"
+import Board from "./Components/Board/Board.js"
+import MileageShop from "./Components/MileageShop/MileageShop.js"
+import Inquery from "./Components/Inquery/Inquery.js"
 
 // Components Import
-import {
-  NavigationBar,
-  Footer,
-  NotExistPage,
-  WritePost,
-  CreateGroup,
-} from "./IndexControl/ComponentsList.js";
-import CurrentGroup from "./Pages/CurrentGroup.js";
+import Main from "./Components/Main/Main.js"
+import NavigationBar from "./Components/Main/NavigationBar.js"
+import NotExistPage from "./Components/Common/NotExistPage.js"
+import Footer from "./Components/Main/Footer.js"
+
+import Signup from "./Components/Signup/Signup.js"
+import Profile from "./Components/Profile/Profile.js"
+
+import CreateGroup from "./Components/StudyGroup/CreateGroup.js"
+import CurrentGroup from "./Components/StudyGroup/CurrentGroup.js"
+
+import WritePost from "./Components/Board/WritePost.js"
+
 
 function App() {
   //generalData
@@ -35,7 +38,7 @@ function App() {
       userPassword: "1234",
       userEmail: "",
       userPhoneNum: "",
-      userMileage: "",
+      userMileage: 5000,
       userInterest: "",
       userJoinGroup: [0]
     },
@@ -176,8 +179,8 @@ function App() {
       groupInterest: "테스트 관심 분야",
       groupMaxMember: 10,
       groupCurrentMember: 1,
-      groupMaster:'admin',
-      groupMamberList:['admin',],
+      groupMaster:'관리자',
+      groupMamberList:['관리자',],
       joinable: false
     },
     {
@@ -306,27 +309,129 @@ function App() {
     {userNum: 0,
     userName: "관리자",
     studySubject: '테스트 과목 1',
-    studyTime: 3661,
-    studyDate: "2023-11-14"
+    studyTime: 3600,
+    studyDate: "2023-11-01"
     },
     {userNum: 0,
     userName:"관리자",
     studySubject: '테스트 과목 2',
-    studyTime: 7241,
-    studyDate: "2023-11-14"
+    studyTime: 3601,
+    studyDate: "2023-11-02"
     },
     {userNum: 0,
     userName: "관리자",
     studySubject: '테스트 과목 3',
-    studyTime: 6100,
-    studyDate: "2023-11-14"
+    studyTime: 3602,
+    studyDate: "2023-11-03"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 4',
+    studyTime: 3603,
+    studyDate: "2023-11-04"
+    },
+    {userNum: 0,
+    userName:"관리자",
+    studySubject: '테스트 과목 5',
+    studyTime: 3604,
+    studyDate: "2023-11-05"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 6',
+    studyTime: 3605,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 7',
+    studyTime: 3606,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
+    },
+    {userNum: 0,
+    userName: "관리자",
+    studySubject: '테스트 과목 8',
+    studyTime: 3607,
+    studyDate: "2023-11-06"
     },
   ]);
   const [generalCalendarData, setCalendarData] = useState([
     {
       userNum: "",
-      userName: "",
-      userCalMemo: ""
+      attendanceDate: "",
+      checkBool:false,
     }
   ]);
   const [generalBoardData, setGeneralBoardData] = useState([
@@ -415,8 +520,15 @@ function App() {
       writeDate: "2023-05-11"
     },
   ]);
-
-  const [generalMileageData, setMileageData] = useState({});
+  const [generalMileageData, setMileageData] = useState([
+    {
+      userNum:0,
+      givenType: 'oneHourStudy',
+      recordingTime: 8,
+      givenMileage: 8000,
+      givenDate:'2023-11-06',
+    }
+  ]);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -484,15 +596,6 @@ function App() {
     setGeneralBoardData(copdiedData);
   }
   // control Profile Data Func
-  const changeGroupMember = (groupId) => {
-    const copiedData = generalGroupData;
-    copiedData[groupId].groupCurrentMember --
-    if(copiedData[groupId].groupCurrentMember === 0){
-      let filteredData = copiedData.filter( id => id.groupId !== groupId);
-      return setGeneralGroupData(filteredData);
-    }
-    setGeneralBoardData(copiedData);
-  }
 
   //handle
   const handleLogin = (bool) => setIsLogin(Boolean(bool));
@@ -513,6 +616,17 @@ function App() {
           <Routes>
             <Route path="/" exact element={<Main />} />
             <Route
+              path="/join"
+              exact element={
+                <Signup
+                  generalUserData={generalUserData}
+                  signupAction={signupAction}
+                />
+              }
+            />
+          {isLogin?
+          <>
+              <Route
               path="/Timer"
               exact
               element={
@@ -522,13 +636,15 @@ function App() {
                   generalTimerData={generalTimerData}
                   setTimerData={setTimerData}
                   recordTimeToUser={recordTimeToUser}
+                  generalMileageData={generalMileageData}
+                  setMileageData={setMileageData}
                 />
               }
             />
             <Route 
               path="/Calendar" 
               exact 
-              element={<Calendar 
+              element={<CalendarPage 
                 currentLoginUser={currentLoginUser}
                 generalTimerData={generalTimerData}
                 generalCalendarData={generalCalendarData}
@@ -597,22 +713,16 @@ function App() {
             <Route path="/MileageShop" 
               exact 
               element={<MileageShop 
-                generalUserData={generalUserData}/>} />
+                currentLoginUser={currentLoginUser}
+                generalUserData={generalUserData}
+                setGeneralUserData={setGeneralUserData}
+                generalMileageData={generalMileageData}
+                setMileageData={setMileageData}/>} />
             <Route 
               path="/Inquery" 
               exact 
               element={<Inquery 
                 currentLoginUser={currentLoginUser}/>} />
-            <Route
-              path="/join"
-              exact
-              element={
-                <Signup
-                  generalUserData={generalUserData}
-                  signupAction={signupAction}
-                />
-              }
-            />
             <Route
               path="/Profile"
               exact
@@ -626,12 +736,19 @@ function App() {
                   setGeneralGroupData={setGeneralGroupData}
                   generalTimerData={generalTimerData}
                   setTimerData={setTimerData}
-                  changeGroupMember={changeGroupMember}
+                  generalMileageData={generalMileageData}
+                  setMileageData={setMileageData}
                 />
               }
             />
-            <Route path="/*" exact element={<NotExistPage />} />
+            </>
+            :<></>}
+            <Route 
+              path="/*" 
+              exact element={<NotExistPage
+              isLogin={isLogin} />} />
           </Routes>
+          
         </main>
         <footer className="footer-container">
           <Footer />

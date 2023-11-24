@@ -1,0 +1,89 @@
+/* MileageShop Modal */
+.Mileage-shop-wrapper-backGround{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:500;
+}
+
+.Mileage-shop-Modal-Body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid rgb(179, 221, 186);
+  border-radius: 20px;
+  background-color: rgb(223, 245, 226);
+
+  width: 550px;
+  height: 500px;
+
+  font-size: 18px;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  z-index: 999;
+}
+  .Mileage-shop-Modal-product-list{
+    margin: 25px 10px 10px 10px;
+  }
+    .Mileage-shop-Modal-product-list-body{
+      width: 90%;
+      height: 20px;
+      text-align: center;
+    }
+      .Mileage-shop-Modal-product-list-productName,
+      .Mileage-shop-Modal-product-list-productPrice{
+        padding: 5px;
+        font-size: 20px;
+      }
+
+  .Mileage-shop-Modal-Body-bottom {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+  }
+    .Mileage-shop-Modal-Body-bottom-buttons{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+    .Mileage-shop-Modal-Body-bottom-cancel,
+    .Mileage-shop-Modal-Body-bottom-purchase{
+      border: 0;
+      border-radius: 10px;
+      padding: 5px;
+
+      width: 55px;
+      font-size: 21px;
+      font-weight: 700;
+      color: rgb(220, 253, 215);
+    }
+      .Mileage-shop-Modal-Body-bottom-cancel{
+        background-color: rgb(255, 65, 65);
+        margin-left: 30px;
+      }
+      .Mileage-shop-Modal-Body-bottom-purchase{
+        background-color: rgb(101, 202, 42);
+        margin-left: 30px;
+      }
+
+  .Mileage-shop-Modal-product-list-foot{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    font-size: 20px;
+  }
+    .Mileage-shop-Modal-product-list-foot-left{
+      margin-right: 50px;
+    }

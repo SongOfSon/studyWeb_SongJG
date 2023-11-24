@@ -1,0 +1,89 @@
+.Group-modal-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:500;
+}
+.Group-modal-body{
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 20px;
+  background-color: rgb(224, 235, 225);
+
+  width: 500px;
+  height: 600px;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  z-index: 999;
+}
+  .Group-modal-body-header{
+    display: flex;
+    justify-content:right;
+  }
+    .Group-modal-close-button{
+      margin: 10px;
+      border: 0px;
+      background-color: rgb(224, 235, 225);
+
+      width: 25px;
+      height: 25px;
+
+      color: rgb(252, 71, 71);
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+  .Group-modal-body-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin:10px 15px 10px 15px;
+    
+    width: 100%;
+    height: 400px;
+
+    font-size: 25px;
+  }
+    .Group-modal-body-content-top-groupName{
+      margin: 0 0 10px 0;
+    }
+    .Group-modal-body-content-top-groupInfo{
+      margin: 0 0 10px 0;
+      height: 300px;
+    }
+    .Group-modal-body-content-groupInterest{
+      margin: 0 0 10px 0;
+    }
+    .Group-modal-body-content-groupMamber{
+      margin: 0 0 10px 0;
+    }
+
+  .Group-modal-body-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin:10px 15px 10px 15px;
+  
+    width: 90%;
+  }
+    .Group-modal-body-footer-joinGroup-btn{
+      border:none;
+      border-radius: 10px;
+      background-color: rgb(218, 202, 31);
+      
+      font-size: 23px;
+      font-weight: 600;
+
+      width: 110px;
+    }

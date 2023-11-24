@@ -1,6 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
+// React import
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+// CSS import
+import "./CreateGroup.css"
 
 const CreateGroup = ( props ) => {
 // React hooks
@@ -55,17 +58,13 @@ const CreateGroup = ( props ) => {
               currentUserDataCopied[props.currentLoginUser.userNum].userJoinGroup.push(newGroupData.groupId);
               props.setGeneralUserData(currentUserDataCopied);
               props.setGeneralGroupData([...props.generalGroupData, newGroupData]);
+              alert('그룹 생성이 완료되었습니다');
               return navigate('/StudyGroup');
-            }alert('인원수는 1 ~ 10 사이에서 입력해주세요');
-              return;
-          }alert('인원수를 입력해주세요');
-            return;
-        }alert('관심분야를 설정해주세요');
-         return;
-      }alert('그룹 소개글을 입력해주세요');
-        return;
-    }alert('그룹명을 입력해주세요');
-      return;
+            }return alert('인원수는 1 ~ 10 사이에서 입력해주세요');
+          }return alert('인원수를 입력해주세요');
+        }return alert('관심분야를 설정해주세요');
+      }return alert('그룹 소개글을 입력해주세요');
+    }return alert('그룹명을 입력해주세요');
   };
 
 // UI
@@ -73,49 +72,53 @@ const CreateGroup = ( props ) => {
     <div 
       className="Create-group-wrapper">
       <h2 className="Create-group-header">새 그룹 만들기</h2>
-      <form 
-        className="Create-group-form"
-        onSubmit={createNewGroup}>
+      <div className="Create-group-form">
           <div className="Create-group-input-con">
-            <input 
-              className="Create-group-name-input" 
-              type="text"
-              value={groupName} 
-              onChange={e => handleGroupName(e)} 
-              placeholder="그룹명을 입력하세요"/>
-            <textarea 
-              className="Create-group-info-input" 
-              type="textarea"
-              value={groupInfo} 
-              onChange={e => handleGroupInfo(e)} 
-              placeholder="그룹 소개글을 입력하세요"/>
-            <div className='Create-group-interest-select-con'>
-              <label>관심분야</label>
-              <select 
-                className="Create-group-interest-select"
-                value={groupInterest} 
-                onChange={e => handleGroupInterest(e)}>
-                {interstList.map((param) => 
-                <option 
-                  value={param.value} 
-                  key={param.value}>
-                    {param.name}
-                  </option>)}
-              </select>
-            </div>
-            <div className='Create-group-max-member-input-con'>
+            <div className="Create-group-input-con-right">
               <input 
-                className={groupMaxMember?'Create-group-max-member-input-in':'Create-group-max-member-input-none'}
-                type='text'
-                value={groupMaxMember}
-                onChange={e => handleGroupMaxMember(e)}
-                placeholder='인원 수를 적어주세요'/>명
+                className="Create-group-name-input" 
+                type="text"
+                value={groupName} 
+                onChange={e => handleGroupName(e)} 
+                placeholder="그룹명을 입력하세요"/>
+              <textarea 
+                className="Create-group-info-input" 
+                type="textarea"
+                value={groupInfo} 
+                onChange={e => handleGroupInfo(e)} 
+                placeholder="그룹 소개글을 입력하세요"/>
             </div>
-            <div className='Create-group-button-con'>
-              <button type="submit">등록</button>
+            <div className="Create-group-input-con-left">
+              <div className='Create-group-interest-select-con'>
+                <label>관심분야</label>
+                <select 
+                  className="Create-group-interest-select"
+                  value={groupInterest} 
+                  onChange={e => handleGroupInterest(e)}>
+                  {interstList.map((param) => 
+                  <option 
+                    value={param.value} 
+                    key={param.value}>
+                      {param.name}
+                    </option>)}
+                </select>
+              </div>
+              <div className='Create-group-max-member-input-con'>
+                <input 
+                  className={groupMaxMember?
+                  'Create-group-max-member-input-in':
+                  'Create-group-max-member-input-none'}
+                  type='text'
+                  value={groupMaxMember}
+                  onChange={e => handleGroupMaxMember(e)}
+                  placeholder='인원 수를 적어주세요'/> 명
+              </div>
             </div>
           </div>
-      </form>
+      </div>
+      <div className='Create-group-button-con'>
+        <button onClick={()=>createNewGroup()}>등록</button>
+      </div>
     </div>
   );
 };

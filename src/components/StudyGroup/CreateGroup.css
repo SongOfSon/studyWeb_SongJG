@@ -1,0 +1,140 @@
+.Create-group-wrapper{
+  display: flex;
+  flex-direction: column;
+
+  border: 8px solid rgb(73, 46, 0);
+  border-radius: 10px;
+  background-color: rgb(55, 121, 47);
+  padding: 10px;
+}
+/* header */
+  .Create-group-header{
+    color: rgb(226, 226, 226);
+    font-size: 40px;
+  }
+
+  /* body */
+  .Create-group-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    margin-top: 50px;
+    width: 100%;
+  }
+    .Create-group-input-con{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      margin: 20px;
+      width: 95%;
+    }
+    .Create-group-input-con-right{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+     
+      background-color: rgb(189, 179, 92);
+      width: 670px;
+      height: 350px;
+
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .Create-group-input-con-left{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+     
+      background-color: rgb(241, 229, 117);
+      width: 500px;
+      height: 200px;
+
+      border-radius: 10px;
+      padding: 20px;
+    }
+      .Create-group-name-input{
+        margin-bottom: 20px;
+
+        width: 620px;
+        height: 50px;
+        
+        padding-left: 10px;
+        font-size: 25px;
+      }
+
+      .Create-group-info-input{
+        width: 620px;
+        height: 200px;
+        
+        padding-left: 10px;
+        font-size: 25px;
+      }
+
+    .Create-group-interest-select-con{
+      display: flex;
+      margin: 20px 0 20px 0;
+    }
+      .Create-group-interest-select-con > label{
+        font-size: 25px;
+        padding-right: 15px;
+      }
+      .Create-group-interest-select{
+        font-size: 25px;
+        width: 220px;
+      }
+
+
+    .Create-group-max-member-input-con{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+
+      height: 80px;
+      width: 73%;
+      font-size: 25px;
+    }
+    .Create-group-max-member-input-none,
+    .Create-group-max-member-input-in{
+      margin-right: 20px;
+      font-size: 25px;
+
+      height: 50px;
+      padding: 10px;
+    }
+    .Create-group-max-member-input-none{
+      width: 260px;
+      height: 30px;
+    }
+    
+    .Create-group-max-member-input-in{
+      width: 50px;
+      height: 30px;
+    }
+
+
+  .Create-group-button-con{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: 100%;
+  }
+    .Create-group-button-con > button{
+      margin: 0 20px 20px 0;
+      border: 0;
+      border-radius: 10px;
+      background-color:rgb(128, 87, 0);
+
+      font-size: 25px;
+      font-weight: 700;
+      color: rgb(220, 253, 215);
+
+      width: 100px;
+      height: 45px;
+    }

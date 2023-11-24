@@ -1,0 +1,193 @@
+.CurrentGroup-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  border: 10px solid rgb(66, 37, 14);
+  border-radius: 5px;
+  background-color: rgb(55, 121, 47);
+
+  padding: 5px;
+
+  width: 1350px;
+  height: 780px;
+}
+
+/* left list */
+.CurrentGroup-group-list{
+  width: 350px;
+  font-size: 20px;
+}
+/* list top css */
+  .CurrentGroup-group-list-top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 10px 10px 0 0;
+    width: 350px;
+
+    background-color: greenyellow;
+  }
+
+    .CurrentGroup-group-list-userName,
+    .CurrentGroup-group-list-userName-side{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      height: 45px;
+      width: auto;
+      padding: 0 20px 0 20px;
+    }
+/* list bottom css */
+  .CurrentGroup-group-list-bottom{
+    background-color: rgb(255, 234, 47);
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    height: 350px;
+    padding: 20px 10px 10px 20px;
+  }
+
+    .CurrentGroup-group-list-group-name{
+      border-radius: 10px;
+      background-color: rgb(192, 177, 108);
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+    }
+/* right group */
+.CurrentGroup-group-info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  width: 950px;
+  height: 700px;
+
+  font-size: 20px;
+  font-weight: 510;
+  color: rgb(26, 34, 29);
+}
+/* group master con */
+  .CurrentGroup-group-master-con,
+  .CurrentGroup-group-master-my-con{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    border-radius: 10px;
+
+    margin: 10px;
+    padding: 5px 15px 5px 15px;
+
+    width: 290px;
+  }
+  .CurrentGroup-group-master-my-con{
+    background-color: rgb(156, 145, 255);
+  }
+  .CurrentGroup-group-master-con{
+    background-color: rgb(202, 171, 31);
+  }
+
+/* group member con */
+    .CurrentGroup-group-member-con{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+  
+      margin: 10px 0 10px 0;
+      gap: 10px 20px;
+    }
+      .CurrentGroup-group-member-info-con,
+      .CurrentGroup-group-member-my-con{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        border-radius: 10px;
+        
+        margin: 10px;
+        padding: 5px 15px 5px 15px;
+
+        width: 280px;
+      }
+      .CurrentGroup-group-member-info-con{
+        background-color: rgb(192, 177, 108);
+      }
+      .CurrentGroup-group-member-my-con{
+        background-color: rgb(156, 145, 255);
+      }
+      
+      .CurrentGroup-group-member-to-master{
+        border-radius: 10px;
+        background-color: rgb(37, 233, 247);
+        width: 20px;
+        height: 20px;
+      }
+
+      .CurrentGroup-group-info-bottom{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+      
+        width: 100%;
+      }
+      .CurrentGroup-group-info-bottom-handle-group-master,
+      .CurrentGroup-group-info-bottom-handle-group-exit{
+        border: none;
+        border-radius: 10px;
+      
+        font-size: 20px;
+        width: 145px;
+        text-align: center;
+        margin-right: 10px;
+        padding: 5px;
+      } 
+      .CurrentGroup-group-info-bottom-handle-group-master{
+        background-color: rgb(202, 171, 31);
+      }
+      .CurrentGroup-group-info-bottom-handle-group-exit{
+        background-color: rgb(202, 134, 31);
+      }
+
+/* master member common css */
+    .CurrentGroup-group-master-name-con,
+    .CurrentGroup-group-member-name-con,
+    .CurrentGroup-group-master-today-time-con,
+    .CurrentGroup-group-master-all-time-con,
+    .CurrentGroup-group-member-today-time-con,
+    .CurrentGroup-group-member-all-time-con{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 100%;
+      height: 30px;
+    }
+.CurrentGroup-group-info-no-show-con{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 950px;
+  height: 700px;
+}
+.CurrentGroup-group-info-no-show{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  border-radius: 10px;
+  background-color: rgb(183, 200, 218);
+  width: 45%;
+  height: 65px;
+}

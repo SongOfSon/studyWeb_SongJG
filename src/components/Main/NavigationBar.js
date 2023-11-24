@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+// React import
+import React from "react";
 import { Link } from "react-router-dom";
 
-import "../../IndexControl/PagesList";
-import { Login } from "../../IndexControl/PagesList";
+// component import
+import Login from '../Login/Login.js'
+
+// CSS import
+import "./NavigationBar.css"
 
 const NavigationBar = props => {
   // state

@@ -1,0 +1,178 @@
+.Profile-wrapper{
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 20px #f5f5f5;
+
+    width: 100%;
+}
+
+    .Profile-header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        margin: 10px 0 30px 0;
+        padding: 0 20px 10px 20px;
+    }
+
+    .Profile-header > h2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 25px;
+        padding: 0 30px 0 0;
+    }
+        .Profile-membership{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            
+            width: 300px;
+            height: 100%;
+        }
+        .Profile-membership-time{
+            border-radius: 10px;
+            background-color: rgb(161, 243, 67);
+            text-align: center;
+            padding: 5px;
+
+            width: 150px;
+        }
+        .Profile-membership-button{
+            border: 0;
+            border-radius: 10px;
+            background-color: rgb(64, 194, 107);
+
+            width: 100px;
+            height: 40px;
+
+            font-size: 25px;
+            color: rgb(245, 245, 245);
+            }
+    .Profile-userName-box{
+        border: 1px solid yellowgreen;
+        border-radius: 9px;
+
+        max-width: 100%;
+
+        margin-right: 10px;
+
+        padding: 10px;
+    }
+    
+
+.ClientInfoTable{
+  border-collapse :collapse;
+
+  width: 100%;
+}
+    .ClientInfoTable-timer{
+      font-size: 25px;
+    }
+        .ClientInfoTable > tr > div{
+            font-size: 25px;
+            color: black;
+        }
+        .ClientInfoTable > tr > td {
+            padding: 5px;
+            width: 100%;
+        }
+        
+        .ClientInfoTable > tr > td > button{
+            border-radius: 10px;
+            background-color: rgb(145, 189, 255);
+            
+            font-weight: bold;
+            font-size: 19px;
+            text-align: center;
+
+            width: 180px;
+            height: auto;
+
+            float: right;
+
+            margin-right: 10px;
+            padding: 5px;
+        }
+
+    .dataViewLine{
+      padding: 5px;
+      width: auto;
+      height: 100px;
+    }
+      .dataViewLine-studyGroup{
+        display: flex;
+
+        width: auto;
+        height: 180px;
+
+        font-size: 15px;
+      }
+
+    .makeLine {
+        border: 1px solid rgb(160, 160, 160);
+        background-color: rgb(160, 160, 160);
+
+        color: white;
+        
+        height: 30px;
+        width: 500px;
+        font-size: 25px;;
+    }
+
+    .selectInterstBox{
+        width: 200px;
+        margin-right: 20px;
+    }
+
+    .selectBoxBtn{
+        margin-bottom: 7px;
+        border-radius: 7px;
+        border: 1px solid green;
+        background-color: green;
+
+        width: 80px;
+        height: 40px;
+
+        font-size: 18px;
+        color: white;
+        font-weight: bold;
+    }
+
+.Profile-group-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+
+    border: 1px solid green;
+    border-radius: 10px;
+    background-color: rgb(195, 223, 169);
+    padding: 10px;
+    margin: 8px;    
+
+    width: 200px;
+    height: 150px;
+}    
+    .Profile-group-view-groupName,
+    .Profile-group-view-groupMember{
+        font-size: 20px;
+    }
+    .Profile-group-view-bottom{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .Profile-group-view-quitBtn{
+        background-color:inherit;
+        font-size: 22px;
+        color: rgb(216, 31, 18);
+        width: 30px;
+    }

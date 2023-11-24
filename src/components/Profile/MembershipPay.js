@@ -1,6 +1,11 @@
-import React from 'react';
-import IamportPayment from "../MileageShop/IamportPayment";
-import { useState } from 'react';
+// React import 
+import React, { useState }  from 'react';
+
+// custom components import
+import IamportPayment from "../Common/IamportPayment";
+
+// CSS import
+import "./MembershipPay.css"
 
 const MembershipPay = (props) => {
 // Modal
@@ -32,12 +37,13 @@ const closeModal = (e) => {
               <img className='Membership-madal-productImg'
                 src={process.env.PUBLIC_URL + "./productImg/ticket.png"} alt='membershipticket'/>
               <div className='Membership-madal-content-bottom'>
-                <div className='Membership-madal-product'>Membership 30days</div>
-                <div className='Membership-madal-price'>1000원</div>
+                <div className='Membership-madal-product'>Membership 30days + 마일리지</div>
+                <div className='Membership-madal-price'>15000원</div>
               </div>
-            <div className='Membership-madal-bottom'>
-              <IamportPayment totalPrice={1000}/>
-            </div>
+              <div className='Membership-madal-bottom'>
+                <IamportPayment 
+                  totalPrice={15000}/>
+              </div>
             </div>
           </div>
         </div>

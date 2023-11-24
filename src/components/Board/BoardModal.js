@@ -1,4 +1,8 @@
+// React import
 import React, { useState } from 'react';
+
+// CSS import
+import "./BoardModal.css"
 
 const BoardModal = ( props ) => {  
 // data
