@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+// custom Package import
+import moment from "moment";
+
 // CSS import
 import "./WritePost.css"
 
@@ -15,9 +18,7 @@ const WritePost = (props) => {
   const [boardTitle, setBoardTitle] = useState('');
   const [boardContent, setBoardContent] = useState('');
   const date = new Date();
-  const dateFormat = date.getFullYear() + '-' + 
-                     (date.getMonth() + 1 < 9 ? "0"+(date.getMonth() + 1):(date.getMonth() + 1)) + '-' + 
-                     (date.getDate()< 9 ? "0"+(date.getDate() ):(date.getDate() ));
+  const dateFormat = moment(date).format('YYYY-MM-DD')
   
   const newBoardData = {
     id : props.generalBoardData.at(-1).id + 1,

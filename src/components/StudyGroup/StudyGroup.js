@@ -106,6 +106,8 @@ return (
               setGeneralUserData={props.setGeneralUserData}
               generalGroupData={props.generalGroupData}
               setGeneralGroupData={props.setGeneralGroupData}
+              generalTimerData={props.generalTimerData}
+              setTimerData={props.setTimerData}
             />:<></>}
           </>
         ))}

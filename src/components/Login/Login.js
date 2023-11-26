@@ -1,7 +1,9 @@
 // React import
-import axios from 'axios';
 import React, {  useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+// custom Pakcage import
+import moment from 'moment';
 
 // CSS import
 import "./Login.css"
@@ -11,68 +13,66 @@ const Login = ( props ) => {
 const navigate = useNavigate('');
 
 // User Data
-    const [userId, setUserId] = useState('');
-    const [userPW, setUserPW] = useState('');
+  const [userId, setUserId] = useState('');
+  const [userPW, setUserPW] = useState('');
+  const date = new Date();
+  const dateFormat = moment(date).format('YYYY-MM-DD');
 
 // Modal
-    const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
+  const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
 // handle
-    const handleUserId = e => setUserId(e.target.value);
-    const handleUserPW = e => setUserPW(e.target.value);
-    const openModal = (e) => {
-      document.body.style.overflow = "hidden"; // 스크롤 감춤
-      setLoginModalIsOpen(true);
-    };
-    const closeModal = (e) => {
-      document.body.style.overflow = "unset";
-      setLoginModalIsOpen(false);
-    };
+  const handleUserId = e => setUserId(e.target.value);
+  const handleUserPW = e => setUserPW(e.target.value);
+  const openModal = (e) => {
+    document.body.style.overflow = "hidden"; // 스크롤 감춤
+    setLoginModalIsOpen(true);
+  };
+  const closeModal = (e) => {
+    document.body.style.overflow = "unset";
+    setLoginModalIsOpen(false);
+  };
 
-    const handleLogin = async() => {
-      if(userId ==='' || userPW === ''){
-        alert("공란없이 입력해주세요");
-        setUserId('');
-        setUserPW('');
-        return;
+  const checkAttendance = (userNum) => {
+    const copiedCal = props.generalCalendarData;
+    const attendance = {
+      userNum: userNum,
+      attendanceDate: dateFormat,
+      checkBool:false,
+    }
+
+    for(let i = 0 ; i < props.generalCalendarData.length ; i++){
+      if(props.generalCalendarData[i].userNum === userNum){
+        if(props.generalCalendarData[i].attendanceDate !== dateFormat){
+          props.setCalendarData([...copiedCal, attendance]);
+        }else if(props.generalCalendarData[i].attendanceDate === dateFormat){
+          props.setCalendarData([...copiedCal]);
+        }
       }
-      const currentUserData = {
-        user_id:userId,
-        password:userPW,
-      };
-      await axios
-        .get('서버주소', JSON.stringify(currentUserData),{
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-        .then((response) => {
-          alert('로그인에 성공했습니다!');
-          navigate('/');
-        })
-        .catch(
-          (e) => alert(JSON.parse(e.request.response).error) // 오류 출력
-        );
-    };
-  
-    const handleLoginOnLocal = () => {
-      if(userId !== '' && userPW !== ''){
-        for(let i = 0 ; i < props.generalUserData.length ; i++){
-          if(props.generalUserData[i].userId === userId &&
-            props.generalUserData[i].userPassword === userPW){
+    }
+  }
+
+  const handleLoginOnLocal = () => {
+    if(userId !== '' && userPW !== ''){
+      for(let i = 0 ; i < props.generalUserData.length ; i++){
+        if(props.generalUserData[i].userId === userId &&
+          props.generalUserData[i].userPassword === userPW){
             props.loginAction(
               props.generalUserData[i].userNum,
               props.generalUserData[i].userName,
               props.generalUserData[i].userId,
               props.generalUserData[i].userPassword,
             );
+            checkAttendance(props.currentLoginUser.userNum);
             props.handleLogin(true);
             alert(`${props.generalUserData[i].userName}님 접속을 환영합니다`);
             closeModal();
             navigate('/');
-          }
         }
-      }else alert('다시 입력해주세요');
-    }
+      }
+    }else alert('다시 입력해주세요');
+  }
+
+    
 
 // UI
   return (

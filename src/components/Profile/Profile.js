@@ -96,6 +96,8 @@ return (
             setGeneralGroupData={props.setGeneralGroupData}
             generalTimerData={props.generalTimerData}
             setTimerData={props.setTimerData}
+            generalCalendarData={props.generalCalendarData}
+            setCalendarData={props.setCalendarData}
             generalMileageData={props.generalMileageData}
             setMileageData={props.setMileageData}
           />  

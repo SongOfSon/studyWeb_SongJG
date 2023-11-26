@@ -20,6 +20,38 @@ const MileageListModal = ( props ) => {
   const offset = (page - 1) * limit;
 
   // func
+  const attendanceTypeMileage = () => {
+    let tempNum = 0;
+    let giveMileage = 0;
+    let copiedUserData = props.generalUserData;
+    let copiedCal = props.generalCalendarData;
+    let countTrue = 0;
+    
+    for(tempNum ; tempNum < props.generalCalendarData.length ; tempNum++){
+      if(props.currentLoginUser.userNum === props.generalCalendarData[tempNum].userNum){
+        if(props.generalCalendarData[tempNum].checkBool === false){
+          copiedCal[tempNum].checkBool = true;
+          giveMileage = giveMileage + 1000;
+          countTrue += 1 ;
+        }
+      }
+    }
+    if(countTrue > 0){
+    copiedUserData[props.currentLoginUser.userNum].userMileage = copiedUserData[props.currentLoginUser.userNum].userMileage + giveMileage;
+    props.setGeneralUserData(copiedUserData);
+    props.setCalendarData(copiedCal);
+    props.setMileageData([...props.generalMileageData, {
+      userNum: props.currentLoginUser.userNum,
+      givenType: 'attendance',
+      givenMileage: giveMileage,
+      givenDate: formatDate,
+    }]);
+    countTrue = 0;
+    return alert('지급이 완료 되었습니다');
+    }else if( countTrue === 0 ){
+      return alert('받을 수 있는 마일리지가 없습니다');
+    }
+  }
   const handleModal = boolValue => {
     setCheckModal(boolValue);
   }
@@ -121,9 +153,13 @@ const MileageListModal = ( props ) => {
         </div>
         <div className='Mileage-list-modal-footer-buttons'>
           <button 
-            className='Mileage-list-modal-footer-check-mileage-button'
+            className='Mileage-list-modal-footer-check-mileage-oneHourStudyType-button'
             onClick={()=>oneHourStudyTypeMileage()}>
-            마일리지 확인하기</button>
+            시간 확인하기</button>
+            <button 
+            className='Mileage-list-modal-footer-check-mileage-attendanceType-button'
+            onClick={()=>attendanceTypeMileage()}>
+            출석 확인하기</button>
         </div>
       </div>
     </div>

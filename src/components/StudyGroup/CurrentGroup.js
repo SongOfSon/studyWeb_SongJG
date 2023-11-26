@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 // CSS import
 import './CurrentGroup.css';
+import moment from 'moment';
 
 const CurrentGroup = ( props ) => {
 // React hook
@@ -16,9 +17,7 @@ const CurrentGroup = ( props ) => {
   const currentUserName = props.currentLoginUser.userName;
   const currentUserJoinedGroupList = props.generalUserData[props.currentLoginUser.userNum].userJoinGroup;
   const date = new Date();
-  const dateFormat = date.getFullYear() + '-' + 
-                     (date.getMonth() + 1 < 9 ? "0"+(date.getMonth() + 1):(date.getMonth() + 1)) + '-' + 
-                     (date.getDate()< 9 ? "0"+(date.getDate() ):(date.getDate() ));
+  const dateFormat = moment(date).format('YYYY-MM-DD');
 
   const currentGroupTodayTime = ( Member, returnType ) => {
     let time = 0;
@@ -47,6 +46,134 @@ const CurrentGroup = ( props ) => {
     }
   }
 
+  const todayBest = () =>{
+    let todayBestGroupMember = '';
+    let compareA = {
+      userName : '',
+      time:0,
+    };
+    let compareB = {
+      userName : '',
+      time:0,
+    };
+
+    for(let memIdx = 0 ; memIdx < props.generalGroupData.length ; memIdx++){
+      for(let timeIdx = 0 ; timeIdx < props.generalTimerData.length ; timeIdx++){
+        if(props.generalGroupData[clickedGroupNum].groupMamberList.length < 2){
+          return '멤버 부족'
+        }
+        if(props.generalGroupData[clickedGroupNum].groupMamberList[memIdx] === props.generalTimerData[timeIdx].userName){
+          if(props.generalTimerData[timeIdx].studyDate === moment(date).format('YYYY-MM-DD')){
+            compareA.userName = props.generalGroupData[clickedGroupNum].groupMamberList[memIdx];
+            compareA.time += props.generalTimerData[timeIdx].studyTime;
+            }
+          }
+        }
+        if( compareA.time > compareB.time ){
+          compareB = compareA;
+          compareA = {
+            userName : '',
+            time:0,
+          };
+        }else if(compareA.time <= compareB.time){
+          
+        }
+      }todayBestGroupMember = compareB.userName;
+    if(compareB.time < 3600){
+      return '시간 부족'
+    }else return  `${todayBestGroupMember} 님`;
+  }
+  const whatThisWeek = (type) =>{
+    const tempDate = new Date();
+    const thisWeekStart = tempDate.setDate(tempDate.getDate() - tempDate.getDay());
+    const thisWeekEnd = tempDate.setDate(tempDate.getDate() +6);
+    if(type === 'start'){
+      return moment(thisWeekStart).format('YYYY-MM-DD');
+    }else if(type === 'end'){
+      return moment(thisWeekEnd).format('YYYY-MM-DD');
+    }
+  }
+  const weekBest = () => {
+    let todayBestGroupMember = '';
+    let compareA = {
+      userName : '',
+      time:0,
+    };
+    let compareB = {
+      userName : '',
+      time:0,
+    };
+    for(let memIdx = 0 ; memIdx < props.generalGroupData.length ; memIdx++){
+      compareA.userName = props.generalGroupData[clickedGroupNum].groupMamberList[memIdx];
+
+      for(let timeIdx = 0 ; timeIdx < props.generalTimerData.length ; timeIdx++){
+        if(props.generalGroupData[clickedGroupNum].groupMamberList.length < 2){
+          return '멤버 부족'
+        }
+        if(props.generalGroupData[clickedGroupNum].groupMamberList[memIdx] === props.generalTimerData[timeIdx].userName){
+          if(props.generalTimerData[timeIdx].studyDate >= whatThisWeek('start') &&
+             props.generalTimerData[timeIdx].studyDate <= whatThisWeek('end') ){
+              compareA.time = compareA.time + Number(props.generalTimerData[timeIdx].studyTime);
+            }
+          }
+        }
+        if( compareA.time > compareB.time ){
+          compareB = {
+            userName : compareA.userName,
+            time:compareA.time,
+          };
+          compareA = {
+            userName : '',
+            time:0,
+          };
+        }else if(compareA.time <= compareB.time){
+          
+        }
+      }todayBestGroupMember = compareB.userName;
+    if(compareB.time < 3600){
+      return '시간 부족'
+    }else return `${todayBestGroupMember} 님`;
+  }
+  const monthBest = () =>{
+    let monthBestGroupMember = '';
+    let compareA = {
+      userName : '',
+      time:0,
+    };
+    let compareB = {
+      userName : '',
+      time:0,
+    };
+
+    for(let memIdx = 0 ; memIdx < props.generalGroupData.length ; memIdx++){
+      compareA.userName = props.generalGroupData[clickedGroupNum].groupMamberList[memIdx];
+
+      for(let timeIdx = 0 ; timeIdx < props.generalTimerData.length ; timeIdx++){
+        if(props.generalGroupData[clickedGroupNum].groupMamberList.length < 2){
+          return '멤버 부족'
+        }
+        if(props.generalGroupData[clickedGroupNum].groupMamberList[memIdx] === props.generalTimerData[timeIdx].userName){
+          if(props.generalTimerData[timeIdx].studyDate.slice(0, 7) === moment(date).format('YYYY-MM')){
+            compareA.time = compareA.time + Number(props.generalTimerData[timeIdx].studyTime);
+            }
+          }
+        }
+        if( compareA.time > compareB.time ){
+          compareB = {
+            userName : compareA.userName,
+            time : compareA.time,
+          };
+        }
+        compareA = {
+          userName : '',
+          time:0,
+        }
+      }monthBestGroupMember = compareB.userName;
+    if(compareB.time < 3600){
+      return '시간 부족'
+    }else return `${monthBestGroupMember} 님`;
+  }
+
   const handleGroupQuit = (groupId) =>{
     let savedUserData = props.generalUserData;
     let savedGroupData = props.generalGroupData;
@@ -70,7 +197,6 @@ const CurrentGroup = ( props ) => {
       let filterdMember = savedGroupData[groupId].groupCurrentMember - 1; 
       savedGroupData[groupId].groupMamberList = filteredGroup;
       savedGroupData[groupId].groupCurrentMember = filterdMember;
-      console.log(savedGroupData[groupId]);
       props.setGeneralGroupData(savedGroupData);
       alert('탈퇴 완료 되었습니다');
       nav("/currentgroup");}
@@ -128,7 +254,7 @@ const CurrentGroup = ( props ) => {
         {props.generalUserData[props.currentLoginUser.userNum].userJoinGroup.length !== 0?
           defaultShowGroup !== false?
             <>
-              {props.generalGroupData.map(( generalGroup, idxP, generalGroupData) =>(
+              {props.generalGroupData.map(( generalGroup, idx, generalGroupData) =>(
                 generalGroup.groupId === clickedGroupNum?
                 <div className={
                   props.currentLoginUser.userName === generalGroup.groupMaster?
@@ -153,8 +279,20 @@ const CurrentGroup = ( props ) => {
                       {currentGroupTodayTime(generalGroup.groupMaster, 'all')}</div>
                   </div>
                 </div>:<></>))}
+                <div className='CurrentGroup-group-best-today-member-con'>
+                  <div className='CurrentGroup-group-best-today-member-p'>금일 최고</div>
+                  <div className='CurrentGroup-group-best-today-member-data'>{todayBest()}</div>
+                </div>
+                <div className='CurrentGroup-group-best-week-member-con'>
+                  <div className='CurrentGroup-group-best-today-member-p'>금주 최고</div>
+                  <div className='CurrentGroup-group-best-today-member-data'>{weekBest()}</div>
+                </div>
+                <div className='CurrentGroup-group-best-month-member-con'>
+                  <div className='CurrentGroup-group-best-today-member-p'>금월 최고</div>
+                  <div className='CurrentGroup-group-best-today-member-data'>{monthBest()}</div>
+                </div>
               <div className='CurrentGroup-group-member-con'>
-                {props.generalGroupData.map(( generalGroup, idxP, generalGroupData) =>(
+                {props.generalGroupData.map(( generalGroup, idx, generalGroupData) =>(
                   generalGroup.groupId === clickedGroupNum?
                     generalGroup.groupMamberList.map((groupMember, idx, ) =>
                     (groupMember !== generalGroup.groupMaster?

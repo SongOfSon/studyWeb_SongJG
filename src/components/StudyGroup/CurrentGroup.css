@@ -72,12 +72,59 @@
   font-weight: 510;
   color: rgb(26, 34, 29);
 }
+/* group members con*/
+.CurrentGroup-group-members-con{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  height: 630px;
+}
+.CurrentGroup-group-member-con{
+  grid-column: 1/5;
+  grid-row: 2/3;
+}
+
+.CurrentGroup-group-best-today-member-con,
+.CurrentGroup-group-best-week-member-con,
+.CurrentGroup-group-best-month-member-con{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  margin: 10px;
+  padding: 5px 15px 5px 15px;
+
+  width: 180px;
+  height: 150px;
+
+  font-weight: 650;
+}
+.CurrentGroup-group-best-today-member-con{
+  background-color: rgb(156, 106, 62);
+}
+.CurrentGroup-group-best-week-member-con{
+  background-color: rgb(200, 234, 236);
+}
+.CurrentGroup-group-best-month-member-con{
+  background-color: rgb(247, 233, 37);
+}
+.CurrentGroup-group-best-today-member-data{
+  margin-top: 10px;
+}
+
+
+
 /* group master con */
   .CurrentGroup-group-master-con,
   .CurrentGroup-group-master-my-con{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
 
     border-radius: 10px;
 
@@ -88,9 +135,11 @@
   }
   .CurrentGroup-group-master-my-con{
     background-color: rgb(156, 145, 255);
+    height: 150px;
   }
   .CurrentGroup-group-master-con{
     background-color: rgb(202, 171, 31);
+    height: 150px;
   }
 
 /* group member con */
@@ -106,7 +155,8 @@
       .CurrentGroup-group-member-my-con{
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
 
         border-radius: 10px;
         
@@ -114,6 +164,7 @@
         padding: 5px 15px 5px 15px;
 
         width: 280px;
+        height: 135px;
       }
       .CurrentGroup-group-member-info-con{
         background-color: rgb(192, 177, 108);

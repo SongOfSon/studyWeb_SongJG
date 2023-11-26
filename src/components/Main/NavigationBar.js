@@ -46,7 +46,9 @@ const NavigationBar = props => {
                 currentLoginUser={props.currentLoginUser}
                 loginAction={props.loginAction}
                 handleLogin={props.handleLogin}
-                isLogin={props.isLogin}/>
+                isLogin={props.isLogin}
+                generalCalendarData={props.generalCalendarData}
+                setCalendarData={props.setCalendarData}/>
             </div>
             <div className="Signup-NavBar-wrapper">
               <Link to={"/join"}>회원가입</Link>

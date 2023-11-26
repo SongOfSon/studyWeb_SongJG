@@ -1,5 +1,5 @@
 // React import
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // CSS import
@@ -26,6 +26,8 @@ import CreateGroup from "./Components/StudyGroup/CreateGroup.js"
 import CurrentGroup from "./Components/StudyGroup/CurrentGroup.js"
 
 import WritePost from "./Components/Board/WritePost.js"
+
+// custom Package import
 
 
 function App() {
@@ -356,83 +358,132 @@ function App() {
     },
     {userNum: 0,
     userName: "관리자",
-    studySubject: '테스트 과목 8',
+    studySubject: '테스트 과목 9',
     studyTime: 3607,
-    studyDate: "2023-11-06"
+    studyDate: "2023-11-07"
     },
     {userNum: 0,
     userName: "관리자",
-    studySubject: '테스트 과목 8',
+    studySubject: '테스트 과목 10',
     studyTime: 3607,
-    studyDate: "2023-11-06"
+    studyDate: "2023-11-07"
     },
     {userNum: 0,
     userName: "관리자",
-    studySubject: '테스트 과목 8',
+    studySubject: '테스트 과목 11',
     studyTime: 3607,
-    studyDate: "2023-11-06"
+    studyDate: "2023-11-07"
+    },
+    {userNum: 1,
+    userName: "a",
+    studySubject: '테스트 과목 12',
+    studyTime: 3607,
+    studyDate: "2023-11-08"
+    },
+    {userNum: 1,
+    userName: "a",
+    studySubject: '테스트 과목 13',
+    studyTime: 3607,
+    studyDate: "2023-11-08"
+    },
+    {userNum: 1,
+    userName: "a",
+    studySubject: '테스트 과목 14',
+    studyTime: 3607,
+    studyDate: "2023-11-10"
+    },
+    {userNum: 2,
+    userName: "b",
+    studySubject: '테스트 과목 15',
+    studyTime: 3607,
+    studyDate: "2023-11-15"
+    },
+    {userNum: 2,
+    userName: "b",
+    studySubject: '테스트 과목 16',
+    studyTime: 3607,
+    studyDate: "2023-11-15"
+    },
+    {userNum: 3,
+    userName: "c",
+    studySubject: '테스트 과목 17',
+    studyTime: 3607,
+    studyDate: "2023-11-15"
     },
     {userNum: 0,
     userName: "관리자",
-    studySubject: '테스트 과목 8',
+    studySubject: '테스트 과목 18',
     studyTime: 3607,
-    studyDate: "2023-11-06"
+    studyDate: "2023-11-15"
     },
     {userNum: 0,
     userName: "관리자",
-    studySubject: '테스트 과목 8',
+    studySubject: '테스트 과목 19',
     studyTime: 3607,
-    studyDate: "2023-11-06"
+    studyDate: "2023-11-16"
     },
     {userNum: 0,
     userName: "관리자",
-    studySubject: '테스트 과목 8',
+    studySubject: '테스트 과목 20',
     studyTime: 3607,
-    studyDate: "2023-11-06"
+    studyDate: "2023-11-20"
     },
     {userNum: 0,
     userName: "관리자",
-    studySubject: '테스트 과목 8',
-    studyTime: 3607,
-    studyDate: "2023-11-06"
+    studySubject: '테스트 과목 21',
+    studyTime: 3601,
+    studyDate: "2023-11-26"
     },
-    {userNum: 0,
-    userName: "관리자",
-    studySubject: '테스트 과목 8',
-    studyTime: 3607,
-    studyDate: "2023-11-06"
+    {userNum: 1,
+    userName: "a",
+    studySubject: '테스트 과목 22',
+    studyTime: 3602,
+    studyDate: "2023-11-26"
     },
-    {userNum: 0,
-    userName: "관리자",
-    studySubject: '테스트 과목 8',
-    studyTime: 3607,
-    studyDate: "2023-11-06"
+    {userNum: 2,
+    userName: "b",
+    studySubject: '테스트 과목 22',
+    studyTime: 3602,
+    studyDate: "2023-11-22"
     },
-    {userNum: 0,
-    userName: "관리자",
-    studySubject: '테스트 과목 8',
-    studyTime: 3607,
-    studyDate: "2023-11-06"
-    },
-    {userNum: 0,
-    userName: "관리자",
-    studySubject: '테스트 과목 8',
-    studyTime: 3607,
-    studyDate: "2023-11-06"
-    },
-    {userNum: 0,
-    userName: "관리자",
-    studySubject: '테스트 과목 8',
-    studyTime: 3607,
-    studyDate: "2023-11-06"
+    {userNum: 2,
+    userName: "b",
+    studySubject: '테스트 과목 22',
+    studyTime: 3602,
+    studyDate: "2023-11-23"
     },
   ]);
   const [generalCalendarData, setCalendarData] = useState([
     {
-      userNum: "",
-      attendanceDate: "",
+      userNum: 0,
+      attendanceDate: "2023-11-01",
       checkBool:false,
-    }
+    },
+    {
+      userNum: 0,
+      attendanceDate: "2023-11-02",
+      checkBool:false,
+    },
+    {
+      userNum: 0,
+      attendanceDate: "2023-11-03",
+      checkBool:false,
+    },
+    {
+      userNum: 0,
+      attendanceDate: "2023-11-04",
+      checkBool:false,
+    },
+    {
+      userNum: 0,
+      attendanceDate: "2023-11-05",
+      checkBool:false,
+    },
+    {
+      userNum: 0,
+      attendanceDate: "2023-11-06",
+      checkBool:false,
+    },
   ]);
   const [generalBoardData, setGeneralBoardData] = useState([
     {
@@ -529,15 +580,6 @@ function App() {
       givenDate:'2023-11-06',
     }
   ]);
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    fetch("/home")
-      .then(response => response.text())
-      .then(message => {
-        setMessage(message);
-      });
-  }, []);
 
 // generalFunc
   // control User Data Func
@@ -573,7 +615,8 @@ function App() {
       studyDate: date,
     }])
   }
-
+  // control Calendar Data Func
+  
   //control Group Data Func
   const joinGroupAction = (id, newGroup) => {
     generalUserData[id].userJoinGroup = [...generalUserData[id].userJoinGroup ,newGroup];
@@ -610,6 +653,8 @@ function App() {
                 loginAction={loginAction}
                 handleLogin={handleLogin}
                 isLogin={isLogin}
+                generalCalendarData={generalCalendarData}
+                setCalendarData={setCalendarData}
             />
         </header>
         <main className="main-container">
@@ -660,6 +705,8 @@ function App() {
                   setGeneralUserData={setGeneralUserData}
                   generalGroupData={generalGroupData}
                   setGeneralGroupData={setGeneralGroupData}
+                  generalTimerData={generalTimerData}
+                  setTimerData={setTimerData}
                   joinGroupAction={joinGroupAction}
                   handleMaxMember={handleMaxMember}
                 />
@@ -736,6 +783,8 @@ function App() {
                   setGeneralGroupData={setGeneralGroupData}
                   generalTimerData={generalTimerData}
                   setTimerData={setTimerData}
+                  generalCalendarData={generalCalendarData}
+                  setCalendarData={setCalendarData}
                   generalMileageData={generalMileageData}
                   setMileageData={setMileageData}
                 />

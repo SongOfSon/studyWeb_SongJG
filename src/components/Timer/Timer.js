@@ -1,6 +1,8 @@
 // React import
 import React, { useEffect, useState } from 'react';
 
+// custom Package import
+import moment from 'moment';
 // custom components import
 import CustomPagination from '../Common/CustomPagination';
 
@@ -15,9 +17,7 @@ const Timer = ( props ) => {
   const [isActive, setIsActive] = useState(false);
   const [record, setRecord] = useState([])
   const date = new Date();
-  const dateFormat = date.getFullYear() + '-' + 
-                     (date.getMonth() + 1 < 9 ? "0"+(date.getMonth() + 1):(date.getMonth() + 1)) + '-' + 
-                     (date.getDate()< 9 ? "0"+(date.getDate() ):(date.getDate() ));
+  const dateFormat = moment(date).format('YYYY-MM-DD')
   const [subject, setSubject] = useState('');
 
 // Pagination을 위한 변수
@@ -47,7 +47,9 @@ const Timer = ( props ) => {
       }else alert('로그인이 필요한 서비스 입니다.');
     }
     const toggleTimer = () => setIsActive(!isActive);
+
     const resetTimer = () => {
+      if(time !== 0){
         setRecord([...record,{
           userNum:'',
           subject:subject,
@@ -58,6 +60,7 @@ const Timer = ( props ) => {
         setSubject(null);
         setIsActive(false);
         setTime(0);
+      }
     };
 
     const displayTime = () => {
@@ -66,6 +69,14 @@ const Timer = ( props ) => {
         const seconds = time % 60;
         return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     };
+
+     // 페이지 변경 시 멈춤 기능 추가
+     const stopTimer = (event) => {
+      event.preventDefault();
+      resetTimer();
+    };
+    window.addEventListener('beforeunload', stopTimer);
+    document.addEventListener('visibilitychange', stopTimer);
 
 // UI
   return (
