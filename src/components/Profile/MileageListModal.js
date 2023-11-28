@@ -20,6 +20,47 @@ const MileageListModal = ( props ) => {
   const offset = (page - 1) * limit;
 
   // func
+  const handleModal = boolValue => {
+    setCheckModal(boolValue);
+  }
+
+  const studyTime = () => {
+    let studyTimeSum = 0;
+    for(let i = 0; i< timerData.length; i++){
+      if(props.generalTimerData[i].userNum === props.currentLoginUser.userNum){
+        studyTimeSum += props.generalTimerData[i].studyTime;
+      }
+    }
+    return studyTimeSum;
+  };
+// Mileage given type
+  const oneHourStudyTypeMileage = () => {
+    let remainsTime = Math.floor(studyTime()/3600);
+    let giveMileage = 0;
+    let copiedUserData = props.generalUserData;
+
+    for(let i = 0 ; i < props.generalMileageData.length; i++ ){
+      if(props.generalMileageData[i].userNum === props.currentLoginUser.userNum){
+        if(props.generalMileageData[i].givenType === 'oneHourStudy'){
+          remainsTime = remainsTime - props.generalMileageData[i].recordingTime;
+        }}
+    }if(remainsTime > 0 ){
+      giveMileage = remainsTime * 100;
+      copiedUserData[props.currentLoginUser.userNum].userMileage = copiedUserData[props.currentLoginUser.userNum].userMileage + giveMileage;
+      props.setGeneralUserData(copiedUserData);
+      props.setMileageData([...props.generalMileageData, {
+        userNum: props.currentLoginUser.userNum,
+        givenType: 'oneHourStudy',
+        recordingTime: remainsTime,
+        givenMileage: giveMileage,
+        givenDate: formatDate,
+      }]);
+      return alert(`지급이 완료 되었습니다
+      미지급된 시간 : ${remainsTime} 시간`);
+    }else if(remainsTime < 0 || remainsTime === 0){
+      return alert('받을 수 있는 마일리지가 없습니다');
+    }
+  }
   const attendanceTypeMileage = () => {
     let tempNum = 0;
     let giveMileage = 0;
@@ -31,7 +72,7 @@ const MileageListModal = ( props ) => {
       if(props.currentLoginUser.userNum === props.generalCalendarData[tempNum].userNum){
         if(props.generalCalendarData[tempNum].checkBool === false){
           copiedCal[tempNum].checkBool = true;
-          giveMileage = giveMileage + 1000;
+          giveMileage = giveMileage + 100;
           countTrue += 1 ;
         }
       }
@@ -49,46 +90,6 @@ const MileageListModal = ( props ) => {
     countTrue = 0;
     return alert('지급이 완료 되었습니다');
     }else if( countTrue === 0 ){
-      return alert('받을 수 있는 마일리지가 없습니다');
-    }
-  }
-  const handleModal = boolValue => {
-    setCheckModal(boolValue);
-  }
-
-  const studyTime = () => {
-    let studyTimeSum = 0;
-    for(let i = 0; i< timerData.length; i++){
-      if(props.generalTimerData[i].userNum === props.currentLoginUser.userNum){
-        studyTimeSum += props.generalTimerData[i].studyTime;
-      }
-    }
-    return studyTimeSum;
-  };
-
-  const oneHourStudyTypeMileage = () => {
-    let remainsTime = Math.floor(studyTime()/3600);
-    let giveMileage = 0;
-    let copiedUserData = props.generalUserData;
-
-    for(let i = 0 ; i < props.generalMileageData.length; i++ ){
-      if(props.generalMileageData[i].userNum === props.currentLoginUser.userNum){
-        if(props.generalMileageData[i].givenType === 'oneHourStudy'){
-          remainsTime = remainsTime - props.generalMileageData[i].recordingTime;
-        }}
-    }if(remainsTime > 0 ){
-      giveMileage = remainsTime * 1000;
-      copiedUserData[props.currentLoginUser.userNum].userMileage = copiedUserData[props.currentLoginUser.userNum].userMileage + giveMileage;
-      props.setGeneralUserData(copiedUserData);
-      props.setMileageData([...props.generalMileageData, {
-        userNum: props.currentLoginUser.userNum,
-        givenType: 'oneHourStudy',
-        recordingTime: remainsTime,
-        givenMileage: giveMileage,
-        givenDate: formatDate,
-      }]);
-      return alert('지급이 완료 되었습니다');
-    }else if(remainsTime < 0 || remainsTime === 0){
       return alert('받을 수 있는 마일리지가 없습니다');
     }
   }

@@ -39,15 +39,18 @@ const navigate = useNavigate('');
       attendanceDate: dateFormat,
       checkBool:false,
     }
-
-    for(let i = 0 ; i < props.generalCalendarData.length ; i++){
-      if(props.generalCalendarData[i].userNum === userNum){
-        if(props.generalCalendarData[i].attendanceDate !== dateFormat){
-          props.setCalendarData([...copiedCal, attendance]);
-        }else if(props.generalCalendarData[i].attendanceDate === dateFormat){
-          props.setCalendarData([...copiedCal]);
+    if(props.generalCalendarData.length !== 0){
+      for(let i = 0 ; i < props.generalCalendarData.length ; i++){
+        if(props.generalCalendarData[i].userNum === userNum){
+          if(props.generalCalendarData[i].attendanceDate !== dateFormat){
+            props.setCalendarData([...copiedCal, attendance]);
+          }else if(props.generalCalendarData[i].attendanceDate === dateFormat){
+            props.setCalendarData([...copiedCal]);
+          }
         }
       }
+    }else if(props.generalCalendarData.length === 0){
+      props.setCalendarData([...copiedCal, attendance]);
     }
   }
 

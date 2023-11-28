@@ -454,36 +454,36 @@ function App() {
     },
   ]);
   const [generalCalendarData, setCalendarData] = useState([
-    {
-      userNum: 0,
-      attendanceDate: "2023-11-01",
-      checkBool:false,
-    },
-    {
-      userNum: 0,
-      attendanceDate: "2023-11-02",
-      checkBool:false,
-    },
-    {
-      userNum: 0,
-      attendanceDate: "2023-11-03",
-      checkBool:false,
-    },
-    {
-      userNum: 0,
-      attendanceDate: "2023-11-04",
-      checkBool:false,
-    },
-    {
-      userNum: 0,
-      attendanceDate: "2023-11-05",
-      checkBool:false,
-    },
-    {
-      userNum: 0,
-      attendanceDate: "2023-11-06",
-      checkBool:false,
-    },
+    // {
+    //   userNum: 0,
+    //   attendanceDate: "2023-11-01",
+    //   checkBool:false,
+    // },
+    // {
+    //   userNum: 0,
+    //   attendanceDate: "2023-11-02",
+    //   checkBool:false,
+    // },
+    // {
+    //   userNum: 0,
+    //   attendanceDate: "2023-11-03",
+    //   checkBool:false,
+    // },
+    // {
+    //   userNum: 0,
+    //   attendanceDate: "2023-11-04",
+    //   checkBool:false,
+    // },
+    // {
+    //   userNum: 0,
+    //   attendanceDate: "2023-11-05",
+    //   checkBool:false,
+    // },
+    // {
+    //   userNum: 0,
+    //   attendanceDate: "2023-11-06",
+    //   checkBool:false,
+    // },
   ]);
   const [generalBoardData, setGeneralBoardData] = useState([
     {
@@ -576,7 +576,7 @@ function App() {
       userNum:0,
       givenType: 'oneHourStudy',
       recordingTime: 8,
-      givenMileage: 8000,
+      givenMileage: 800,
       givenDate:'2023-11-06',
     }
   ]);
