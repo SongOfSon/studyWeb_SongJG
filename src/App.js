@@ -6,26 +6,26 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css"
 
 // Pages Import
-import Timer from "./Components/Timer/Timer.js"
-import CalendarPage from "./Components/Calendar/Calendar.js";
-import StudyGroup from "./Components/StudyGroup/StudyGroup.js"
-import Board from "./Components/Board/Board.js"
-import MileageShop from "./Components/MileageShop/MileageShop.js"
-import Inquery from "./Components/Inquery/Inquery.js"
+import Timer from "./components/Timer/Timer.js"
+import CalendarPage from "./components/Calendar/Calendar.js";
+import StudyGroup from "./components/StudyGroup/StudyGroup.js"
+import Board from "./components/Board/Board.js"
+import MileageShop from "./components/MileageShop/MileageShop.js"
+import Inquery from "./components/Inquery/Inquery.js"
 
 // Components Import
-import Main from "./Components/Main/Main.js"
-import NavigationBar from "./Components/Main/NavigationBar.js"
-import NotExistPage from "./Components/Common/NotExistPage.js"
-import Footer from "./Components/Main/Footer.js"
+import Main from "./components/Main/Main.js"
+import NavigationBar from "./components/Main/NavigationBar.js"
+import NotExistPage from "./components/Common/NotExistPage.js"
+import Footer from "./components/Main/Footer.js"
 
-import Signup from "./Components/Signup/Signup.js"
-import Profile from "./Components/Profile/Profile.js"
+import Signup from "./components/Signup/Signup.js"
+import Profile from "./components/Profile/Profile.js"
 
-import CreateGroup from "./Components/StudyGroup/CreateGroup.js"
-import CurrentGroup from "./Components/StudyGroup/CurrentGroup.js"
+import CreateGroup from "./components/StudyGroup/CreateGroup.js"
+import CurrentGroup from "./components/StudyGroup/CurrentGroup.js"
 
-import WritePost from "./Components/Board/WritePost.js"
+import WritePost from "./components/Board/WritePost.js"
 
 // custom Package import
 
